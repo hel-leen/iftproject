@@ -1,0 +1,204 @@
+
+body {
+	/* background-color: rgb(238 238 238 / 80%); */
+}
+
+#window_content {
+	/* overflow: hidden; */
+	/* width: 80%;  */
+    /* display: inline-grid;  */
+    /* justify-content: center;  */
+    /* align-items: center;  */
+    /* text-align: center; */
+}
+
+#preSurvey {
+    width: 100%;
+    margin: 30% 0;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+}
+
+#surveyElement {
+   display:inline-block;
+   
+	width:90%; 
+	margin-left:5%; 
+	margin-right:5%;
+}
+
+.sv_instruction
+{
+	font-size: 1.2em;
+    color: #223344;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    line-height: 1.7;
+}
+.sv_description
+{
+	font-size: 1em;
+    color: #334455;
+    padding-left: 1.15em;
+    padding-right: 1.15em;
+    line-height: 1.5;
+}
+/* progressbar */
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-progress.sv-body__progress {
+	margin:auto;
+}
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-progress.sv-body__progress > span {
+	visibility: hidden;
+}
+
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-progress.sv-body__progress > div
+{
+}
+
+/* timer */
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div:nth-child(3)
+{
+    margin: 35px 0 0 0px;
+    text-align: center;
+}
+
+.sv-container-modern__title {
+    padding-left: 0.05em;
+    color: #1ab394;
+    padding-top: 2em;
+    padding-bottom: 0.9375em;
+}
+
+
+.sv-row:not(:last-child) {
+    padding-bottom: 2.1em;
+}
+
+
+/* ladder panel!! */
+#sp_102
+{
+ margin-right: 25vw;
+}
+/* bg */
+#sp_100, #sp_101 {
+	background-image: url(../resources/fudan.png);
+  	background-position: right;
+  	background-repeat: space;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#sp_103, #sp_104 {
+	/* background-image: url(../resources/stimuli/covid-01.png); */
+    background-position-y: 200px;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+	background-attachment: fixed;
+	background-color: white; 
+}
+#sp_105 {
+	/* background-image: url(../resources/stimuli/covid-02.png); */
+    background-position-y: 240px;
+    background-position-x: center;
+    background-repeat: space;
+    background-size: contain;
+	background-attachment: fixed;
+	background-color: white; 
+}
+
+ /* ladder pics and stuff  */
+#sq_117 {
+    padding-left: 5vw;
+    padding-right: 0vw;
+	font-size: 0.98em;
+}
+#sq_117_ariaTitle > span
+{
+	visibility: hidden;
+}
+#sq_117 > div > fieldset {
+border: 0px solid;
+position: absolute;
+left: 10%;
+margin: 15px 5px;
+}
+
+#sq_117 > div.sv-question__content > fieldset > div > label {width: 100%;}
+#sq_117 > div.sv-question__header.sv-question__header--location--top
+{
+height: 20px;
+margin-bottom: 0.04em;
+}
+
+/* pic (should edit element style in js ) */
+#sq_118 > div > div:nth-child(2) > img
+{
+	 border: 1px solid rgb(255 0 255);
+    /* display: flex; */
+    /* position: absolute; */
+    /* right: 10%; */
+	height:430px; 
+}
+
+
+
+
+/* covid checker */
+#sq_129, #sq_130 {
+    margin: 35px 0;
+}
+
+#surveyResult {
+	width: 80%;
+    margin: auto;
+    line-height: 2;
+}
+
+
+@media(max-width: 640px) {
+#sq_118 > div > div > img
+/* { */
+     /* padding-left: 10vw; */
+/* } */
+
+
+/* #sq_117 { */
+    /* padding-left: 1vw; */
+    /* padding-right: 0vw; */
+	/* font-size: 0.88em; */
+/* } */
+/* #sq_117 > div.sv-question__content > fieldset > div> label > span.sv-item__decorator.sv-radio__decorator */
+/* { */
+    /* width: 22px; */
+    /* height: 22px; */
+/* } */
+/* #sq_117 > div.sv-question__content > fieldset > div > label > span.sv-item__decorator.sv-radio__decorator > svg */
+/* { */
+    /* width: 18px; */
+    /* height: 18px */
+/* } */
+}
+@media(max-width: 460px) {
+
+/* #sq_117 { */
+    /* padding-left: 1vw; */
+    /* padding-right: 0vw; */
+	/* font-size: 0.88em; */
+/* } */
+/* #sq_117 > div.sv-question__content > fieldset > div> label > span.sv-item__decorator.sv-radio__decorator */
+/* { */
+    /* width: 14px; */
+    /* height: 14px; */
+/* } */
+/* #sq_117 > div.sv-question__content > fieldset > div > label > span.sv-item__decorator.sv-radio__decorator > svg */
+/* { */
+    /* width: 14px; */
+    /* height: 14px */
+}
+#sq_118 > div > div:nth-child > img{
+
+}
+}

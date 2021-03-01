@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+    <title>IAT | 实验</title>
+<head>
+<!-- <div class="jspsych"> -->
+	<script src="../libs/jspsych/jspsych.js"></script>
+	<script src="../libs/jspsych/plugins/jspsych-iat-button.js"></script>
+	<script src="../libs/jspsych/plugins/jspsych-fullscreen.js"></script>
+	<script src="../libs/jspsych/plugins/jspsych-html-button-response.js"></script>
+
+<!-- <div class="surveyjs"> -->
+	<!-- <script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script> -->
+	<!-- <link href="https://unpkg.com/survey-jquery/survey.min.css" type="text/css" rel="stylesheet"/> -->
+	<!-- <link href="https://unpkg.com/survey-knockout/survey.min.css" type="text/css" rel="stylesheet"/> -->
+	<!-- <link href="https://unpkg.com/survey-react/survey.min.css" type="text/css" rel="stylesheet"/> -->
+	<!-- <link href="https://unpkg.com/survey-vue/survey.min.css" type="text/css" rel="stylesheet"/> -->
+
+<!-- <div class="otherstuff"> -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.js"></script> -->
+	
+<!-- <div class="style"> -->
+	<link href="../libs/jspsych/css/jspsych.css" rel="stylesheet">
+	<link href="../style.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+	<div id='experiment_content'></div>
+	<div id='pre_experiment'></div>
+    
+<script>
+
+$(document).ready(function(){
+ $("#experiment_content").fadeIn("slow");
+ $("#pre_experiment").fadeOut();
+});
+</script>
+<script type='text/javascript' src='./experiment.js'></script>
+</body>
+</html>

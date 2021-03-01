@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Consent | 知情</title>
+	
+	<!-- <div class="preload"> -->
+	<link rel="preload" href="../style.css" as="style">
+	<link rel="prerender" href="./survey.html">
+	
+	<!-- <div class="load"> -->
+  <link href="../style.css" rel="stylesheet"> 
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+  	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- <div class="prefetch"> -->
+	
+	<link rel="prefetch" href="../libs/surveyjs/jquery.js" as="script" />
+	<link rel="prefetch" href="../libs/surveyjs/survey.jquery.min.js" as="script" />
+	<link rel="prefetch" href="../libs/surveyjs/css/modern.css" as="style" />
+	<link rel="prefetch" href="./survey.html">
+	<link rel="prefetch" href="./survey.js" as="script" />
+	<link rel="prefetch" href="./survey.css" as="style" />
+
+	
+	
+  <script>
+  function checkFunction() {
+    const btnAgree = document.getElementById("btn_agree");
+    const checkBox = document.getElementById("consent_checkbox");
+    btnAgree.disabled = checkBox.checked == false;
+	   $('#btn_agree').toggleClass('heartbeat');
+   }
+
+ function clickFunction() {
+	   $('*').fadeOut(1500);
+	  setTimeout(function(){ 
+	  window.location.href = './survey.html' }, 500);
+	<!-- window.location.href='./survey.html'; -->
+}
+   
+
+
+  </script>
+
+<div  class="bg-image">
+ <div id="page_consent">
+  <div id="window_content" style="width: 85%;">
+<div class='text_l'><br></div>
+  
+  <div class="title slide-in-right">在开始之前...</div>
+
+<div class='fade-in'>
+<div class='text_s' style=' text-align: left;'>
+ <p><br>
+    本研究是一项关于新冠疫情内隐认知与态度的研究项目。在研究中，你需要填写一份问卷并完成一项分类任务的实验。研究问卷中的问题没有对错之分，你只需根据平时的想法和实际情况进行回答。测验任务要求尽可能快地将不同的词汇或图片按照提示划分到相应的类别，并且以反应时间快慢衡量测验结果。完成全部研究任务大约需要15分钟；研究设计的简要解释将在研究完成时呈现。本研究是完全匿名的。研究的在线问卷及测验使用安全的超文本传输协议(HTTPS)，以便为在线研究的数据传输提供强大的安全保障。对于你在研究中提供的所有信息，我们将严格进行保密，并且不会将它们运用于科学研究之外的其它任何用途，请不要有任何顾虑。</p>
+	<p> 	本研究旨在探查人们关于新冠疫情的态度、观点以及行为，以求帮助我们科学地理解人们在疾病与健康问题方面的心理特征、探讨其它相关的具有重要理论和现实意义的议题。我们尤其注重测量那些意识层面以及觉察范围之外的心理过程。由于研究主题的特点，或许不是每个人都适合于参加这项研究。请你注意，参加这项研究应当是完全自愿的，你可以在任何感到不便时退出你的参与。感谢你理解和帮助我们的工作。</p>
+	
+	<p>另外，本研究中的分类任务实验采取了内隐联想测验(Implicit Association Test)技术。内隐联想测验是一种测量内隐社会认知的研究方法，这种测验已广泛地使用在心理学、社会学、语言学、神经科学等各种研究领域，具有可靠的信效度。值得注意的是，人们的内隐联想测验结果并不一定与他们日常的观点与信念完全一致。并且，这些测验也不能提供任何心理或生理疾病的诊断。作为研究者，我们希望这些测验能够激发你的兴趣、引起你对相关议题的思考，但它们并不能作为你定义自己或他人人格特征的衡量标准。
+	</p>
+	<p>如果你对研究主题或内容有任何疑问、建议或兴趣，欢迎与研究设计者进行联系。
+	<p><b>联系方式</b>
+	<p> Email: <a href="mailto:16110730011@fudan.edu.cn" style="color: rgb(88 88 88); 
+    text-decoration: blink;">16110730011@fudan.edu.cn</a></p>
+	<p>地址: 上海市杨浦区复旦大学社会发展与公共政策学院心理学系</p>
+</div>
+  <p>
+    <!-- <input type="checkbox" id="consent_checkbox" class="checkmark" onclick="checkFunction()">  <text style="text-decoration: underline"> I agree to take part in this study. </text> -->
+	<br>
+<label class="text_s checkcontainer">我已阅读以上说明，同意参加研究
+  <input type="checkbox" onclick="checkFunction()"  id="consent_checkbox">
+  <span class="checkmark"  ></span>
+</label>
+  <br><br>
+
+<button disabled = 'disabled' class="button" id="btn_agree"  onclick="clickFunction()">开始</button>
+</div>
+  <br><br>
+</div>
+</div>
+
+<!-- <script type='text/javascript' src='./experiment.js'></script> -->
+</body>
+
+
+</html>

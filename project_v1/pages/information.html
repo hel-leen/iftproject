@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8" content="width=device-width, height=device-height, initial-scale=1.0" name="viewport">
+
+  <title>Info | 简介</title>
+  <!-- <div class="load"> -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- surveyjs -->
+  <script src="../libs/surveyjs/survey.jquery.min.js">  </script>
+  <link href="../libs/surveyjs/css/modern.css" rel="stylesheet" type="text/css">
+  <link href="./survey.css" rel="stylesheet">
+  <link href="../layout.css" rel="stylesheet">
+
+  <style>
+  </style>
+</head>
+
+<body>
+  <div class="bg-image">
+    <div class="fade-in" id="page_info">
+      <div class="sv-title sv-container-modern__title fade-in"  style="color: #445566; margin: auto; text-align: left; width: 80%; padding: 25px 0 0 0;">
+        <div class="sv-header__text"  style="max-width: calc(((100% - 5px) - 2em) - 64px);">
+          <h3><span style="position: static;">IFT</span>
+          </h3>
+
+
+          <h5 ><span style="position: static;">IAT for TMT Project</span>
+          </h5>
+        </div>
+
+
+        <div class="sv-logo sv-logo--right" ><img class="sv-logo__image roll-in-left" data-bind="css: css.logoImage, style: { objectFit: logoFit }" height="64px" src="../resources/IFT.png" style="object-fit: contain;" width="64px">
+        </div>
+        <div class="sv-logo--right-tail">
+        </div>
+      </div>
+      <div class="sv-progress sv-body__progress" style="margin: 20px 2% -20px 2%; height: 0.09em;">
+        <div class="sv-progress__bar slide-in-right"  role="progressbar" style="width: 100%; background-color: #445566">
+        </div>
+      </div>
+      <div id="window_content" style="width: 85%;">
+        <div class='fade-in' id='info_content'><br>
+          <p class="blank"><br></p>
+          <p id="results_intro" class="text_l" style="margin: 8% 0 0 0"><br></p>
+          <p id="results"></p>
+          <p id="results_after" class="text_m" style="width: 100%;"><br>
+          <br></p>
+          <button class="button" id="get_info" onclick='pageDetail()' style="margin: 20px 8px;">原理介绍</button> <button class="button btn_rubic" id="end_exp" onclick="clickFunction()" style="margin: 20px 8px; background-color: rgb(125 55 99);">结束研究</button>
+          <p> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+var userInfo = {
+  url: window.location.href,
+  timestamp: new Date().getTime(),
+  uuid: function() {
+    if (this.url.indexOf("uuid=") < 0) {
+      return "null_id";
+    } else {
+      return this.url.slice(this.url.indexOf("uuid") + 5, this.url.indexOf("cong_rt") - 1);
+    }
+  },
+  cong_rt: function() {
+    if (this.url.indexOf("cong_rt=") < 0) {
+      return "0";
+    } else {
+      return this.url.slice(this.url.indexOf("cong_rt") + 8, this.url.indexOf("incong_rt") - 1);
+    }
+  },
+  incong_rt: function() {
+    if (this.url.indexOf("incong_rt=") < 0) {
+      return "0";
+    } else {
+      return this.url.slice(this.url.indexOf("incong_rt") + 10, );
+    }
+  },
+  mean_rt: function() {
+    return (this.incong_rt() / 1 + this.cong_rt() / 1) / 2000;
+  },
+  d_rt: function() {
+    return (this.incong_rt() / 1 - this.cong_rt() / 1) / 1000;
+  },
+  rt_type: function() {
+    if (this.incong_rt() / 1 - this.cong_rt() / 1 > 0) {
+      return "你的自我概念更多地与正面意义相联系（这种情况在人群中比较常见），";
+    } else if (this.incong_rt() / 1 - this.cong_rt() / 1 < 0) {
+      return "你的自我概念更多地与负面意义相联（这种情况在人群中不太常见），";
+    } else {
+      return "你的自我概念与正负意义之间联系没有差异（这种情况在人群中比较罕见），";
+    }
+  },
+  rt_associate: function() {
+    if (this.d_rt() < 0.15) {
+      return "不过正面两种意义联系的差异比较小。";
+    } else if (this.d_rt() < 0.35) {
+      return "不过正负两种意义联系的差异并不大太。";
+    } else if (this.d_rt() < 0.65) {
+      return "并且联系的紧密程度中等。";
+    } else {
+      return "并且联系的紧密程度较强。";
+    }
+  },
+};
+
+var exp_results;
+var exp_results_intro;
+var exp_results_after;
+var end_exp;
+
+if (userInfo.cong_rt() == "0" || userInfo.incong_rt() == "0") {
+  exp_results_intro = "你好像还没有参加测验哦... ";
+  exp_results = "";
+  exp_results_after = "<p class='text_m' style=‘width: 100%;'><br>你可以点击下面的按钮了解测验原理，或者开始参与研究。<br>  &nbsp;</p>";
+    function clickFunction() {
+       window.location.href = './consent.html';
+	  
+  }
+  document.getElementById("end_exp").innerHTML = '开始测试';
+} else {
+  exp_results_intro = "你已完成测验，非常感谢你的参与！ ";
+  exp_results = "<p class='text_s'><big>你的测验结果是：</big><br>" +
+    "  平均反应时间：<b>" + userInfo.mean_rt() + "</b> 秒<br>" +
+    "  正面词语与概念“我”关联时：<b style='color: #223388;'>" + userInfo.cong_rt() / 1000 + "</b> 秒<br>" +
+    "  负面词语与概念“我”关联时：<b  style='color: #661122;'>" + userInfo.incong_rt() / 1000 + "</b> 秒<br>" +
+    "  反应时差：<b>" + userInfo.d_rt() + "</b> 秒<br>" +
+    '</p>';
+  exp_results_after = "<p class='text_m' style=‘width: 100%;’>你可以点击下面的按钮了解测验原理和结果的意义，或者结束本研究。</p>";
+  function clickFunction() {
+       window.open("about:blank", '_self').close();
+	   
+  }
+  
+}
+document.getElementById("results_intro").innerHTML = exp_results_intro;
+document.getElementById("results").innerHTML = exp_results;
+document.getElementById("results_after").innerHTML = exp_results_after;
+
+
+function pageDetail() {
+  var page_detail = "<div id='page_detail' class='fade-in'><div class='text_s' style='text-align:left; overflow-y: overlay;'> <p><br><big><b>背景信息</b></big>" + '<br>' +
+    "心理学认为，我们难以只通过自我报告的方式了解人们的实际情况：有时候，我们不愿意把自己的想法告诉别人；有时候，我们也许自己也难以意识到自己的真实情况。例如，当我们询问吸烟者每日吸烟量时，一位每天要抽四包烟的吸烟者可能会回答每天只抽一包烟，因为承认抽四包烟很可能会引起别人对他健康状况的关注。或者，吸烟者也可能以隐私性为由不愿正面回答这个问题。但也有可能，吸烟者无意识地低估了自己的吸烟量，以至于他在意识中真的认为自己只抽一包烟。这种无意识地给出错误答案的行为在心理学上被称为<b>防御机制<\/b>。这也就是我们以内隐联想测验的进行研究的原因：内隐联想测验能够排除有意或无意的错误报告对真实情况的干扰，测量那些人们不愿意或不能报告的内隐态度或看法。" + '<br>' +
+    "<br><b>在线测验的由来</b>" +
+    "<br>大部分心理学实验在专门的心理学实验室中进行，这很大程度上的限制了能够接受测验的人群。作为研究者，我设计了这项在线研究项目，并且专门为移动设备（手机或平板电脑等）进行了适配。尽管网络测验可能不如实验室测验精确（当然实验室测验也绝非完美），但这能够让更多对研究抱有兴趣、但又因为时间或地理位置等各种条件限制无法前往心理学实验室的人们能够简单地参与到研究之中。并且，我在网页中提供了一些实用信息，包括与内隐联想测验的原理介绍，以及如何对这些测验的结果进行解释等，从而为有兴趣的人提供一种工具，帮助他们通过这种测验方式了解自己无意识的偏好和态度。假如你对研究主题或内容有任何疑问、建议或兴趣，你可以通过<a href='mailto:16110730011@fudan.edu.cn'  style='color: #112277; text-decoration: underline;'>电子邮件<\/a>与我联系，或者点击右下角的“<b>研究反馈<\/b>”按钮留下你的联系方式，我会在稍后研究全部完成时与你联系。希望你通过参与研究从中有所收获。" + '<br>' +
+    "<br><b>内隐联想测验的原理</b>" + '<br>' +
+    "内隐联想测验的基本任务是对两个概念进行配对分类，例如，花朵的图片和词语“喜爱”，或昆虫的图片和词语“喜爱”。如果花朵和词语“喜爱”的意义联系紧密，当要你用同一个按钮对这两个概念作反应时就会更容易、反应也会相对更快。相反，假如你不喜欢昆虫，昆虫的图片和词语“喜爱”的意义就联系不太紧密、甚至可能是冲突的，那么当测验任务要求把它们作为一类来反应，你的反应时就会相对变长。一般地，两个概念联系越紧密，把它们作为一个类别来反应就越容易、反应速度越快。所以，我们可以通过测量两种不同配对分类任务之间反应速度之差来测量两个概念间联系的紧密程度的差异。<br>除一般的规律以外，内隐联想测验的结果还会受社会行为和近期经历的影响，这也是本次研究主要关注的内容之一，即考察新冠疫情是否、以及如何影响人们的内隐认知和态度。" + '<br>';
+
+
+  if (userInfo.cong_rt() == "0" || userInfo.incong_rt() == "0") {
+    page_detail += "";
+  } else {
+    page_detail += "<p ><br><b>本次测验的结果解释</b>" + '<br>' + "在本次研究中，当测验任务要求将<u>正面词语与概念“我”关联<\/u>时，你的平均反应时是" + userInfo.cong_rt() / 1000 + "秒，而<u>负面词语与概念“我”关联</u>时你的平均反应时是" + userInfo.incong_rt() / 1000 + "秒。这一结果显示，" + userInfo.rt_type() + userInfo.rt_associate() + "对于如何具体解释这种结果，我还需要结合你个人的具体情况和近段时间的经历进行分析，这也正是研究要求你在测验之前填写问卷的缘由。" + '<br></p>';
+  }
+  page_detail +=
+    "<br><br><big><b>常见问题</b></big>" + '<br>' +
+    "<br>“<b><i>测验中不同类别呈现的顺序是否可能影响测验结果？</i></b>“<br>" +
+    "答： 测验的呈现顺序确实对测验结果造成影响。例如，假如测验中你先将一种类别和令人愉快的词语联系，再将另一类别和令人愉快的词语联系，你可能发现后来的任务难度相对更大。我们把这种影响称之为“顺序效应”。但是，现有的研究表明，顺序效应对测验结果的影响并不太大，而且，为减少顺序效应，研究中的测验呈现顺序是随机的，也就是说，我们让一半的参与者先做A类任务后做B类任务 ，另一半参与者则相反 。这样，根据数理统计学的原理，我们就能让呈现顺序对测验结果影响降低到最小程度。如果你想核实一下是否有顺序效应，你可以再多做几次测验，以便比较多次测验结果。" + '<br>' +
+    "<br>“<b><i>对测验任务的熟悉程度是否可能影响测验结果？</i></b>“<br>" +
+    "答： 对测验任务的熟悉程度影响测验结果同样是有可能的。在测验中你可能会体会到，比起一开始不熟悉测验内容的情况下，在后来的测验任务中你的操作更为熟练。这种影响和顺序效应在某种程度上正好相反，我们把它称之为“练习效应”。但是，现有的研究发现，内隐认知和态度大部分情况下是一种自动化的心理过程，很难通过短时间的几次练习而改变。并且类似地，我们可以通过随机安排测验任务，从统计学上尽可能地降低练习效应对研究参与者的影响。" + '<br>' +
+    "<br>“<b><i>多次进行测验是否可能影响测验结果？</i></b>“<br>" +
+    "答： 一般说来，多次测验的结果确实会略有不同。如果你多次重复测验，你可能会发现你的反应因为多次练习变得越来越快，也可能因为兴趣的减退或长时间注视屏幕产生的视疲劳而使反应变慢。由于大部分人不太可能过多地反复进行测验，研究者目前还没有发现多次测验的对研究产生显著的影响。不过，因为个体情况的不同，这种影响对于参与者个人而言不能一概而论。关于这一点，你可以点击右下角的“研究反馈”按钮反馈自己参与测验的次数，以便让研究者更精确地评估你的参与次数对结果的影响。" + '<br>' +
+    "<br></p></div>" +
+	'<div id="snackbar"><br></div>' +
+    "</div>";
+  document.getElementById('window_content').innerHTML = page_detail;
+  var survey_modal = document.getElementsByClassName("modal");
+  var survey_modal_content = document.getElementsByClassName("modal-content");
+    if (userInfo.cong_rt() == "0" || userInfo.incong_rt() == "0") {
+  survey_modal[0].style.display = "none";
+  } else {
+  survey_modal[0].style.display = "block";
+
+  }
+
+  window.onclick = function(event) {
+    if (event.target == survey_modal_content[0]) {
+      survey_modal[0].style.display = "none";
+
+    }
+  }
+}
+
+// theme colors
+var defaultThemeColors = Survey
+  .StylesManager
+  .ThemeColors["modern"];
+defaultThemeColors["$main-color"] = "#556677";
+defaultThemeColors["$answer-background-color"] = "rgba(126, 129, 188, 0.2);";
+
+// complete page
+var myCss = {
+  "completedPage": "",
+  "window": {
+    "body": "modal-content",
+    "root": "modal",
+    "header": {
+      "root": "modal_title",
+    }
+  },
+  "matrixdynamic": {
+    "root": "survey_matrix",
+    "buttonRemove": "btn_rubic",
+    "buttonAdd": "btn_grey",
+  }
+};
+
+Survey
+  .StylesManager
+  .applyTheme("modern");
+
+var json = {
+  title: "研究反馈",
+  'max-width': "95%",
+  "locale": "zh-cn",
+  "completeText": "完成",
+  "completedHtml": {
+    "zh-cn": "<br><p class='sv_instruction' style = 'width: 100%; height: 200px;  display: inline-grid;   justify-content: center;  align-items: center;  text-align: center;'> </div>"
+  },
+  pages: [{
+    questions: [{
+        "type": "html",
+        "name": "feedback_intro",
+        "html": "<p class='sv_instruction'>如果你对研究主题或内容有任何疑问、建议或兴趣，你可以在此留下你的联系方式，我会在稍后研究全部完成时与你联系。<br>请注意：留下联系方式可能会影响你的匿名性。如果你希望保持绝对匿名，请对留下联系方式保持谨慎。</p>"
+      },
+      {
+        "type": "text",
+        "name": "UUID",
+        "visible": false,
+        "defaultValue": userInfo.uuid(),
+      },
+      {
+        "type": "matrixdynamic",
+        "name": "contact_panel",
+        <!-- "width": "60vw", -->
+        "margin": "auto",
+        "title": " ",
+        "hideNumber": true,
+        "columns": [{
+            "name": "contact_type",
+            "title": " 联系方式类型",
+            "cellType": "dropdown",
+            "width": "15vw",
+          },
+          {
+            "name": "contact_info",
+            "title": "具体方式",
+            "cellType": "text",
+            "width": "20vw",
+            "placeHolder": "请填写联系方式"
+          }
+        ],
+        "choices": [{
+            "value": 1,
+            "text": "电子邮件"
+          },
+          {
+            "value": 2,
+            "text": "QQ号"
+          },
+          {
+            "value": 3,
+            "text": "微信号"
+          },
+          {
+            "value": 4,
+            "text": "其他"
+          }
+        ],
+        "maxRowCount": 5,
+        "addRowLocation": "bottom",
+        "addRowText": "新增",
+        "removeRowText": "删除"
+      },
+      {
+        "type": "radiogroup",
+        "name": "particip_exp",
+        "title": "到目前为止，你参加过多少次心理学实验？",
+        "hideNumber": true,
+        "choices": [{
+            "value": "item1",
+            "text": "没有参加过"
+          },
+          {
+            "value": "item2",
+            "text": "1-2次"
+          },
+          {
+            "value": "item3",
+            "text": "3-6次"
+          },
+          {
+            "value": "item4",
+            "text": "7次及以上"
+          }
+        ]
+      },
+      {
+        "type": "radiogroup",
+        "name": "particip_iat",
+        "title": "到目前为止，你参加过多少次内隐联想测验？",
+        "hideNumber": true,
+        "choices": [{
+            "value": "item1",
+            "text": "没有参加过"
+          },
+          {
+            "value": "item2",
+            "text": "1-2次"
+          },
+          {
+            "value": "item3",
+            "text": "3-6次"
+          },
+          {
+            "value": "item4",
+            "text": "7次及以上"
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "name": "other_feedback",
+        "title": "其他反馈",
+        "hideNumber": true
+      }
+    ]
+  }]
+};
+
+window.survey = new Survey.Model(json);
+survey
+.onComplete
+.add(function (result) {
+<!-- document -->
+<!-- .querySelector('#surveyResult') -->
+<!-- .textContent = "结果：\n" + JSON.stringify(result.data, null, 3); -->
+saveDatatoServer( userInfo.uuid() + "_feedback_data_" + userInfo.timestamp, JSON.stringify(result.data, null, 3) );
+});
+
+function saveDatatoServer(name, data){
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '../../data/save_data_v1.php'); 
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({filename: name, filedata: data}));
+}
+
+
+function toastFunction() {
+  var toast_detail = "感谢你的反馈！" ;
+  document.getElementById('snackbar').innerHTML = toast_detail;
+  var toast = document.getElementById("snackbar");
+  toast.className = "show";
+  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+}
+
+$("#window_content")
+  .SurveyWindow({
+    model: survey,
+    css: myCss,
+    isExpanded: false,
+	onComplete: toastFunction,
+  });
+  </script>
+
+  
+</body>
+</html>

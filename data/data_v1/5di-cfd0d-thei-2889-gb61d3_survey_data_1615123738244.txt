@@ -1,0 +1,5 @@
+{
+   "UUID": "5di-cfd0d-thei-2889-gb61d3",
+   "survey_date": "2021-03-07T13:28:58.244Z",
+   "Priming_type": 1
+}

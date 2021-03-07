@@ -1,0 +1,16 @@
+{
+   "UUID": "6ei-9f67g-tiaf-d163-22ag1d",
+   "survey_date": "2021-03-06T22:40:37.486Z",
+   "Priming_type": 1,
+   "gender": "1",
+   "birthyear": 1988,
+   "region": "上海市",
+   "city": "3",
+   "ethnic": "7",
+   "edu": "6",
+   "fieldofstudy": "6",
+   "employment": "7",
+   "relationship": "1",
+   "religiosity": "2",
+   "religion": "9"
+}

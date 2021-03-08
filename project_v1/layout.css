@@ -19,7 +19,8 @@ body {
 
 
 .bg-image {
-  background-color: rgb(238 238 238 / 80%);
+  background-color: #eeeeee;
+  background-color:  rgba(235, 235, 235, 0.8);
   background-image: url("./resources/fudan.png");
   height: 100vh;
   background-position: center;
@@ -44,31 +45,33 @@ body {
   max-height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  overflow-y: overlay;
 }
 
 #window_content {
-  /* overflow: hidden; */
-  padding:0 6%;
-  width: 88%;
-  display: inline-grid;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+	overflow-x: hidden;
+   padding: 0 5%;
+   width: 89.5%;
+   display: inline-grid;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   margin-left: 10px;
 }
 
 /* scrollbar */
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(255 255 255 / 0%);
+  background: #eeeeee;
+  background: rgba(235, 235, 235, 0)
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 0%);
+  background: #eeeeee;
+  background: rgba(255, 255, 255, 0)
 }
 
 ::-webkit-scrollbar-thumb:hover {

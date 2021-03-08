@@ -4,9 +4,8 @@ const category_info = [
     Group: "我",
     Word: [
       "我",
-      // "自己",
-      // "自我",
-      // "我的",
+      "自己",
+      "自我",
     ],
     Image: null
   },
@@ -14,9 +13,8 @@ const category_info = [
     Group: "非我",
     Word: [
       "他",
-      // "他人",
-      // "别人",
-      // "他们",
+      "他人",
+      "别人",
     ],
     Image: null
   },
@@ -24,26 +22,26 @@ const category_info = [
     Group: "正面的",
     Word: [
       "喜悦",
-      // "友爱",
-      // "美妙",
-      // "和平",
-      // "愉快",
-      // "光荣",
-      // "欢笑",
-      // "热情"
+      "友爱",
+      "美妙",
+      "和平",
+      "愉快",
+      "光荣",
+      "欢笑",
+      "热情"
     ],
     Image: null
   },
   {
     Group: "负面的",
     Word: [
-      // "痛苦",
-      // "恐怖",
-      // "低劣",
-      // "可怕",
-      // "糟糕",
-      // "肮脏",
-      // "伤害",
+      "痛苦",
+      "恐怖",
+      "低劣",
+      "可怕",
+      "糟糕",
+      "肮脏",
+      "伤害",
       "失败"
     ],
     Image: null
@@ -51,20 +49,20 @@ const category_info = [
   {
     Group: "正面的",
     Word: [
-      // "生命",
-      // "安宁",
+      "生命",
+      "安宁",
        "健康",
-      // "活力",
+      "活力",
     ],
     Image: null
   },
   {
     Group: "负面的",
     Word: [
-      // "死亡",
-      // "灾难",
+      "死亡",
+      "灾难",
        "疾病",
-      // "毁灭",
+      "毁灭",
     ],
   }
 ];
@@ -673,8 +671,8 @@ var block_cong_incong = {
 
 var timeline = [];
 timeline.push(groups_display);
-timeline.push(block_target_concept);
-timeline.push(block_cong_incong);
+// timeline.push(block_target_concept);
+// timeline.push(block_cong_incong);
 
 
 

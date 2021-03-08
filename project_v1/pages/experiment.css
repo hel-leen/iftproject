@@ -9,11 +9,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(255 255 255 / 0%);
+  background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 0%);
+  background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -28,7 +28,8 @@
 .jspsych-content {
   text-align: center;
   font-size: 20px;
-  width: 95%;
+  width: 96%;
+  padding:0 2%;
   position: relative;
   margin: auto;
   overflow-x: hidden;

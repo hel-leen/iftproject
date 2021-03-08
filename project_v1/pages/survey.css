@@ -1,5 +1,5 @@
 body {
-  /* background-color: rgb(238 238 238 / 80%); */
+  /* background-color: rgba(250, 250, 250, 0.8); */
 }
 
 /* scrollbar */
@@ -9,15 +9,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(255 255 255 / 0%);
+  background: rgba(255, 255, 255, 0)
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(235 235 235 / 35%);
+  background: rgba(235, 235, 235, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: #bbb;
 }
 
 #window_content {
@@ -172,7 +172,6 @@ body {
 /* pic (should edit element style in js ) */
 
 #sq_119>div>div:nth-child(2)>img {
-  border: 1px solid rgb(255 0 255);
   /* display: flex; */
   /* position: absolute; */
   /* right: 10%; */
@@ -194,7 +193,8 @@ body {
   z-index: 99;
   position: sticky;
   top: 0;
-  background-color: rgb(255 255 255 / 95%);
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
   width: fit-content;
   padding-right: 2%;
   padding-bottom: 0;
@@ -234,7 +234,7 @@ body {
 }
 
 .modal-content {
-  background-color: rgb(252 252 252 / 99%);
+  background-color: rgba(255, 255, 255, 0);
   margin: auto;
   padding: 20px;
   width: 80%;
@@ -253,7 +253,7 @@ body {
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 0%);
+  background: rgba(255, 255, 255, 0);
 }
 
 .modal_title {
@@ -316,7 +316,7 @@ body {
 }
 
 .btn_rubic {
-  background-color: rgb(125 55 99);
+  background-color: #7D3763;
   font-size: 0.8em;
 }
 

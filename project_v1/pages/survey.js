@@ -9,6 +9,7 @@ defaultThemeColors["$answer-background-color"] = "rgba(126, 129, 188, 0.2);";
 var myCss = {
   "completedPage": "",
   "comment": "survey_comment",
+
 };
 
 Survey
@@ -115,6 +116,7 @@ yob.push("1920及更早");
 for (var i = 1920; i < 2004; i++) {
   yob.push(i);
 };
+yob.push("2004及以后");
 let ladder = [];
 for (var i = 1; i < 11; i++) {
   ladder.push(i);
@@ -136,6 +138,7 @@ var json = {
   "description": "IAT for TMT Project",
   "locale": "zh-cn",
   "logo": "../resources/IFT.png",
+  "min-width": "220px",
   "logoWidth": 64,
   "logoHeight": 64,
   "logoPosition": "right",
@@ -709,7 +712,7 @@ var json = {
     },
     {
       "name": "SES",
-	  "visible": false,  //toggle
+	  "visible": true,  //toggle
       "elements": [{
           "type": "html",
           "name": "ses_intro",
@@ -809,7 +812,7 @@ var json = {
     },
     {
       "name": "covid",
-	  "visible": false,  //toggle
+	  "visible": true, //toggle
       "elements": [{
           "type": "html",
           "visibleIf": "{priming_type} < 2",
@@ -1150,7 +1153,7 @@ var json = {
     },
     {
       "name": "MS",
-	  "visible": false,  //toggle
+	  "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
@@ -1190,7 +1193,7 @@ var json = {
     },
     {
       "name": "PANAS",
-      "visible": false,  //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "PANAS_intro",
@@ -1344,7 +1347,7 @@ var json = {
 
     {
       "name": "LES",
-	  "visible": false,  //toggle
+	  "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "LES_intro",
@@ -1424,7 +1427,7 @@ var json = {
     },
     {
       "name": "SQ",
-	  "visible": false,  //toggle
+	  "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "SQ_intro",
@@ -1546,7 +1549,7 @@ var json = {
     },
     {
       "name": "DAS",
-	  "visible": false,  //toggle
+	  "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "DAS_intro",

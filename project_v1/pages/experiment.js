@@ -671,8 +671,8 @@ var block_cong_incong = {
 
 var timeline = [];
 timeline.push(groups_display);
-// timeline.push(block_target_concept);
-// timeline.push(block_cong_incong);
+timeline.push(block_target_concept);
+timeline.push(block_cong_incong);
 
 
 

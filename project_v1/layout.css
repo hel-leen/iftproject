@@ -38,6 +38,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #page_info {
@@ -45,17 +46,18 @@ body {
   max-height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #window_content {
 	overflow-x: hidden;
    padding: 0 5%;
-   width: 89.5%;
+   width: 87.5%;
    display: inline-grid;
    justify-content: center;
    align-items: center;
    text-align: center;
-   margin-left: 10px;
+   
 }
 
 /* scrollbar */
@@ -66,12 +68,12 @@ body {
 
 ::-webkit-scrollbar-track {
   background: #eeeeee;
-  background: rgba(235, 235, 235, 0)
+  background: rgba(235, 235, 235, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fff;
-  background: rgba(255, 255, 255, 0)
+  background: #eee;
+  background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb:hover {

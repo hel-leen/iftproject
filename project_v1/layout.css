@@ -9,10 +9,52 @@ body {
   align-items: center;
 }
 
+/* containers */
+
 .container {
   /* position: relative; */
   width: 100%;
   /* height: 100%; */
+}
+
+
+.bg-image {
+  background-color: rgb(238 238 238 / 80%);
+  background-image: url("./resources/fudan.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: space;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+#page_consent {
+  background-image: url("./resources/fudan.png");
+  max-height: 100%;
+  background-position: center;
+  background-repeat: space;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-y: scroll;
+}
+
+#page_info {
+  /* background-image: url("./resources/fudan.png"); */
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-y: overlay;
+}
+
+#window_content {
+  /* overflow: hidden; */
+  padding:0 6%;
+  width: 88%;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* scrollbar */
@@ -33,44 +75,6 @@ body {
   background: #fafafa;
 }
 
-.bg-image {
-  background-color: rgb(238 238 238 / 80%);
-  background-image: url("./resources/fudan.png");
-  height: 100vh;
-  background-position: center;
-  background-repeat: space;
-  background-size: cover;
-  background-attachment: fixed;
-  overflow: hidden;
-}
-
-#page_consent {
-  background-image: url("./resources/fudan.png");
-  max-height: 100%;
-  background-position: center;
-  background-repeat: space;
-  background-size: cover;
-  background-attachment: fixed;
-  overflow-y: overlay;
-}
-
-#page_info {
-  /* background-image: url("./resources/fudan.png"); */
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: overlay;
-}
-
-/* containers */
-
-#window_content {
-  /* overflow: hidden; */
-  width: 80%;
-  display: inline-grid;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
 /* texts */
 
@@ -258,6 +262,12 @@ tr::hover {
 /* for mobile device screen */
 
 @media(min-height: 800px) {
+  .blank {
+    margin: 2vh 0;
+  }
+}
+
+@media(min-height: 900px) {
   .blank {
     margin: 3vh 0;
   }

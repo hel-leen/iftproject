@@ -1193,7 +1193,7 @@ var json = {
     },
     {
       "name": "PANAS",
-      "visible": true, //toggle
+      "visible": false, //toggle on demand
       "elements": [{
           "type": "html",
           "name": "PANAS_intro",
@@ -1432,6 +1432,132 @@ var json = {
           "type": "html",
           "name": "SQ_intro",
           "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你个性特点的问题。请回想你平时的感受，并评价以下说法是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+        },
+        {
+          "type": "rating",
+          "name": "AAS01",
+          "title": {
+            "zh-cn": "我发现与人亲近比较容易。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS03",
+          "title": {
+            "zh-cn": "我时常担心情侣/爱人并不真心爱我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS02",
+          "title": {
+            "zh-cn": "我发现要我去依赖别人很困难。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS04",
+          "title": {
+            "zh-cn": "我发现别人并不愿像我希望的那样亲近我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS05",
+          "title": {
+            "zh-cn": "能依赖别人让我感到很舒服。  "
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS06",
+          "title": {
+            "zh-cn": "我不在乎别人太亲近我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS07",
+          "title": {
+            "zh-cn": "我发现当我需要别人帮助时，没人会帮我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS08",
+          "title": {
+            "zh-cn": "和别人亲近使我感到有些不舒服。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS09",
+          "title": {
+            "zh-cn": "我时常担心情侣/爱人不想和我呆在一起。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS10",
+          "title": {
+            "zh-cn": "当我对别人表达我的情感时，我害怕他们与我的感觉会不一样。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS11",
+          "title": {
+            "zh-cn": "我时常怀疑情侣/爱人是否真正关心我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS12",
+          "title": {
+            "zh-cn": "我对与别人建立亲密的关系感到很舒服。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS13",
+          "title": {
+            "zh-cn": "当有人在情感上太亲近我时，我感到不舒服。 "
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS14",
+          "title": {
+            "zh-cn": "我知道当我需要别人帮助时，总有人会帮我。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS15",
+          "title": {
+            "zh-cn": "我想与人亲近，但担心自己会受到伤害。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS16",
+          "title": {
+            "zh-cn": "我发现我很难完全依赖别人。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS17",
+          "title": {
+            "zh-cn": "情侣/爱人想要我在情感上更亲近一些，这常使我感到不舒服。"
+          }
+        },
+        {
+          "type": "rating",
+          "name": "AAS18",
+          "title": {
+            "zh-cn": "我不能肯定，在我需要时，能否找到可以依赖的人。"
+          }
         },
         {
           "type": "rating",

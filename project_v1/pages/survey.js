@@ -159,7 +159,7 @@ var json = {
 
         {          
 		 "type": "text",
-          "name": "UUID",
+          "name": "uuid",
           "visible": false,
           "defaultValue": userInfo.uuid(),
         },

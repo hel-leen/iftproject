@@ -1164,7 +1164,7 @@ var json = {
           "name": "ms_imagine",
           "visibleIf": "{priming_type} <2",
           "title": "假如你正在经历非常严重的牙痛，请想象这一场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能多花一些时间，深入思考和体会、尽可能详细地描述细节。 ",
-          "isRequired": false,
+          "isRequired": true,  //no toggle
           "validators": [{
             "type": "text",
             "minLength": 30,
@@ -1179,7 +1179,7 @@ var json = {
           "name": "none_ms_imagine",
           "visibleIf": "{priming_type} >1",
           "title": "请想象你临终前的场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能多花一些时间，深入思考和体会、尽可能详细地描述细节。 ",
-          "isRequired": false,
+          "isRequired": true,
           "validators": [{
             "type": "text",
             "minLength": 30,

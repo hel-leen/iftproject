@@ -9,14 +9,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+  background: #fff;
   background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
+  background: #eeeeee;
   background: rgba(235, 235, 235, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
+
   background: #bbb;
 }
 
@@ -55,6 +58,9 @@ body {
   line-height: 1.5;
 }
 
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-footer.sv-body__footer.sv-clearfix > input.sv-btn.sv-footer__prev-btn{
+    display: none;
+}
 
 /* progressbar */
 
@@ -104,12 +110,6 @@ body {
   width: 100%;
 }
 
-/* ladder panel!! */
-
-#sp_102 {
-  margin-right: 25vw;
-}
-
 /* bg */
 
 #sp_100,
@@ -143,6 +143,11 @@ body {
 }
 
 /* ladder pics and stuff  */
+
+/* ladder panel!! */
+#sp_102 {
+  margin-right: 25vw;
+}
 
 #sq_118 {
   padding-left: 5vw;
@@ -235,7 +240,8 @@ body {
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
   margin: auto;
   padding: 20px;
   width: 80%;
@@ -258,7 +264,7 @@ body {
 }
 
 .modal_title {
-  background-color: #ffffff;
+  background-color: #fff;
   width: 100px;
   text-align: center;
   padding: 6px 10px;

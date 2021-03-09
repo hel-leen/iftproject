@@ -47,7 +47,7 @@
           <p id="results"></p>
           <p id="results_after" class="text_m" style="width: 100%;"><br>
           <br></p>
-          <button class="button" id="get_info" onclick='pageDetail()' style="margin: 20px 8px;">原理介绍</button> <button class="button btn_rubic" id="end_exp" onclick="clickFunction()" style="margin: 20px 8px; background-color: #7D3763;">结束研究</button>
+          <button class="button" id="get_info" onclick='pageDetail()' style="margin: 18px 8px;">原理介绍</button> <button class="button btn_rubic" id="end_exp" onclick="clickFunction()" style="margin: 18px 8px; background-color: #7D3763;">结束研究</button>
           <p> </p>
         </div>
       </div>
@@ -88,7 +88,7 @@ var userInfo = {
     if (this.incong_rt() / 1 - this.cong_rt() / 1 > 0) {
       return "你的自我概念更多地与正面意义相联系（这种情况在人群中比较常见），";
     } else if (this.incong_rt() / 1 - this.cong_rt() / 1 < 0) {
-      return "你的自我概念更多地与负面意义相联（这种情况在人群中不太常见），";
+      return "你的自我概念更多地与负面意义相联（这种情况在人群中不是太普遍），";
     } else {
       return "你的自我概念与正负意义之间联系没有差异（这种情况在人群中比较罕见），";
     }
@@ -141,7 +141,7 @@ document.getElementById("results_after").innerHTML = exp_results_after;
 
 
 function pageDetail() {
-  var page_detail = "<div id='page_detail' class='fade-in'><div class='text_s' style='text-align:left; overflow-y: overlay;'> <p><br><big><b>背景信息</b></big>" + '<br>' +
+  var page_detail = "<div id='page_detail' class='fade-in'><div class='text_s' style='text-align:left; margin-left: 10px; overflow-y: overlay;'> <p><br><big><b>背景信息</b></big>" + '<br>' +
     "心理学认为，我们难以只通过自我报告的方式了解人们的实际情况：有时候，我们不愿意把自己的想法告诉别人；有时候，我们也许自己也难以意识到自己的真实情况。例如，当我们询问吸烟者每日吸烟量时，一位每天要抽四包烟的吸烟者可能会回答每天只抽一包烟，因为承认抽四包烟很可能会引起别人对他健康状况的关注。或者，吸烟者也可能以隐私性为由不愿正面回答这个问题。但也有可能，吸烟者无意识地低估了自己的吸烟量，以至于他在意识中真的认为自己只抽一包烟。这种无意识地给出错误答案的行为在心理学上被称为<b>防御机制<\/b>。这也就是我们以内隐联想测验的进行研究的原因：内隐联想测验能够排除有意或无意的错误报告对真实情况的干扰，测量那些人们不愿意或不能报告的内隐态度或看法。" + '<br>' +
     "<br><b>在线测验的由来</b>" +
     "<br>大部分心理学实验在专门的心理学实验室中进行，这很大程度上限制了能够接受测验的人群。作为研究者，我设计了这项在线研究项目，并且专门为移动设备（手机或平板电脑等）进行了适配。尽管网络测验可能不如实验室测验精确（当然实验室测验也绝非完美），但这能够让更多对研究抱有兴趣、但又因为时间或地理位置等各种条件限制无法前往心理学实验室的人们能够简单地参与到研究之中。并且，我在网页中提供了一些实用信息，包括与内隐联想测验的原理介绍，以及如何对这些测验的结果进行解释等，从而为有兴趣的人提供一种工具，帮助他们了解这种能够测量自己无意识的偏好和态度的测验方法。假如你对研究主题或内容有任何疑问、建议或兴趣，你可以通过<a href='mailto:16110730011@fudan.edu.cn'  style='color: #112277; text-decoration: underline;'>电子邮件<\/a>与我联系，或者点击右下角的“<b>研究反馈<\/b>”按钮留下你的联系方式，我会在稍后研究全部完成时与你联系。希望你通过参与研究从中有所收获。" + '<br>' +
@@ -234,21 +234,21 @@ var json = {
       {
         "type": "matrixdynamic",
         "name": "contact_panel",
-        <!-- "width": "60vw", -->
+        "min-width": "300px",
         "margin": "auto",
         "title": " ",
         "hideNumber": true,
         "columns": [{
             "name": "contact_type",
-            "title": " 联系方式类型",
+            "title": " 类型",
             "cellType": "dropdown",
             "width": "15vw",
           },
           {
             "name": "contact_info",
-            "title": "具体方式",
+            "title": "具体联系方式",
             "cellType": "text",
-            "width": "20vw",
+            "width": "19vw",
             "placeHolder": "请填写联系方式"
           }
         ],
@@ -264,10 +264,7 @@ var json = {
             "value": 3,
             "text": "微信号"
           },
-          {
-            "value": 4,
-            "text": "其他"
-          }
+         
         ],
         "maxRowCount": 5,
         "addRowLocation": "bottom",
@@ -280,20 +277,20 @@ var json = {
         "title": "到目前为止，你参加过多少次心理学实验？",
         "hideNumber": true,
         "choices": [{
-            "value": "item1",
+            "value": "0",
             "text": "没有参加过"
           },
           {
-            "value": "item2",
+            "value": "1.5",
             "text": "1-2次"
           },
           {
-            "value": "item3",
-            "text": "3-6次"
+            "value": "4",
+            "text": "3-5次"
           },
           {
-            "value": "item4",
-            "text": "7次及以上"
+            "value": "6",
+            "text": "6次及以上"
           }
         ]
       },
@@ -303,20 +300,20 @@ var json = {
         "title": "到目前为止，你参加过多少次内隐联想测验？",
         "hideNumber": true,
         "choices": [{
-            "value": "item1",
+            "value": "0",
             "text": "没有参加过"
           },
           {
-            "value": "item2",
+            "value": "1.5",
             "text": "1-2次"
           },
           {
-            "value": "item3",
-            "text": "3-6次"
+            "value": "4",
+            "text": "3-5次"
           },
           {
-            "value": "item4",
-            "text": "7次及以上"
+            "value": "6",
+            "text": "6次及以上"
           }
         ]
       },

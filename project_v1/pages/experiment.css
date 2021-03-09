@@ -1,4 +1,3 @@
-
 /* scrollbar */
 
 ::-webkit-scrollbar {
@@ -6,10 +5,12 @@
 }
 
 ::-webkit-scrollbar-track {
+  background: #fff;
   background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
+  background: #fff;
   background: rgba(255, 255, 255, 0);
 }
 
@@ -48,7 +49,7 @@
 #jspsych-progressbar-container {
   color: #555;
   border-bottom: 0px solid #dedede;
-  background-color: #ffffff;
+  background-color: #fff;
   margin-bottom: 0em;
   text-align: center;
   padding: 0px 0px;

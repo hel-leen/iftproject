@@ -281,7 +281,7 @@ jsPsych.plugins['iat-button'] = (function() {
 
     // function to handle responses by the subject
     function after_response(choice) {
-      window.navigator.vibrate(5);
+      // window.navigator.vibrate(5);
       // measure rt
       end_time = performance.now();
       rt = end_time - start_time;
@@ -318,14 +318,14 @@ jsPsych.plugins['iat-button'] = (function() {
         response.correct = false;
         if (!trial.response_ends_trial && trial.display_feedback == true) {
           wImg.style.visibility = "visible";
-          window.navigator.vibrate(500);
+          // window.navigator.vibrate(500);
           jsPsych.pluginAPI.setTimeout(function() {
             end_trial();
           }, 1000);
         }
         if (trial.response_ends_trial && trial.display_feedback == true) {
           wImg.style.visibility = "visible";
-          window.navigator.vibrate(500);
+          // window.navigator.vibrate(500);
           jsPsych.pluginAPI.setTimeout(function() {
             end_trial();
           }, 1000);

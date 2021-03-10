@@ -7,7 +7,7 @@ app = Flask(__name__)
 JSON_DESTINATION = os.environ.get('JSON_DESTINATION', 'received_stuff')
 
 
-@app.route('/save', methods=['POST'])
+@app.route('/api/save', methods=['POST'])
 def save():
     req_type = request.args.get('type')
     request_dict = request.json

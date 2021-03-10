@@ -678,7 +678,7 @@ timeline.push(block_cong_incong);
 
 function saveDataToServer(data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/save?type=experiment', false);
+  xhr.open('POST', '/api/save?type=experiment', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(data);
   console.log('req status ' + xhr.status);

@@ -1864,7 +1864,7 @@ saveDatatoServer(result.data);
 
 function saveDatatoServer(data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/save?type=survey', false);
+  xhr.open('POST', '/api/save?type=survey', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(data));
   console.log('req status ' + xhr.status);

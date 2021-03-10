@@ -341,7 +341,7 @@ survey
 
 function saveDataToServer(data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/save?type=information', false);
+  xhr.open('POST', '/api/save?type=information', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(data));
   console.log('req status ' + xhr.status);

@@ -1837,8 +1837,7 @@ survey
 // .textContent = "结果：\n" + JSON.stringify(result.data, null, 3);
 // var fs = require('fs');
  // fs.writeFile('data.json', JSON.stringify(data));
-console.log(result.data);
-saveDatatoServer( userInfo.uuid() + "_survey_data_" + userInfo.timestamp, JSON.stringify(result.data, null, 3) );
+saveDatatoServer(result.data);
 });
 
 
@@ -1863,11 +1862,12 @@ saveDatatoServer( userInfo.uuid() + "_survey_data_" + userInfo.timestamp, JSON.s
   // });
 // }
 
-function saveDatatoServer(name, data){
+function saveDatatoServer(data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '../../data/save_data_v1.php'); 
+  xhr.open('POST', '/save?type=survey', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({filename: name, filedata: data}));
+  xhr.send(JSON.stringify(data));
+  console.log('req status ' + xhr.status);
 }
 
 

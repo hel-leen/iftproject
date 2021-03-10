@@ -676,25 +676,12 @@ timeline.push(block_cong_incong);
 
 
 
-function saveDatatoDatabase() {
+function saveDataToServer(data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '../../data/experiment_database.php'); 
+  xhr.open('POST', '/save?type=experiment', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onload = function() {
-    if (xhr.status == 200) {
-      var response = JSON.parse(xhr.responseText);
-      console.log(response.success);
-    }
-  };
-  xhr.send(jsPsych.data.get()
-    .json());
-}
-
-function saveDatatoServer(name, data){
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '../../data/save_data_v1.php'); 
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({filename: name, filedata: data}));
+  xhr.send(data);
+  console.log('req status ' + xhr.status);
 }
 
 
@@ -708,8 +695,7 @@ jsPsych.init({
   message_progress_bar: ' ',
   auto_update_progress_bar: false,
   on_finish: function() {
-	 // saveDatatoDatabase;
-	 saveDatatoServer( userInfo.uuid() + "_experiment_data_" + userInfo.timestamp, jsPsych.data.get().json() );
+	 saveDataToServer(jsPsych.data.get().json());
     // jsPsych.data.get().localSave('json', userInfo.uuid() + '.txt');
     var all_data = jsPsych.data.get();
     console.log(all_data.csv());

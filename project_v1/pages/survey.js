@@ -10,6 +10,13 @@ var myCss = {
   "completedPage": "",
   "comment": "survey_comment",
   "row": "survey_row",
+  "paneldynamic": {
+		"title": "survey_question_title",
+  },
+  	"question": {
+		"header": "survey_question_header",
+		"title": "survey_question_title",
+	}
 
 };
 
@@ -164,7 +171,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
-          "html": "<p class='sv_instruction'>以下部分将询问一些关于你个人信息的问题，以便我们在研究中比较不同人群之间的差异。<br>本页题目全部填写后，页面将自动进入下一页。</p></div>"
+          "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退/返回键或刷新页面，否则问卷内容将会全部重新加载。<br>本页题目全部填写后，页面将自动进入下一页。<br><br>以下部分将询问关于你个人信息的问题，以便我们在研究中比较不同人群之间的差异。<br></p></div>"
         },
 
         {
@@ -745,7 +752,7 @@ var json = {
               "name": "ladder",
               // "width": "60vw",
               "startWithNewLine": false,
-              "html": "<img src= \"../resources/stimuli/ladder.png\" style=\"border: 0px solid blue; margin-top: 0px; margin-left: 15vw; \"</img>"
+              "html": "<img src= \"../resources/stimuli/ladder.png\" style=\"border: 0px solid blue; margin-top: 0px; margin-left: 20vw; \"</img>"
             },
           ],
           "width": "100%"
@@ -754,20 +761,20 @@ var json = {
           "type": "html",
           "name": "ses_intro_past",
           "titleLocation": "hidden",
-          "html": "<p class='sv_instruction' style='color: black; font-size: 1.2em;'> 请从以下“1”到“10”的数字中选择一个来代表你在<b>十年前</b>所在的等级：</p>"
+          "html": "<p class='sv_instruction' style='color: black; font-size: 1.1em;'> 请从以下“1”到“10”的数字中选择一个来代表你在<b>十年前</b>所在的等级：</p>"
         },
         {
           "isRequired": false,
           "type": "dropdown",
           "name": "ses_scale_past",
-          "margin": "0",
+          "titleLocation": "hidden",
           "title": " ",
           "choices": ladder.reverse()
         },
         {
           "type": "html",
           "name": "ses_intro_child",
-          "html": "<p class='sv_instruction' style='color: black; font-size: 1.2em;'> 请从以下“1”到“10”的数字中选择一个来代表你<b>14岁时</b>家庭所在的等级：</p>"
+          "html": "<p class='sv_instruction' style='color: black; font-size: 1.1em;'> 请从以下“1”到“10”的数字中选择一个来代表你<b>14岁时</b>家庭所在的等级：</p>"
         },
         {
           "isRequired": false,
@@ -829,7 +836,7 @@ var json = {
           "name": "covid_intro",
           "html": {
             "en-us": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
-            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题，以便了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
+            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问你在新冠疫情中的个人经历，以了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
           }
 
         },
@@ -1208,7 +1215,7 @@ var json = {
           "type": "html",
           "name": "PANAS_intro",
           "html": {
-            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你近期情绪状况的问题。请阅读以下形容情绪的词语，根据你近1-2周的实际情况，逐一评价它们在你近期情绪中占有的比例。</p><p class='sv_description'>“1”分代表“几乎没有”，<br>“2”分代表“比较少”，<br>“3”分代表“中等程度”，<br>“4”分代表“比较多”，<br>“5”分代表“极其多”。</p>"
+            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你近期的情绪状况。请阅读以下形容情绪的词语，根据你近1-2周的实际情况，逐一评价它们在你近期情绪中占有的比例。</p><p class='sv_description'>“1”分代表“几乎没有”，<br>“2”分代表“比较少”，<br>“3”分代表“中等程度”，<br>“4”分代表“比较多”，<br>“5”分代表“极其多”。</p>"
           }
         },
         {
@@ -1376,7 +1383,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "LES_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你成长经历的问题。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你的成长经历。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
           "type": "panel",
@@ -1465,7 +1472,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "SQ_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你个性特点的问题。请回想你平时的感受，并评价以下说法是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你的个性特点。请阅读以下说法，并逐一评价它们是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
           "type": "panel",
@@ -1745,7 +1752,7 @@ var json = {
           "type": "html",
           "name": "RWA_intro",
           "html": {
-            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问你关于社会问题的态度。请回想你平时的感受，并评价你是否同意以下说法。</p><p class='sv_description'>“1”分代表“非常不同意，<br>“2”分代表“不太同意”，<br>“3”分代表“不确定”，<br>“4”分代表“比较同意”，<br>“5”分代表“非常同意”。</p>"
+            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你对社会问题的态度。请回想你平时的感受，并评价你是否同意以下说法。</p><p class='sv_description'>“1”分代表“非常不同意，<br>“2”分代表“不太同意”，<br>“3”分代表“不确定”，<br>“4”分代表“比较同意”，<br>“5”分代表“非常同意”。</p>"
           }
         },
         {
@@ -1767,7 +1774,7 @@ var json = {
               "name": "RWA02",
               "title": {
                 "en-us": "It's OK if some groups have more of a chance in life than others.",
-                "zh-cn": "一些群体比另一些在社会中拥有更多资源是合理的。 "
+                "zh-cn": "一些群体比另一些在社会中拥有更多机会和资源是合理的。 "
               }
             },
             {
@@ -1775,7 +1782,7 @@ var json = {
               "name": "RWA03",
               "title": {
                 "en-us": "To get ahead in life, it is sometimes necessary to step on others.",
-                "zh-cn": "为了生活更好，有时必须践踏其他人。"
+                "zh-cn": "为了生活更好，有时必须踩着其他人往上爬。"
               }
             },
             {
@@ -1792,7 +1799,7 @@ var json = {
               "name": "RWA05",
               "title": {
                 "en-us": "People ought to put less attention to the Bible and religion, instead they ought to develop their own moral standards.",
-                "zh-cn": "人们不用太过恪守传统或宗教，而是应该发展出适用于当代的道德标准。"
+                "zh-cn": "人们不用太过恪守传统或宗教，而是应该发展出适合于当代的道德标准。"
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1801,7 +1808,7 @@ var json = {
               "name": "RWA06",
               "title": {
                 "en-us": "God's laws about abortion, pornography and marriage must be strictly followed before it is too late, violations must be punished.",
-                "zh-cn": "我们应该严格遵守传统上关于婚姻和不道德行为的准则，违反者必须受到惩罚。",
+                "zh-cn": "我们应该严格遵守传统中关于婚姻和不道德行为的准则，违反者必须受到惩罚。",
               }
             },
             {
@@ -1818,7 +1825,7 @@ var json = {
               "name": "RWA08",
               "title": {
                 "en-us": "If certain groups stayed in their place, we would have fewer problems.",
-                "zh-cn": "如果其他群体呆在他们自己原本的生活区域，我们会少很多麻烦。",
+                "zh-cn": "如果非本地/本国的人呆在他们自己原本的区域生活，我们会少很多麻烦。",
               }
             },
             {
@@ -1826,7 +1833,7 @@ var json = {
               "name": "RWA09",
               "title": {
                 "en-us": "If the society so wants, it is the duty of every true citizen to help eliminate the evil that poisons our country from within.",
-                "zh-cn": "我们每个公民都有责任为国家消灭内部的邪恶势力。",
+                "zh-cn": "我们每个公民都有责任为国家消灭内部的反动势力。",
 
               }
             },
@@ -1835,7 +1842,7 @@ var json = {
               "name": "RWA10",
               "title": {
                 "en-us": "Many good people challenge the state, criticize the church and ignore 'the normal way of living'.",
-                "zh-cn": "当今社会有很多人反对传统，忽视那些原本正常的生活方式。",
+                "zh-cn": "当今社会有很多人反对传统，忽视那些原本正常的生活方式，这是很不好的现象。",
               }
             },
             {
@@ -1843,7 +1850,7 @@ var json = {
               "name": "RWA11",
               "title": {
                 "en-us": "We should do what we can to equalize conditions for different groups.",
-                "zh-cn": "我们应该尽可能使收入和财富平等地分配。",
+                "zh-cn": "我们应该尽可能使收入和财富公平分配。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1927,7 +1934,7 @@ var json = {
               "name": "RWA20",
               "title": {
                 "en-us": "The society needs to show openness towards people thinking differently, rather than a strong leader, the world is not particularly evil or dangerous.",
-                "zh-cn": "社会需要包容那些具有不同想法的人，而不是需要一个强势的领导者。",
+                "zh-cn": "社会需要包容那些具有不同想法的人，而不是需要一个强势的领导者来统一人们的想法。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1953,7 +1960,7 @@ var json = {
               "name": "RWA23",
               "title": {
                 "en-us": "The situation in the society of today would not be improved if troublemakers were treated with reason and humanity.",
-                "zh-cn": "如果我们对待违反社会规则的人更仁慈、更理性，社会的现况就不会得到改善。",
+                "zh-cn": "如果我们对待违反社会规则的人更仁慈、更理性，社会的现况就难以得到改善。",
               }
             },
             {

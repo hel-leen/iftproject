@@ -781,7 +781,7 @@ var json = {
           "type": "text",
           "name": "income",
           "title": {
-            "zh-cn": "你在去年一年中总收入是多少？"
+            "zh-cn": "你在去年一年中个人总收入是多少？"
           },
           "inputType": "number",
           "autoComplete": "10000",

@@ -1801,7 +1801,7 @@ var json = {
               "name": "RWA06",
               "title": {
                 "en-us": "God's laws about abortion, pornography and marriage must be strictly followed before it is too late, violations must be punished.",
-                "zh-cn": "我们应该严格遵守传统上关于婚姻和色情的准则，违反者必须受到惩罚。",
+                "zh-cn": "我们应该严格遵守传统上关于婚姻和不道德行为的准则，违反者必须受到惩罚。",
               }
             },
             {

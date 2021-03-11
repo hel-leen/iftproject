@@ -1767,7 +1767,7 @@ var json = {
               "name": "RWA02",
               "title": {
                 "en-us": "It's OK if some groups have more of a chance in life than others.",
-                "zh-cn": "一些群体比另一些在社会中拥有更多机会是合理的。 "
+                "zh-cn": "一些群体比另一些在社会中拥有更多资源是合理的。 "
               }
             },
             {
@@ -1783,7 +1783,7 @@ var json = {
               "name": "RWA04",
               "title": {
                 "en-us": "We would have fewer problems if we treated people more equally.",
-                "zh-cn": "如果我们对待他人更公平些，我们的生活会变得更好。",
+                "zh-cn": "如果我们对待他人更公平些，我们的社会就能变得更好。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1835,7 +1835,7 @@ var json = {
               "name": "RWA10",
               "title": {
                 "en-us": "Many good people challenge the state, criticize the church and ignore 'the normal way of living'.",
-                "zh-cn": "当今社会有很多人反对传统，无视那些原本正常的生活方式。",
+                "zh-cn": "当今社会有很多人反对传统，忽视那些原本正常的生活方式。",
               }
             },
             {
@@ -1852,7 +1852,7 @@ var json = {
               "name": "RWA12",
               "title": {
                 "en-us": "Our forefathers ought to be honoured more for the way they have built our society, at the same time we ought to put an end to those forces destroying it.",
-                "zh-cn": "我们的祖先创造了这个社会，我们应该更加尊重他们，同时制止那些想要毁坏传统的势力。",
+                "zh-cn": "我们的祖先创造了这个社会，我们应该更加尊重他们，而且必须制止那些想要毁坏传统的势力。",
               }
             },
             {
@@ -1860,7 +1860,7 @@ var json = {
               "name": "RWA13",
               "title": {
                 "en-us": "It is better to accept bad literature than to censor it.",
-                "zh-cn": "即使是那些不太好的媒体文章，我们也应该保证它们的出版自由，而不应该禁止它们。",
+                "zh-cn": "即使是那些不好的媒体文章，我们也应该保证它们的出版自由，而不应该禁止它们。",
               } ,
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1877,7 +1877,7 @@ var json = {
               "name": "RWA14",
               "title": {
                 "en-us": "Our country needs free thinkers, who will have the courage to stand up against traditional ways, even if this upsets many people.",
-                "zh-cn": "我们的国家需要更多自由的思想家，他们有勇气挑战传统，即使他们的一些想法可能让很多人不满。",
+                "zh-cn": "我们的社会需要更多敢于挑战传统的自由思想家，即使他们的一些想法可能让很多人不满。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1886,7 +1886,7 @@ var json = {
               "name": "RWA15",
               "title": {
                 "en-us": "Our country needs a powerful leader, in order to destroy the radical and immoral currents prevailing in society today.",
-                "zh-cn": "我们的国家需要强有力的领导人，以便消灭那些盛行于社会中的邪恶势力。",
+                "zh-cn": "我们的国家需要强势的领导人，这样我们才能消灭那些盛行于社会中的邪恶势力。",
               }
             },
             {
@@ -1894,7 +1894,7 @@ var json = {
               "name": "RWA16",
               "title": {
                 "en-us": "It would be best if newspapers were censored so that people would not be able to get hold of destructive and disgusting material.",
-                "zh-cn": "媒体必须受到审查，以确保人们不会接触到那些有害的或令人讨厌的信息。",
+                "zh-cn": "媒体必须受到严格审查，这样人们才不会接触到那些有害的或令人讨厌的信息。",
               }
             },
             {
@@ -1902,7 +1902,7 @@ var json = {
               "name": "RWA17",
               "title": {
                 "en-us": "Sometimes other groups must be kept in their place.",
-                "zh-cn": "其他群体必须在他们自己原本的地方生活。",
+                "zh-cn": "非本地/本国的人应该在他们自己原本的地方生活。",
               }
             },
             {
@@ -1944,7 +1944,7 @@ var json = {
               "name": "RWA22",
               "title": {
                 "en-us": "We would have fewer problems if we treated people more equally.",
-                "zh-cn": "如果我们对待他人再公平些，我们会减少许多问题。",
+                "zh-cn": "如果我们对待他人再公平些，社会就会减少许多问题。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1978,7 +1978,7 @@ var json = {
               "name": "RWA20",
               "title": {
                 "en-us": "All groups should be given an equal chance in life.",
-                "zh-cn": "所有人在社会中应该享有平等的机会。",
+                "zh-cn": "所有人在社会中都应该享有平等的机会。",
               },
 			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
@@ -1987,17 +1987,10 @@ var json = {
               "name": "RWA26",
               "title": {
                 "en-us": "In getting what you want, it is sometimes necessary to use force against other groups.",
-                "zh-cn": "有时候，为了得到你想要的，就必须对其他一些人使用强制的手段。",
+                "zh-cn": "有时候，为了实现自己的目的，必须对其他一些人使用强制的手段。",
               }
             },
-            {
-              "type": "rating",
-              "name": "RWA27",
-              "title": {
-                "en-us": "It 's probably a good thing that certain groups are at the top and other groups are at the bottom.",
-                "zh-cn": "某些群体属于社会上层，另一些群体属于社会下层，这或许是一件好事。",
-              }
-            },
+            
           ]
         },
       ]
@@ -2008,7 +2001,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "DAS_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问你对待生命的态度。请回想你平时的感受，并评价你是否同意以下说法。</p><p class='sv_description'>“1”分代表“非常不同意，<br>“2”分代表“不太同意”，<br>“3”分代表“不确定”，<br>“4”分代表“比较同意”，<br>“5”分代表“非常同意”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你对待生命的态度。请回想你平时的感受，并评价你是否同意以下说法。</p><p class='sv_description'>“1”分代表“非常不同意，<br>“2”分代表“不太同意”，<br>“3”分代表“不确定”，<br>“4”分代表“比较同意”，<br>“5”分代表“非常同意”。</p>"
         },
         {
           "type": "rating",

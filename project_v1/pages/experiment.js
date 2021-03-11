@@ -6,6 +6,8 @@ const category_info = [
       "我",
       "自己",
       "自我",
+      "我们",
+      "我们的",
     ],
     Image: null
   },
@@ -15,6 +17,8 @@ const category_info = [
       "他",
       "他人",
       "别人",
+      "他们",
+      "他们的",
     ],
     Image: null
   },
@@ -51,7 +55,7 @@ const category_info = [
     Word: [
       "生命",
       "安宁",
-       "健康",
+      "健康",
       "活力",
     ],
     Image: null
@@ -61,7 +65,7 @@ const category_info = [
     Word: [
       "死亡",
       "灾难",
-       "疾病",
+      "疾病",
       "毁灭",
     ],
   }
@@ -109,9 +113,9 @@ console.log(userInfo.uuid(), n_trials);
 // assign the instructions 
 const instr = [
   '<br>',
-  '<div class="text_m">接下来，你需要将屏幕中间出现的词语通过尽可能快地按相应的按钮进行分类。 <br>',
-  ' 下面列出了需要分类的词语以及它们所属的类别：<br> ',
-    '<p class="text_s">为保证实验效果，请将屏幕调至适宜的亮度，并尽量减少无关干扰、集中注意。<br>点击下面的按钮开启全屏模式并进入测验</p><br>',
+  '<div class="text_m"  style="margin-top: 3vh;">接下来，你需要将屏幕中间出现的词语通过尽可能快地按相应的按钮进行分类。 <br>',
+  ' 请浏览以下需要分类的词语以及它们所属的类别（无需进行记忆）：<br> ',
+    '<p class="text_s">如果你已准备好，请点击下面的按钮正式开始测验</p><br>',
   [' 注意屏幕下方的左右两枚按钮<br><br>',
   ' <b style="color: #661122;">注意</b>分类按钮上的标签已变化。<br><br>',
   ' <b style="color: #661122;">注意</b>分类按钮上标签的变化。<br><br>',
@@ -166,11 +170,23 @@ const trial_block_default_timeline = {
   }
 };
 
+var preexp_instructions = {
+  type: 'fullscreen',
+  on_finish: function() {
+    jsPsych.setProgressBar(0.01);
+  },
+  fullscreen_mode: true,
+  message:        '<div class="sv-title sv-container-modern__title fade-in"  style="color: #445566; margin: auto; text-align: left; width: 80%; padding: 25px 0 0 0;"><div class="sv-header__text"  style="max-width: calc(((100% - 5px) - 2em) - 64px);"><h3><span style="position: static;">IFT</span></h3><h5 ><span style="position: static;">IAT for TMT Project</span></h5></div><div class="sv-logo sv-logo--right" ><img class="sv-logo__image roll-in-left" data-bind="css: css.logoImage, style: { objectFit: logoFit }" height="64px" src="../resources/IFT.png" style="object-fit: contain;" width="64px"></div><div class="sv-logo--right-tail"></div></div><div class="sv-progress sv-body__progress" style="margin: 20px 2% -20px 2%; height: 0.09em;"><div class="sv-progress__bar slide-in-right"  role="progressbar" style="width: 100%; background-color: #445566"></div></div>'  +
+  '<div class="fade-in" style="margin-top: 10vh;">'  + 
+   '<div class="text_m">你已进入分类任务实验环节，请在<b>安静的环境下</b>完成本部分内容 。<br><br>为保证实验效果，请将屏幕调至适宜的亮度，并尽量减少无关干扰、集中注意。<br></p>在测验过程中，请<b style="color: #661122;">不要</b>点击后退/返回键或刷新页面，否则实验内容将会全部重新加载。<br><br><p class="text_s">点击下面的“继续”按钮开启全屏模式并进入测验</p><br></div>',
+  button_label: '继续'
+};
+
 // display the groups in exp1 of items and get into fullscreen 
 var groups_display = {
   type: 'fullscreen',
   on_finish: function() {
-    jsPsych.setProgressBar(0.1);
+    jsPsych.setProgressBar(0.02);
   },
   fullscreen_mode: true,
   message: function() {
@@ -203,9 +219,8 @@ var groups_display = {
 
     return html
   },
-  button_label: '继续'
+  button_label: '开始'
 };
-
 
 
 // initialling target_concept_train
@@ -670,6 +685,7 @@ var block_cong_incong = {
 };
 
 var timeline = [];
+timeline.push(preexp_instructions);
 timeline.push(groups_display);
 timeline.push(block_target_concept);
 timeline.push(block_cong_incong);

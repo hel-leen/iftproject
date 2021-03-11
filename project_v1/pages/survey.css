@@ -59,7 +59,7 @@ body {
 }
 
 #surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-footer.sv-body__footer.sv-clearfix > input.sv-btn.sv-footer__prev-btn{
-    display: none;
+     /* display: none;   */
 }
 
 /* progressbar */
@@ -75,12 +75,12 @@ body {
 #surveyElement>div>form>div.sv-container-modern>div.sv-body>div.sv-progress.sv-body__progress>div {}
 
 /* timer */
+/* #surveyElement>div>form>div.sv-container-modern>div.sv-body>div:nth-child(3) { */
+  /* margin: 35px 0 0 0px; */
+  /* text-align: center; */
+/* } */
 
-#surveyElement>div>form>div.sv-container-modern>div.sv-body>div:nth-child(3) {
-  margin: 35px 0 0 0px;
-  text-align: center;
-}
-
+/* survey title  */
 .sv-container-modern__title {
   padding-left: 0.05em;
   color: #1ab394;
@@ -88,22 +88,36 @@ body {
   padding-bottom: 0.9375em;
 }
 
+/* questions and rows */
+
+.survey_question_title {
+    font-family: Arial, sans-serif;
+    font-size: 1.05em;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    padding: 0.5em;
+    margin: 0.1em 0;
+}
+
 .survey_row {
-  padding-top: 0.6em;
-  padding-bottom: 0.6em;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
 }
 .survey_row:last-child {
-  padding-top: 0.6em;
+  padding-top: 0.8em;
   padding-bottom: 0em;
 }
 .survey_row:first-child {
-  padding-top: 0.6em;
+  padding-top: 0.8em;
   padding-bottom: 0em;
 }
 /* .survey_row:not(:last-child) { */
   /* padding-top: 0.6em; */
   /* padding-bottom: 0.6em; */
 /* } */
+
 
 /* comment */
 
@@ -197,6 +211,13 @@ body {
   height: 430px;
   
 }
+#sp_101 > div > div:nth-child(1),
+#sp_101 > div > div:nth-child(3),
+#sp_101 > div > div:nth-child(5)
+{
+	padding-bottom: 0;
+    margin-bottom: -1.15em;
+}
 
 /* end of ses lader */
 
@@ -219,6 +240,13 @@ body {
   width: 100%;
   padding-right: 2%;
   padding-bottom: 0;
+}
+
+/* margin between panels */
+#sp_111 > div > div:nth-child(4),
+#sp_111 > div > div:nth-child(3)
+{
+	margin-top: -3em;
 }
 
 /* covid checker */
@@ -360,6 +388,12 @@ body {
 .sv_instruction {
     font-size: 1em;
     line-height: 2;
+}
+
+.survey_question_title {
+    font-size: 1em;
+    line-height: 1.75;
+
 }
 }
 

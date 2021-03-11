@@ -9,6 +9,7 @@ defaultThemeColors["$answer-background-color"] = "rgba(126, 129, 188, 0.2);";
 var myCss = {
   "completedPage": "",
   "comment": "survey_comment",
+  "row": "survey_row",
 
 };
 
@@ -88,12 +89,11 @@ console.log("priming type:", primingType);
 var userInfo = {
   url: window.location.href,
   uuid: function() {
-	if (this.url.indexOf( "uuid=" )< 0)
-	{
-		return "null_id";
-	} else {
-    return this.url.slice( this.url.indexOf( "uuid=" ) + 5,   );
-	}
+    if (this.url.indexOf("uuid=") < 0) {
+      return "null_id";
+    } else {
+      return this.url.slice(this.url.indexOf("uuid=") + 5, );
+    }
   },
   timestamp: survey_date.getTime(),
 }
@@ -102,9 +102,10 @@ var experiment_page = './experiment.html?uuid=' + userInfo.uuid();
 
 
 $.getJSON('https://api.ipify.org/?format=json', function(data) {
-     ip = data.ip;
-	 $("#sq_102i").val(data.ip); 
-	 console.log(ip);
+  ip = data.ip;
+  $("#sq_102i")
+    .val(data.ip);
+  console.log(ip);
 });
 
 
@@ -133,9 +134,18 @@ function surveyValidateQuestion(s, options) {
   }
 }
 
+
+// value to split the survey into halves
+
+var rdm = Math.floor((Math.random() * 2));
+var question_visible_1 = [true, false][rdm];
+var question_visible_2 = [false, true][rdm];
+console.log(question_visible_1, question_visible_2);
+
 var json = {
   "title": " IFT ",
   "description": "IAT for TMT Project",
+  "locale": "en-us",
   "locale": "zh-cn",
   "logo": "../resources/IFT.png",
   "min-width": "220px",
@@ -149,16 +159,16 @@ var json = {
 
   "pages": [{
       "name": "Demographics",
-      "visible": true,  //no toggle
+      "visible": true, //no toggle
       "isRequired": false,
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
-          "html": "<p class='sv_instruction'>以下部分将询问一些关于你的个人信息的问题，以便我们在研究中比较不同人群之间的差异。<br>本页题目全部填写后，页面将自动进入下一页。</p></div>"
+          "html": "<p class='sv_instruction'>以下部分将询问一些关于你个人信息的问题，以便我们在研究中比较不同人群之间的差异。<br>本页题目全部填写后，页面将自动进入下一页。</p></div>"
         },
 
-        {          
-		 "type": "text",
+        {
+          "type": "text",
           "name": "uuid",
           "visible": false,
           "defaultValue": userInfo.uuid(),
@@ -166,9 +176,9 @@ var json = {
         {
           "type": "text",
           "name": "IP",
-          "visible": false,   // no toggle
+          "visible": false, // no toggle
         },
-         {
+        {
           "type": "text",
           "name": "survey_date",
           "visible": false, // no toggle
@@ -185,28 +195,28 @@ var json = {
           "type": "radiogroup",
           "name": "gender",
           "title": {
-            "default": "What is your gender?",
+            "en-us": "What is your gender?",
             "zh-cn": "请选择你的性别："
           },
 
           "choices": [{
               "value": "2",
               "text": {
-                "default": "Male",
+                "en-us": "Male",
                 "zh-cn": "男性"
               }
             },
             {
               "value": "1",
               "text": {
-                "default": "Female",
+                "en-us": "Female",
                 "zh-cn": "女性"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Non-binary or Other",
+                "en-us": "Non-binary or Other",
                 "zh-cn": "非二元性别或其他"
               }
             },
@@ -218,7 +228,7 @@ var json = {
           "type": "dropdown",
           "name": "birthyear",
           "title": {
-            "default": "Please indicate the year of your birth.",
+            "en-us": "Please indicate the year of your birth.",
             "zh-cn": "请选择你的出生年份："
           },
           "choices": yob.reverse(),
@@ -236,7 +246,7 @@ var json = {
           "type": "radiogroup",
           "name": "city",
           "title": {
-            "default": "City",
+            "en-us": "City",
             "zh-cn": "你的主要居住地属于哪种区域？"
           },
           "hideNumber": true,
@@ -265,7 +275,7 @@ var json = {
           "type": "radiogroup",
           "name": "ethnic",
           "title": {
-            "default": "Which of the following best characterizes your ethnicity?",
+            "en-us": "Which of the following best characterizes your ethnicity?",
             "zh-cn": "你的民族是？"
           },
 
@@ -323,7 +333,7 @@ var json = {
             {
               "value": "8",
               "text": {
-                "default": "Unknown",
+                "en-us": "Unknown",
                 "zh-cn": "不确定"
               }
             }
@@ -335,49 +345,49 @@ var json = {
           "type": "dropdown",
           "name": "edu",
           "title": {
-            "default": "Please indicate the highest level of education that you have completed.",
+            "en-us": "Please indicate the highest level of education that you have completed.",
             "zh-cn": "到目前为止，你所获取的最高学历是？"
           },
 
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Elementary school",
+                "en-us": "Elementary school",
                 "zh-cn": "小学及以下"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Junior high school",
+                "en-us": "Junior high school",
                 "zh-cn": "初中"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "High school",
+                "en-us": "High school",
                 "zh-cn": "高中（含高职、中专、技校等）"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Associate's degree",
+                "en-us": "Associate's degree",
                 "zh-cn": "大学专科（含自考、成教、专升本等）"
               }
             },
             {
               "value": "5",
               "text": {
-                "default": "Bachelor's degree",
+                "en-us": "Bachelor's degree",
                 "zh-cn": "大学本科"
               }
             },
             {
               "value": "6",
               "text": {
-                "default": "Master's degree",
+                "en-us": "Master's degree",
                 "zh-cn": "硕士研究生及以上"
               }
             },
@@ -389,7 +399,7 @@ var json = {
           "name": "fieldofstudy",
           "visibleIf": "{edu} > 4",
           "title": {
-            "default": "Please indicate the major field of study for your most advanced degree or degree you are currently pursuing:",
+            "en-us": "Please indicate the major field of study for your most advanced degree or degree you are currently pursuing:",
             "zh-cn": "你获取的最高学历属于哪种学科？"
           },
 
@@ -436,70 +446,70 @@ var json = {
           "type": "dropdown",
           "name": "employment",
           "title": {
-            "default": "Which of the following best characterizes your employment status?",
+            "en-us": "Which of the following best characterizes your employment status?",
             "zh-cn": "你当前的职业状况是？"
           },
 
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Employer",
+                "en-us": "Employer",
                 "zh-cn": "自己是雇佣者或创业者"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Employed for wages",
+                "en-us": "Employed for wages",
                 "zh-cn": "有固定职业(受雇于他人)"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Self-employed",
+                "en-us": "Self-employed",
                 "zh-cn": "自由职业者"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Out of work ( whether currently looking for work or not)",
+                "en-us": "Out of work ( whether currently looking for work or not)",
                 "zh-cn": "曾就业，当前正待业"
               }
             },
             {
               "value": "5",
               "text": {
-                "default": "Retired",
+                "en-us": "Retired",
                 "zh-cn": "已退休"
               }
             },
             {
               "value": "6",
               "text": {
-                "default": "A homemaker",
+                "en-us": "A homemaker",
                 "zh-cn": "全职主妇/主夫"
               }
             },
             {
               "value": "7",
               "text": {
-                "default": "A student",
+                "en-us": "A student",
                 "zh-cn": "学生"
               }
             },
             {
               "value": "8",
               "text": {
-                "default": "Other",
+                "en-us": "Other",
                 "zh-cn": "无劳动能力"
               }
             },
             {
               "value": "999999",
               "text": {
-                "default": "Unable to work",
+                "en-us": "Unable to work",
                 "zh-cn": "其它情况"
               }
             }
@@ -510,35 +520,35 @@ var json = {
           "type": "dropdown",
           "name": "relationship",
           "title": {
-            "default": "Which of the following best characterizes your relationship status?",
+            "en-us": "Which of the following best characterizes your relationship status?",
             "zh-cn": "以下哪一项描述最符合你的婚恋状况？"
           },
           "hideNumber": true,
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Single",
+                "en-us": "Single",
                 "zh-cn": "单身"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "In a relationship",
+                "en-us": "In a relationship",
                 "zh-cn": "恋爱中"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Married",
+                "en-us": "Married",
                 "zh-cn": "已婚"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Separated",
+                "en-us": "Separated",
                 "zh-cn": "离婚/分居"
               }
             },
@@ -546,14 +556,14 @@ var json = {
             {
               "value": "5",
               "text": {
-                "default": "Widowed",
+                "en-us": "Widowed",
                 "zh-cn": "丧偶"
               }
             },
             {
               "value": "999999",
               "text": {
-                "default": "Other",
+                "en-us": "Other",
                 "zh-cn": "其它情况"
               }
             }
@@ -564,35 +574,35 @@ var json = {
           "type": "radiogroup",
           "name": "religiosity",
           "title": {
-            "default": "Please indicate the degree of your religiosity.",
+            "en-us": "Please indicate the degree of your religiosity.",
             "zh-cn": "你是否信仰宗教？"
           },
           "hideNumber": true,
           "choices": [{
               "value": "1",
               "text": {
-                "default": "I am not at all religious",
+                "en-us": "I am not at all religious",
                 "zh-cn": "不信仰宗教"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "I am somewhat religious",
+                "en-us": "I am somewhat religious",
                 "zh-cn": "有一点信仰宗教"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "I am moderately religious",
+                "en-us": "I am moderately religious",
                 "zh-cn": "比较信仰宗教"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "I am very religious",
+                "en-us": "I am very religious",
                 "zh-cn": "非常信仰宗教"
               }
             }
@@ -604,34 +614,34 @@ var json = {
           "name": "religion",
           "visibleIf": "{religiosity} > 1",
           "title": {
-            "default": "Please indicate your religious affiliation: ",
+            "en-us": "Please indicate your religious affiliation: ",
             "zh-cn": "你的宗教信仰是："
           },
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Buddhism",
+                "en-us": "Buddhism",
                 "zh-cn": "佛教"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Taoism",
+                "en-us": "Taoism",
                 "zh-cn": "道教"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Chinese Folk Religion",
+                "en-us": "Chinese Folk Religion",
                 "zh-cn": "民间信仰（拜妈祖、关公等）"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Islam",
+                "en-us": "Islam",
                 "zh-cn": "伊斯兰教/回教"
               }
             },
@@ -639,27 +649,27 @@ var json = {
               "value": "5",
               "text": {
                 "zh-cn": "天主教",
-                "default": "Catholicism"
+                "en-us": "Catholicism"
               }
             },
             {
               "value": "6",
               "text": {
-                "default": "Protestantism",
+                "en-us": "Protestantism",
                 "zh-cn": "基督教"
               }
             },
             {
               "value": "7",
               "text": {
-                "default": "Orthodox",
+                "en-us": "Orthodox",
                 "zh-cn": "东正教"
               }
             },
             {
               "value": "8",
               "text": {
-                "default": "Other Christian belief",
+                "en-us": "Other Christian belief",
                 "zh-cn": "其他基督教"
               }
             },
@@ -667,7 +677,7 @@ var json = {
               "value": "9",
               "text": {
                 "zh-cn": "犹太教",
-                "default": "Judaism"
+                "en-us": "Judaism"
               }
             }
           ],
@@ -679,28 +689,28 @@ var json = {
           "name": "nonreligion",
           "visibleIf": "{religiosity} == 1",
           "title": {
-            "default": "Which of the following best characterizes your idea about religion? ",
-            "zh-cn": "以下哪一项描述最符合你的对宗教信仰的态度？"
+            "en-us": "Which of the following best characterizes your idea about religion? ",
+            "zh-cn": "以下哪一项描述最符合你对宗教信仰的态度？"
           },
 
           "choices": [{
               "value": "76",
               "text": {
-                "default": "Non-Religion - Atheist",
+                "en-us": "Non-Religion - Atheist",
                 "zh-cn": "无神论/唯物主义/不相信鬼神存在"
               }
             },
             {
               "value": "75",
               "text": {
-                "default": "Non-Religion - Agnostic",
+                "en-us": "Non-Religion - Agnostic",
                 "zh-cn": "不可知论/不清楚是否有鬼神存在"
               }
             },
             {
               "value": "77",
               "text": {
-                "default": "Other non-religion",
+                "en-us": "Other non-religion",
                 "zh-cn": "其它非宗教信仰态度"
               }
             }
@@ -712,7 +722,7 @@ var json = {
     },
     {
       "name": "SES",
-	  "visible": true,  //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "ses_intro",
@@ -733,12 +743,12 @@ var json = {
             {
               "type": "html",
               "name": "ladder",
-              "width": "60vw",
+              // "width": "60vw",
               "startWithNewLine": false,
-              "html": "<img src= \"../resources/stimuli/ladder.png\" style=\"border: 0px solid blue; margin-top: 0px;  \"</img>"
+              "html": "<img src= \"../resources/stimuli/ladder.png\" style=\"border: 0px solid blue; margin-top: 0px; margin-left: 15vw; \"</img>"
             },
           ],
-          "width": "80vw"
+          "width": "100%"
         },
         {
           "type": "html",
@@ -798,7 +808,7 @@ var json = {
           "type": "rating",
           "name": "SES2",
           "title": {
-            "zh-cn": "现在我并不会对我的支付能力感到担心。"
+            "zh-cn": "现在我不会对我的支付能力感到担心。"
           }
         },
         {
@@ -812,14 +822,14 @@ var json = {
     },
     {
       "name": "covid",
-	  "visible": true, //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "visibleIf": "{priming_type} < 2",
           "name": "covid_intro",
           "html": {
-            "default": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
-            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题。我们希望了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
+            "en-us": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
+            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题，以便了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
           }
 
         },
@@ -828,8 +838,8 @@ var json = {
           "visibleIf": "{priming_type} > 1",
           "name": "covid_intro",
           "html": {
-            "default": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
-            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题。<br>2019冠状病毒病（COVID-19）是一种由严重急性呼吸系统综合症冠状病毒2型引发的传染病。自2019年末起，此病在全球各国大规模爆发并急速扩散，成为人类历史上致死人数最多的流行病之一。截至2021年2月23日，全球已有192个国家和地区累计报告超过1.11亿名确诊病例，逾247.6万名患者死亡。与此同时，新冠疫情也对人们的心理健康造成了威胁。因此 我们希望了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
+            "en-us": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
+            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题。<br>2019冠状病毒病（COVID-19）是一种由严重急性呼吸系统综合症冠状病毒2型引发的传染病。自2019年末起，此病在全球各国大规模爆发并急速扩散，成为人类历史上致死人数最多的流行病之一。截至2021年2月23日，全球已有192个国家和地区累计报告超过1.11亿名确诊病例，逾247.6万名患者死亡。与此同时，新冠疫情也对人们的心理健康造成了威胁。因此，我们希望了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
           }
 
         },
@@ -838,7 +848,7 @@ var json = {
           "name": "covidinfect",
           "isRequired": false,
           "title": {
-            "default": "Have you been diagnosed with COVID-19?",
+            "en-us": "Have you been diagnosed with COVID-19?",
             "zh-cn": "你是否曾被确诊为感染新冠病毒？"
           },
         },
@@ -847,7 +857,7 @@ var json = {
           "type": "boolean",
           "name": "covidinfect_family",
           "title": {
-            "default": "Have any of your family members been diagnosed with COVID-19?",
+            "en-us": "Have any of your family members been diagnosed with COVID-19?",
             "zh-cn": "你是否有家人曾被确诊为感染新冠病毒？"
           },
         }
@@ -868,27 +878,27 @@ var json = {
           "type": "radiogroup",
           "name": "covidrisk",
           "title": {
-            "default": "Do you consider yourself at high risk for serious illness following infection of COVID-19?",
+            "en-us": "Do you consider yourself at high risk for serious illness following infection of COVID-19?",
             "zh-cn": "你认为自己是否属于感染新冠病毒的高危人群？"
           },
           "choices": [{
               "value": "3",
               "text": {
-                "default": "Yes",
+                "en-us": "Yes",
                 "zh-cn": "是"
               }
             },
             {
               "value": "1",
               "text": {
-                "default": "No",
+                "en-us": "No",
                 "zh-cn": "否"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Not sure",
+                "en-us": "Not sure",
                 "zh-cn": "不确定"
               }
             }
@@ -899,55 +909,55 @@ var json = {
           "type": "radiogroup",
           "name": "covidpossib",
           "title": {
-            "default": "How likely are you to get COVID-19",
+            "en-us": "How likely are you to get COVID-19",
             "zh-cn": "你认为自己有多大可能感染新冠病毒？"
           },
           "choices": [{
               "value": "1",
               "text": {
-                "default": "I definitely will not",
+                "en-us": "I definitely will not",
                 "zh-cn": "绝对不可能"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "I probably will not",
+                "en-us": "I probably will not",
                 "zh-cn": "很不可能"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "I might not",
+                "en-us": "I might not",
                 "zh-cn": "不太可能"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "I am unsure",
+                "en-us": "I am unsure",
                 "zh-cn": "不能确定是否可能"
               }
             },
             {
               "value": "5",
               "text": {
-                "default": "I might",
+                "en-us": "I might",
                 "zh-cn": "似乎有可能"
               }
             },
             {
               "value": "6",
               "text": {
-                "default": "I probably will",
+                "en-us": "I probably will",
                 "zh-cn": "很有可能"
               }
             },
             {
               "value": "7",
               "text": {
-                "default": "I definitely will",
+                "en-us": "I definitely will",
                 "zh-cn": "肯定会"
               }
             }
@@ -958,55 +968,55 @@ var json = {
           "type": "radiogroup",
           "name": "covidworry",
           "title": {
-            "default": "You are worried about your COVID-19 risk?",
+            "en-us": "You are worried about your COVID-19 risk?",
             "zh-cn": "你是否担心自己感染新冠病毒的风险？"
           },
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Strongly disagree",
+                "en-us": "Strongly disagree",
                 "zh-cn": "完全不担心"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Moderately disagree",
+                "en-us": "Moderately disagree",
                 "zh-cn": "几乎不担心"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Slightly disagree",
+                "en-us": "Slightly disagree",
                 "zh-cn": "不是太担心"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Neither agree nor disagree",
+                "en-us": "Neither agree nor disagree",
                 "zh-cn": "不确定"
               }
             },
             {
               "value": "5",
               "text": {
-                "default": "Slightly agree",
+                "en-us": "Slightly agree",
                 "zh-cn": "有点担心"
               }
             },
             {
               "value": "6",
               "text": {
-                "default": "Moderately agree",
+                "en-us": "Moderately agree",
                 "zh-cn": "很担心"
               }
             },
             {
               "value": "7",
               "text": {
-                "default": "Strongly agree",
+                "en-us": "Strongly agree",
                 "zh-cn": "极度担心"
               }
             }
@@ -1017,20 +1027,20 @@ var json = {
           "type": "radiogroup",
           "name": "covidinfere",
           "title": {
-            "default": "COVID-19 is affecting people in different ways. Please indicate in what ways the following areas of your life have been disrupted as a result of COVID-19.",
+            "en-us": "COVID-19 is affecting people in different ways. Please indicate in what ways the following areas of your life have been disrupted as a result of COVID-19.",
             "zh-cn": "疫情对许多人造成了不同程度的影响。你的日常生活是否因疫情产生了变化？请从以下描述中选择最符合你实际情况的一项："
           },
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Extreme positive change",
+                "en-us": "Extreme positive change",
                 "zh-cn": "非常正面的变化"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Moderate positive change",
+                "en-us": "Moderate positive change",
                 "zh-cn": "比较正面的变化"
               }
             },
@@ -1038,42 +1048,42 @@ var json = {
               "value": "3",
               "text": {
                 "zh-cn": "有一点正面的变化",
-                "default": "Minimal positive change"
+                "en-us": "Minimal positive change"
               }
             },
             {
               "value": "4",
               "text": {
                 "zh-cn": "没什么变化",
-                "default": "No change"
+                "en-us": "No change"
               }
             },
             {
               "value": "5",
               "text": {
                 "zh-cn": "有一点负面的变化",
-                "default": "Minimal negative change"
+                "en-us": "Minimal negative change"
               }
             },
             {
               "value": "6",
               "text": {
                 "zh-cn": "比较负面的变化",
-                "default": "Moderate negative change"
+                "en-us": "Moderate negative change"
               }
             },
             {
               "value": "7",
               "text": {
                 "zh-cn": "非常负面的变化",
-                "default": "Extreme negative change"
+                "en-us": "Extreme negative change"
               }
             },
             {
               "value": "999999",
               "text": {
                 "zh-cn": "题目不适用",
-                "default": "Does not apply"
+                "en-us": "Does not apply"
               }
             }
           ]
@@ -1084,20 +1094,20 @@ var json = {
           "name": "covid_anxiety",
           "title": {
             "zh-cn": "在疫情中，许多人因为不同原因产生了焦虑情绪。你是否因为疫情或者因为它对你生活的影响产生过焦虑情绪？",
-            "default": "People become anxious for lots of different reasons. Have you experienced moderate to severe anxiety about the coronavirus and its impact on your life? "
+            "en-us": "People become anxious for lots of different reasons. Have you experienced moderate to severe anxiety about the coronavirus and its impact on your life? "
           },
 
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Yes",
+                "en-us": "Yes",
                 "zh-cn": "是"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "No",
+                "en-us": "No",
                 "zh-cn": "否"
               }
             }
@@ -1108,42 +1118,42 @@ var json = {
           "type": "radiogroup",
           "name": "covid_anxietydeg",
           "title": {
-            "default": "To what extent have you experienced moderate to severe anxiety about the coronavirus and its impact on your life? ",
+            "en-us": "To what extent have you experienced moderate to severe anxiety about the coronavirus and its impact on your life? ",
             "zh-cn": "你体验到的焦虑情绪程度如何？"
           },
           "visibleIf": "{covid_anxiety} == 1",
           "choices": [{
               "value": "1",
               "text": {
-                "default": "Slightly",
+                "en-us": "Slightly",
                 "zh-cn": "非常轻度"
               }
             },
             {
               "value": "2",
               "text": {
-                "default": "Somewhat",
+                "en-us": "Somewhat",
                 "zh-cn": "程度较轻"
               }
             },
             {
               "value": "3",
               "text": {
-                "default": "Moderate",
+                "en-us": "Moderate",
                 "zh-cn": "中等程度"
               }
             },
             {
               "value": "4",
               "text": {
-                "default": "Very Much",
+                "en-us": "Very Much",
                 "zh-cn": "程度较重"
               }
             },
             {
               "value": "5",
               "text": {
-                "default": "Extremely",
+                "en-us": "Extremely",
                 "zh-cn": "非常严重"
               }
             }
@@ -1153,7 +1163,7 @@ var json = {
     },
     {
       "name": "MS",
-	  "visible": true, //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
@@ -1164,7 +1174,7 @@ var json = {
           "name": "ms_imagine",
           "visibleIf": "{priming_type} <2",
           "title": "假如你正在经历非常严重的牙痛，请想象这一场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能多花一些时间，深入思考和体会、尽可能详细地描述细节。 ",
-          "isRequired": true,  //no toggle
+          "isRequired": true, //no toggle
           "validators": [{
             "type": "text",
             "minLength": 30,
@@ -1201,481 +1211,800 @@ var json = {
             "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你近期情绪状况的问题。请阅读以下形容情绪的词语，根据你近1-2周的实际情况，逐一评价它们在你近期情绪中占有的比例。</p><p class='sv_description'>“1”分代表“几乎没有”，<br>“2”分代表“比较少”，<br>“3”分代表“中等程度”，<br>“4”分代表“比较多”，<br>“5”分代表“极其多”。</p>"
           }
         },
+        {
+          "type": "panel",
+          "name": "PANAS_container_panel_A",
+          "visible": question_visible_1,
+          "elements": [
 
-        {
-          "type": "rating",
-          "name": "PANAS01",
-          "title": {
-            "zh-cn": "兴奋的"
-          }
+            {
+              "type": "rating",
+              "name": "PANAS01",
+              "title": {
+                "zh-cn": "兴奋的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS02",
+              "title": {
+                "zh-cn": "坐立不安的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS03",
+              "title": {
+                "zh-cn": "感兴趣的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS04",
+              "title": {
+                "zh-cn": "心烦的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS05",
+              "title": {
+                "zh-cn": "强大的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS06",
+              "title": {
+                "zh-cn": "内疚的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS07",
+              "title": {
+                "zh-cn": "惊恐的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS08",
+              "title": {
+                "zh-cn": "敌意的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS09",
+              "title": {
+                "zh-cn": "充满热情的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS10",
+              "title": {
+                "zh-cn": "自豪的"
+              }
+            }
+          ],
+          "questionsOrder": "random",
         },
         {
-          "type": "rating",
-          "name": "PANAS02",
-          "title": {
-            "zh-cn": "坐立不安的"
-          }
+          "type": "panel",
+          "name": "PANAS_container_panel_B",
+          "visible": question_visible_2,
+          "elements": [{
+              "type": "rating",
+              "name": "PANAS11",
+              "title": {
+                "zh-cn": "易怒的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS12",
+              "title": {
+                "zh-cn": "警觉的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS13",
+              "title": {
+                "zh-cn": "羞愧的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS14",
+              "title": {
+                "zh-cn": "受鼓舞的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS15",
+              "title": {
+                "zh-cn": "紧张的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS16",
+              "title": {
+                "zh-cn": "意志坚定的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS17",
+              "title": {
+                "zh-cn": "专注的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS18",
+              "title": {
+                "zh-cn": "心神不宁的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS19",
+              "title": {
+                "zh-cn": "充满活力的"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "PANAS20",
+              "title": {
+                "zh-cn": "害怕的"
+              }
+            }
+          ],
+          "questionsOrder": "random",
         },
-        {
-          "type": "rating",
-          "name": "PANAS03",
-          "title": {
-            "zh-cn": "感兴趣的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS04",
-          "title": {
-            "zh-cn": "心烦的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS05",
-          "title": {
-            "zh-cn": "强大的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS06",
-          "title": {
-            "zh-cn": "内疚的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS07",
-          "title": {
-            "zh-cn": "惊恐的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS08",
-          "title": {
-            "zh-cn": "敌意的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS09",
-          "title": {
-            "zh-cn": "充满热情的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS10",
-          "title": {
-            "zh-cn": "自豪的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS11",
-          "title": {
-            "zh-cn": "易怒的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS12",
-          "title": {
-            "zh-cn": "警觉的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS13",
-          "title": {
-            "zh-cn": "羞愧的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS14",
-          "title": {
-            "zh-cn": "受鼓舞的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS15",
-          "title": {
-            "zh-cn": "紧张的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS16",
-          "title": {
-            "zh-cn": "意志坚定的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS17",
-          "title": {
-            "zh-cn": "专注的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS18",
-          "title": {
-            "zh-cn": "心神不宁的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS19",
-          "title": {
-            "zh-cn": "充满活力的"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "PANAS20",
-          "title": {
-            "zh-cn": "害怕的"
-          }
-        }
       ]
     },
 
     {
       "name": "LES",
-	  "visible": true, //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "LES_intro",
           "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你成长经历的问题。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
-          "type": "rating",
-          "name": "SES_C1",
-          "title": {
-            "zh-cn": "我成长于一个相对富有的社区/村庄。"
-          }
+          "type": "panel",
+          "name": "LES_container_panel",
+          "questionsOrder": "random",
+          "elements": [{
+              "type": "rating",
+              "name": "SES_C1",
+              "title": {
+                "zh-cn": "我成长于一个相对富有的社区/村庄。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SES_C2",
+              "title": {
+                "zh-cn": "与其他孩子相比，我觉得我相对而言更加富有。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SES_C3",
+              "title": {
+                "zh-cn": "在我成长过程中，我的家庭通常有足够的钱来购买所需物品。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SES_C4",
+              "title": {
+                "zh-cn": "在我成长过程中，我有足够的资源做我想做的事。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "LES1",
+              "title": {
+                "zh-cn": "在我成长过程中，我的父亲具有稳定长期的工作。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "LES2",
+              "title": {
+                "zh-cn": "在我成长过程中，我的母亲具有稳定长期的工作。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "LES3",
+              "title": {
+                "zh-cn": "在我成长过程中，我的家庭拥有固定的住所。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "LES4",
+              "title": {
+                "zh-cn": "在我成长过程中，我的家庭经常搬家。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "LES5",
+              "title": {
+                "zh-cn": "在我成长过程中，我的父母婚姻状态非常和谐稳定。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "LES",
+              "title": {
+                "zh-cn": "在我成年以前，我的父母已分居/离婚。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            }
+          ],
+          "questionsOrder": "random",
         },
-        {
-          "type": "rating",
-          "name": "SES_C2",
-          "title": {
-            "zh-cn": "与其他孩子相比，我觉得我相对而言更加富有。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SES_C3",
-          "title": {
-            "zh-cn": "在我成长过程中，我的家庭通常有足够的钱来购买所需物品。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SES_C4",
-          "title": {
-            "zh-cn": "在我成长过程中，我有足够的资源做我想做的事。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES1",
-          "title": {
-            "zh-cn": "在我成长过程中，我的父亲具有稳定长期的工作。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES2",
-          "title": {
-            "zh-cn": "在我成长过程中，我的母亲具有稳定长期的工作。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES3",
-          "title": {
-            "zh-cn": "在我成长过程中，我的家庭拥有固定的住所。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES4",
-          "title": {
-            "zh-cn": "在我成长过程中，我的家庭经常搬家。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES5",
-          "title": {
-            "zh-cn": "在我成长过程中，我的父母婚姻状态非常和谐稳定。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "LES",
-          "title": {
-            "zh-cn": "在我成年以前，我的父母已分居/离婚。"
-          }
-        }
       ]
     },
     {
       "name": "SQ",
-	  "visible": true, //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "SQ_intro",
           "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问一些关于你个性特点的问题。请回想你平时的感受，并评价以下说法是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
-          "type": "rating",
-          "name": "AAS01",
-          "title": {
-            "zh-cn": "我发现与人亲近比较容易。"
+          "type": "panel",
+          "name": "AAS_container_panel_A",
+          "visible": question_visible_2,
+          "elements": [{
+              "type": "rating",
+              "name": "AAS_SC01",
+              "title": {
+                "zh-cn": "我发现与人亲近比较容易。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_AN01",
+              "title": {
+                "zh-cn": "我时常担心情侣/爱人并不真心爱我。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC01",
+              "title": {
+                "zh-cn": "我发现要我去依赖别人很困难。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_AN02",
+              "title": {
+                "zh-cn": "我发现别人并不愿像我希望的那样亲近我。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC02",
+              "title": {
+                "zh-cn": "能依赖别人让我感到很舒服。  "
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_SC02",
+              "title": {
+                "zh-cn": "我不介意别人太亲近我。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC03",
+              "title": {
+                "zh-cn": "我发现当我需要别人帮助时，没人会帮我。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_SC03",
+              "title": {
+                "zh-cn": "和别人亲近使我感到有些不舒服。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_AN03",
+              "title": {
+                "zh-cn": "我时常担心情侣/爱人不想和我呆在一起。"
+              }
+            },
+          ]
+        },
+        {
+          "type": "panel",
+          "name": "AAS_container_panel_B",
+          "visible": question_visible_1,
+          "elements": [{
+              "type": "rating",
+              "name": "AAS_AN04",
+              "title": {
+                "zh-cn": "当我对别人表达我的情感时，我害怕他们与我的感觉会不一样。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_AN05",
+              "title": {
+                "zh-cn": "我时常怀疑情侣/爱人是否真正关心我。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_SC04",
+              "title": {
+                "zh-cn": "我对与别人建立亲密的关系感到很舒服。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_SC05",
+              "title": {
+                "zh-cn": "当有人在情感上太亲近我时，我感到不舒服。 "
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC04",
+              "title": {
+                "zh-cn": "我知道当我需要别人帮助时，总有人会帮我。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_AN06",
+              "title": {
+                "zh-cn": "我想与人亲近，但担心自己会受到伤害。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC05",
+              "title": {
+                "zh-cn": "我发现我很难完全依赖别人。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_SC06",
+              "title": {
+                "zh-cn": "情侣/爱人想要我在情感上更亲近一些，这常使我感到不舒服。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "AAS_OC06",
+              "title": {
+                "zh-cn": "我不能肯定，在我需要时，能否找到可以依赖的人。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            }
+          ],
+        },
+        {
+          "type": "panel",
+          "name": "SQ_container_panel_A",
+          "visible": question_visible_1,
+          "elements": [{
+              "type": "rating",
+              "name": "SQ01",
+              "title": {
+                "zh-cn": "我从来不敢主动说出自己的看法。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ02",
+              "title": {
+                "zh-cn": "我感到生活总是充满不确定性和不可预测性。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ03",
+              "title": {
+                "zh-cn": "我习惯于放弃自己的愿望和要求。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ04",
+              "title": {
+                "zh-cn": "我总是担心会发生什么不测。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ05",
+              "title": {
+                "zh-cn": "我从不敢拒绝朋友的请求。  "
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ06",
+              "title": {
+                "zh-cn": "遇到不开心的事，我总是独自生闷气或者痛哭。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ07",
+              "title": {
+                "zh-cn": "我一直觉得自己挺倒霉的。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ08",
+              "title": {
+                "zh-cn": "我身边的人说我是一个害羞、退缩的人。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ09",
+              "title": {
+                "zh-cn": "我总是担心太好的朋友关系以后会变坏。"
+              }
+            },
+          ]
+        },
+        {
+          "type": "panel",
+          "name": "PANAS_container_panel_B",
+          "visible": question_visible_2,
+          "elements": [{
+              "type": "rating",
+              "name": "SQ10",
+              "title": {
+                "zh-cn": "对领导我一般是敬而远之。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ11",
+              "title": {
+                "zh-cn": "我常常担心自己的思维或情感会失去控制。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ12",
+              "title": {
+                "zh-cn": "我总是“万事不求人”。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ13",
+              "title": {
+                "zh-cn": "我总是担心自己的生活会变得一团糟。 "
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ14",
+              "title": {
+                "zh-cn": "我感到自己无力应对和处理生活中突如其来的危险。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ15",
+              "title": {
+                "zh-cn": "我害怕与他人建立并保持亲近关系。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "SQ16",
+              "title": {
+                "zh-cn": "无论别人怎么说，我都觉得自己很没用。"
+              }
+            }
+          ],
+        },
+      ]
+    },
+    {
+      "name": "RWA",
+      "visible": true, //toggle
+      "elements": [{
+          "type": "html",
+          "name": "RWA_intro",
+          "html": {
+            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分将询问你关于社会问题的态度。请回想你平时的感受，并评价你是否同意以下说法。</p><p class='sv_description'>“1”分代表“非常不同意，<br>“2”分代表“不太同意”，<br>“3”分代表“不确定”，<br>“4”分代表“比较同意”，<br>“5”分代表“非常同意”。</p>"
           }
         },
         {
-          "type": "rating",
-          "name": "AAS03",
-          "title": {
-            "zh-cn": "我时常担心情侣/爱人并不真心爱我。"
-          }
+          "type": "panel",
+          "name": "RWA_container_panel_A",
+          "visible": question_visible_2,
+          "elements": [
+
+            {
+              "type": "rating",
+              "name": "RWA01",
+              "title": {
+                "en-us": "Some people are just inferior to others.",
+                "zh-cn": "一些人天然地比另一些人更低等。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA02",
+              "title": {
+                "en-us": "It's OK if some groups have more of a chance in life than others.",
+                "zh-cn": "一些群体比另一些在社会中拥有更多机会是合理的。 "
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA03",
+              "title": {
+                "en-us": "To get ahead in life, it is sometimes necessary to step on others.",
+                "zh-cn": "为了生活更好，有时必须践踏其他人。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA04",
+              "title": {
+                "en-us": "We would have fewer problems if we treated people more equally.",
+                "zh-cn": "如果我们对待他人更公平些，我们的生活会变得更好。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA05",
+              "title": {
+                "en-us": "People ought to put less attention to the Bible and religion, instead they ought to develop their own moral standards.",
+                "zh-cn": "人们不用太过恪守传统或宗教，而是应该发展出适用于当代的道德标准。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA06",
+              "title": {
+                "en-us": "God's laws about abortion, pornography and marriage must be strictly followed before it is too late, violations must be punished.",
+                "zh-cn": "我们应该严格遵守传统上关于婚姻和色情的准则，违反者必须受到惩罚。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA07",
+              "title": {
+                "en-us": "Our society would be better off if we showed tolerance and understanding for untraditional values and opinions.",
+                "zh-cn": "如果我们可以容忍并理解非传统的价值观和想法，我们的社会将变得更好。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA08",
+              "title": {
+                "en-us": "If certain groups stayed in their place, we would have fewer problems.",
+                "zh-cn": "如果其他群体呆在他们自己原本的生活区域，我们会少很多麻烦。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA09",
+              "title": {
+                "en-us": "If the society so wants, it is the duty of every true citizen to help eliminate the evil that poisons our country from within.",
+                "zh-cn": "我们每个公民都有责任为国家消灭内部的邪恶势力。",
+
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA10",
+              "title": {
+                "en-us": "Many good people challenge the state, criticize the church and ignore 'the normal way of living'.",
+                "zh-cn": "当今社会有很多人反对传统，无视那些原本正常的生活方式。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA11",
+              "title": {
+                "en-us": "We should do what we can to equalize conditions for different groups.",
+                "zh-cn": "我们应该尽可能使收入和财富平等地分配。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA12",
+              "title": {
+                "en-us": "Our forefathers ought to be honoured more for the way they have built our society, at the same time we ought to put an end to those forces destroying it.",
+                "zh-cn": "我们的祖先创造了这个社会，我们应该更加尊重他们，同时制止那些想要毁坏传统的势力。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA13",
+              "title": {
+                "en-us": "It is better to accept bad literature than to censor it.",
+                "zh-cn": "即使是那些不太好的媒体文章，我们也应该保证它们的出版自由，而不应该禁止它们。",
+              } ,
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+          ]
         },
         {
-          "type": "rating",
-          "name": "AAS02",
-          "title": {
-            "zh-cn": "我发现要我去依赖别人很困难。"
-          }
+          "type": "panel",
+          "name": "RWA_container_panel_B",
+          "visible": question_visible_1,
+          "elements": [
+
+            {
+              "type": "rating",
+              "name": "RWA14",
+              "title": {
+                "en-us": "Our country needs free thinkers, who will have the courage to stand up against traditional ways, even if this upsets many people.",
+                "zh-cn": "我们的国家需要更多自由的思想家，他们有勇气挑战传统，即使他们的一些想法可能让很多人不满。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA15",
+              "title": {
+                "en-us": "Our country needs a powerful leader, in order to destroy the radical and immoral currents prevailing in society today.",
+                "zh-cn": "我们的国家需要强有力的领导人，以便消灭那些盛行于社会中的邪恶势力。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA16",
+              "title": {
+                "en-us": "It would be best if newspapers were censored so that people would not be able to get hold of destructive and disgusting material.",
+                "zh-cn": "媒体必须受到审查，以确保人们不会接触到那些有害的或令人讨厌的信息。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA17",
+              "title": {
+                "en-us": "Sometimes other groups must be kept in their place.",
+                "zh-cn": "其他群体必须在他们自己原本的地方生活。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA18",
+              "title": {
+                "en-us": "It's probably a good thing that certain groups are at the top and other groups are at the bottom.",
+                "zh-cn": "某些群体属于社会上层，另一些群体属于社会下层，这可能是一件好事。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA19",
+              "title": {
+                "en-us": "No one group should dominate society.",
+                "zh-cn": "没有哪个群体应该支配整个社会。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA20",
+              "title": {
+                "en-us": "The society needs to show openness towards people thinking differently, rather than a strong leader, the world is not particularly evil or dangerous.",
+                "zh-cn": "社会需要包容那些具有不同想法的人，而不是需要一个强势的领导者。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA21",
+              "title": {
+                "en-us": "There are many radical, immoral people trying to ruin things; the society ought to stop them.",
+                "zh-cn": "许多邪恶的人试图制造麻烦，我们必须制止他们。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA22",
+              "title": {
+                "en-us": "We would have fewer problems if we treated people more equally.",
+                "zh-cn": "如果我们对待他人再公平些，我们会减少许多问题。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA23",
+              "title": {
+                "en-us": "The situation in the society of today would not be improved if troublemakers were treated with reason and humanity.",
+                "zh-cn": "如果我们对待违反社会规则的人更仁慈、更理性，社会的现况就不会得到改善。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA24",
+              "title": {
+                "en-us": "Facts show that we have to be harder against crime and sexual immorality, in order to uphold law and order.",
+                "zh-cn": "为了维护法律和社会秩序，我们必须更严厉地惩罚违法犯罪和不道德的行为。"
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA25",
+              "title": {
+                "en-us": "We should do what we can to equalize conditions for different groups.",
+                "zh-cn": "我们应该尽可能减少不同群体之间生活条件的不平等。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA20",
+              "title": {
+                "en-us": "All groups should be given an equal chance in life.",
+                "zh-cn": "所有人在社会中应该享有平等的机会。",
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
+            },
+            {
+              "type": "rating",
+              "name": "RWA26",
+              "title": {
+                "en-us": "In getting what you want, it is sometimes necessary to use force against other groups.",
+                "zh-cn": "有时候，为了得到你想要的，就必须对其他一些人使用强制的手段。",
+              }
+            },
+            {
+              "type": "rating",
+              "name": "RWA27",
+              "title": {
+                "en-us": "It 's probably a good thing that certain groups are at the top and other groups are at the bottom.",
+                "zh-cn": "某些群体属于社会上层，另一些群体属于社会下层，这或许是一件好事。",
+              }
+            },
+          ]
         },
-        {
-          "type": "rating",
-          "name": "AAS04",
-          "title": {
-            "zh-cn": "我发现别人并不愿像我希望的那样亲近我。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS05",
-          "title": {
-            "zh-cn": "能依赖别人让我感到很舒服。  "
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS06",
-          "title": {
-            "zh-cn": "我不在乎别人太亲近我。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS07",
-          "title": {
-            "zh-cn": "我发现当我需要别人帮助时，没人会帮我。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS08",
-          "title": {
-            "zh-cn": "和别人亲近使我感到有些不舒服。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS09",
-          "title": {
-            "zh-cn": "我时常担心情侣/爱人不想和我呆在一起。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS10",
-          "title": {
-            "zh-cn": "当我对别人表达我的情感时，我害怕他们与我的感觉会不一样。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS11",
-          "title": {
-            "zh-cn": "我时常怀疑情侣/爱人是否真正关心我。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS12",
-          "title": {
-            "zh-cn": "我对与别人建立亲密的关系感到很舒服。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS13",
-          "title": {
-            "zh-cn": "当有人在情感上太亲近我时，我感到不舒服。 "
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS14",
-          "title": {
-            "zh-cn": "我知道当我需要别人帮助时，总有人会帮我。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS15",
-          "title": {
-            "zh-cn": "我想与人亲近，但担心自己会受到伤害。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS16",
-          "title": {
-            "zh-cn": "我发现我很难完全依赖别人。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS17",
-          "title": {
-            "zh-cn": "情侣/爱人想要我在情感上更亲近一些，这常使我感到不舒服。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "AAS18",
-          "title": {
-            "zh-cn": "我不能肯定，在我需要时，能否找到可以依赖的人。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ01",
-          "title": {
-            "zh-cn": "我从来不敢主动说出自己的看法。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ02",
-          "title": {
-            "zh-cn": "我感到生活总是充满不确定性和不可预测性。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ03",
-          "title": {
-            "zh-cn": "我习惯于放弃自己的愿望和要求。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ04",
-          "title": {
-            "zh-cn": "我总是担心会发生什么不测。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ05",
-          "title": {
-            "zh-cn": "我从不敢拒绝朋友的请求。  "
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ06",
-          "title": {
-            "zh-cn": "遇到不开心的事，我总是独自生闷气或者痛哭。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ07",
-          "title": {
-            "zh-cn": "我一直觉得自己挺倒霉的。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ08",
-          "title": {
-            "zh-cn": "我身边的人说我是一个害羞、退缩的人。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ09",
-          "title": {
-            "zh-cn": "我总是担心太好的朋友关系以后会变坏。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ10",
-          "title": {
-            "zh-cn": "对领导我一般是敬而远之。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ11",
-          "title": {
-            "zh-cn": "我常常担心自己的思维或情感会失去控制。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ12",
-          "title": {
-            "zh-cn": "我总是“万事不求人”。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ13",
-          "title": {
-            "zh-cn": "我总是担心自己的生活会变得一团糟。 "
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ14",
-          "title": {
-            "zh-cn": "我感到自己无力应对和处理生活中突如其来的危险。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ15",
-          "title": {
-            "zh-cn": "我害怕与他人建立并保持亲近关系。"
-          }
-        },
-        {
-          "type": "rating",
-          "name": "SQ16",
-          "title": {
-            "zh-cn": "无论别人怎么说，我都觉得自己很没用。"
-          }
-        }
       ]
     },
     {
       "name": "DAS",
-	  "visible": true, //toggle
+      "visible": true, //toggle
       "elements": [{
           "type": "html",
           "name": "DAS_intro",
@@ -1693,14 +2022,16 @@ var json = {
           "name": "DAS02",
           "title": {
             "zh-cn": "我很少想到死亡。"
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
           "name": "DAS03",
           "title": {
             "zh-cn": "人们谈论死亡时我不会感到紧张。"
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
@@ -1714,21 +2045,24 @@ var json = {
           "name": "DAS05",
           "title": {
             "zh-cn": "我一点也不害怕死亡。 "
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
           "name": "DAS06",
           "title": {
             "zh-cn": "我不是很害怕患上癌症。"
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
           "name": "DAS07",
           "title": {
             "zh-cn": "我从来不会因为想到死亡而烦恼。"
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
@@ -1748,8 +2082,9 @@ var json = {
           "type": "rating",
           "name": "DAS10",
           "title": {
-            "zh-cn": "关于死后的话题令我非常困扰。"
-          }
+            "zh-cn": "关于死后世界的话题令我非常不安。"
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         },
         {
           "type": "rating",
@@ -1784,7 +2119,8 @@ var json = {
           "name": "DAS15",
           "title": {
             "zh-cn": "对于未来我没有什么可恐惧的。"
-          }
+          },
+		  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
         }
       ]
     }
@@ -1799,19 +2135,19 @@ var json = {
   "goNextPageAutomatic": true,
   "clearInvisibleValues": "none",
   "pagePrevText": {
-    "default": "Prev",
+    "en-us": "Prev",
     "zh-cn": "上一页"
   },
   "pageNextText": {
-    "default": "Next",
+    "en-us": "Next",
     "zh-cn": "下一页"
   },
   "completeText": {
-    "default": "Submit",
+    "en-us": "Submit",
     "zh-cn": "完成"
   },
   "previewText": {
-    "default": "Preview",
+    "en-us": "Preview",
     "zh-cn": "预览"
   },
   "minTimeToFinishPage": 120,
@@ -1822,7 +2158,8 @@ window.survey = new Survey.Model(json);
 
 
 // some effect when loading
-$(document).ready(function() {
+$(document)
+  .ready(function() {
     $("body")
       .fadeIn("slow");
     $("#preSurvey")
@@ -1830,39 +2167,37 @@ $(document).ready(function() {
   });
 
 survey
-.onComplete
-.add(function (result) {
-// document
-// .querySelector('#surveyResult')
-// .textContent = "结果：\n" + JSON.stringify(result.data, null, 3);
-// var fs = require('fs');
- // fs.writeFile('data.json', JSON.stringify(data));
-saveDatatoServer(result.data);
-});
+  .onComplete
+  .add(function(result) {
+    // document
+    // .querySelector('#surveyResult')
+    // .textContent = "结果：\n" + JSON.stringify(result.data, null, 3);
+    saveDatatoServer(result.data);
+  });
 
 
 /* used to send data to google sheet but unusable here */
 // function sendDataToGoogleSheet(survey, options) {
-  // options.showDataSaving();
-  // $.ajax({
-    // url: ' ', 
-    // type: 'post',
-    // data: JSON.stringify(survey.data),
-    // headers: {
-      // "Content-Type": "text/plain"
-    // },
-    // processData: false,
-    // complete: function(res, status) {
-      // if (status == 'success') {
-        // options.showDataSavingSuccess();
-      // } else {
-        // options.showDataSavingError();
-      // }
-    // },
-  // });
+// options.showDataSaving();
+// $.ajax({
+// url: ' ', 
+// type: 'post',
+// data: JSON.stringify(survey.data),
+// headers: {
+// "Content-Type": "text/plain"
+// },
+// processData: false,
+// complete: function(res, status) {
+// if (status == 'success') {
+// options.showDataSavingSuccess();
+// } else {
+// options.showDataSavingError();
+// }
+// },
+// });
 // }
 
-function saveDatatoServer(data){
+function saveDatatoServer(data) {
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/api/save?type=survey', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
@@ -1878,5 +2213,5 @@ $("#surveyElement")
     css: myCss,
     onValidateQuestion: surveyValidateQuestion,
     //onComplete: sendDataToGoogleSheet
- 
+
   });

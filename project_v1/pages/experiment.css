@@ -78,7 +78,7 @@
 #iat_display {
   border: 0px solid blue;
   font-size: 25px;
-  line-height: 2;
+  line-height: 2.1;
   width: 90%;
 }
 
@@ -213,7 +213,7 @@ jspsych-html-button-response-button {
 
   #iat_display {
     font-size: 20px;
-    line-height: 1.6;
+    line-height: 1.8;
   }
   #disp_fixation {
     /* transform: translateY(-0px);  */

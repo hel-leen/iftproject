@@ -88,9 +88,22 @@ body {
   padding-bottom: 0.9375em;
 }
 
-.sv-row {
-  padding-bottom: 1.2em;
+.survey_row {
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
 }
+.survey_row:last-child {
+  padding-top: 0.6em;
+  padding-bottom: 0em;
+}
+.survey_row:first-child {
+  padding-top: 0.6em;
+  padding-bottom: 0em;
+}
+/* .survey_row:not(:last-child) { */
+  /* padding-top: 0.6em; */
+  /* padding-bottom: 0.6em; */
+/* } */
 
 /* comment */
 
@@ -182,6 +195,7 @@ body {
   /* position: absolute; */
   /* right: 10%; */
   height: 430px;
+  
 }
 
 /* end of ses lader */
@@ -193,15 +207,16 @@ body {
 /* sticky rating instruction */
 
 #sp_106>div>div:nth-child(1),
-#sp_107>div>div:nth-child(1),
-#sp_108>div>div:nth-child(1),
-#sp_109>div>div:nth-child(1) {
+#sp_109>div>div:nth-child(1),
+#sp_111>div>div:nth-child(1),
+#sp_116>div>div:nth-child(1),
+#sp_119>div>div:nth-child(1) {
   z-index: 99;
   position: sticky;
   top: 0;
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.95);
-  width: fit-content;
+  width: 100%;
   padding-right: 2%;
   padding-bottom: 0;
 }
@@ -334,7 +349,7 @@ body {
 
 @media(min-width: 420px) {
   #sq_119 {
-    padding-left: 10vw;
+    padding-left: 15vw;
   }
 }
 @media(max-width: 420px) {

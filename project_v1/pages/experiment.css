@@ -212,8 +212,8 @@ jspsych-html-button-response-button {
   }
 
   #iat_display {
-    font-size: 20px;
-    line-height: 1.8;
+    font-size: 19px;
+    line-height: 2.2;
   }
   #disp_fixation {
     /* transform: translateY(-0px);  */
@@ -240,7 +240,7 @@ jspsych-html-button-response-button {
 
   #iat_display {
     font-size: 17px;
-    /* line-height: 1.6; */
+    line-height: 2;
   }
 }
 

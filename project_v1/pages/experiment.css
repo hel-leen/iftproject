@@ -191,9 +191,9 @@ jspsych-html-button-response-button {
 @media(max-aspect-ratio: 1/1) {
   #jspsych-fullscreen-btn {
     bottom: 10%;
-    width: 125px;
+    width: 135px;
     height: 40px;
-    font-size: 16.5px;
+    font-size: 17.5px;
     font-weight: 400;
   }
   .btn_iat {

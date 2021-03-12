@@ -1627,21 +1627,22 @@ var json = {
               "type": "rating",
               "name": "SQ01",
               "title": {
-                "zh-cn": "我从来不敢主动说出自己的看法。"
-              }
+                "zh-cn": "我总是敢于主动说出自己的看法。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
             {
               "type": "rating",
               "name": "SQ02",
               "title": {
-                "zh-cn": "我感到生活总是充满不确定性和不可预测性。"
+                "zh-cn": "我身边的人都说我是一个害羞、退缩的人。"
               }
             },
             {
               "type": "rating",
               "name": "SQ03",
               "title": {
-                "zh-cn": "我习惯于放弃自己的愿望和要求。"
+                "zh-cn": "我感到生活总是充满不确定性和不可预测性。"
               }
             },
             {
@@ -1672,19 +1673,13 @@ var json = {
                 "zh-cn": "我一直觉得自己挺倒霉的。"
               }
             },
-            {
+			{
               "type": "rating",
               "name": "SQ08",
               "title": {
-                "zh-cn": "我身边的人说我是一个害羞、退缩的人。"
-              }
-            },
-            {
-              "type": "rating",
-              "name": "SQ09",
-              "title": {
-                "zh-cn": "我总是担心太好的朋友关系以后会变坏。"
-              }
+                "zh-cn": "我从不轻易放弃自己的愿望和要求。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
           ]
         },
@@ -1693,6 +1688,13 @@ var json = {
           "name": "PANAS_container_panel_B",
           "visible": question_visible_2,
           "elements": [{
+              "type": "rating",
+              "name": "SQ09",
+              "title": {
+                "zh-cn": "我总是担心太好的朋友关系以后会变坏。"
+              }
+            },
+			{
               "type": "rating",
               "name": "SQ10",
               "title": {
@@ -1703,8 +1705,9 @@ var json = {
               "type": "rating",
               "name": "SQ11",
               "title": {
-                "zh-cn": "我常常担心自己的思维或情感会失去控制。"
-              }
+                "zh-cn": "我很少会担心自己的思维或情感会失去控制。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
             {
               "type": "rating",
@@ -1731,8 +1734,9 @@ var json = {
               "type": "rating",
               "name": "SQ15",
               "title": {
-                "zh-cn": "我害怕与他人建立并保持亲近关系。"
-              }
+                "zh-cn": "我从不害怕与他人建立或保持亲近关系。"
+              },
+			  "rateValues": [ { "value": 5, "text": "1" }, { "value": 4, "text": "2" }, 3, { "value": 2, "text": "4" }, { "value": 1,"text": "5" } ],
             },
             {
               "type": "rating",

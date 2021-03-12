@@ -127,7 +127,7 @@
   border: none;
   color: white;
   width: 180px;
-  height: 42px;
+  height: 48px;
   font-size: 22px;
   outline: none;
   position: relative;
@@ -212,7 +212,7 @@ jspsych-html-button-response-button {
   }
 
   #iat_display {
-    font-size: 19px;
+    font-size: 20px;
     line-height: 2.2;
   }
   #disp_fixation {

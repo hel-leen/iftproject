@@ -288,15 +288,15 @@ tr::hover {
   }
   .text_l {
     font-size: 22px;
-    line-height: 2;
+    line-height: 2.2;
   }
   .text_m {
-    font-size: 18px;
-    line-height: 2;
+    font-size: 20px;
+    line-height: 2.2;
   }
   .text_s {
-    font-size: 17px;
-    line-height: 1.9;
+    font-size: 18px;
+    line-height: 2;
     /* text-align: left;  */
   }
   .title {

@@ -7,7 +7,7 @@ const category_info = [
       "自己",
       "自我",
       "我们",
-      "我们的",
+      // "我们的",
     ],
     Image: null
   },
@@ -18,7 +18,7 @@ const category_info = [
       "他人",
       "别人",
       "他们",
-      "他们的",
+      // "他们的",
     ],
     Image: null
   },
@@ -28,10 +28,10 @@ const category_info = [
       "喜悦",
       "友爱",
       "美妙",
-      "和平",
-      "愉快",
+      // "和平",
+      // "愉快",
       "光荣",
-      "欢笑",
+      // "欢笑",
       "热情"
     ],
     Image: null
@@ -41,11 +41,11 @@ const category_info = [
     Word: [
       "痛苦",
       "恐怖",
-      "低劣",
-      "可怕",
+      // "低劣",
+      // "可怕",
       "糟糕",
       "肮脏",
-      "伤害",
+      // "伤害",
       "失败"
     ],
     Image: null
@@ -56,7 +56,7 @@ const category_info = [
       "生命",
       "安宁",
       "健康",
-      "活力",
+      // "活力",
     ],
     Image: null
   },
@@ -66,7 +66,7 @@ const category_info = [
       "死亡",
       "灾难",
       "疾病",
-      "毁灭",
+      // "毁灭",
     ],
   }
 ];
@@ -107,7 +107,7 @@ n_cong_incong += category_info[2].Word.length;
 n_cong_incong += category_info[3].Word.length;
 
 var n_trials = 5 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length) + 6 * (category_info[4].Word.length + category_info[5].Word.length) + 2 * n_practice;
-console.log(userInfo.uuid(), n_trials);
+console.log(' uuid: ' + userInfo.uuid(), '\n number of trials: ' +n_trials);
 
 
 // assign the instructions 
@@ -178,7 +178,7 @@ var preexp_instructions = {
   fullscreen_mode: true,
   message:        '<div class="sv-title sv-container-modern__title fade-in"  style="color: #445566; margin: auto; text-align: left; width: 80%; padding: 25px 0 0 0;"><div class="sv-header__text"  style="max-width: calc(((100% - 5px) - 2em) - 64px);"><h3><span style="position: static;">IFT</span></h3><h5 ><span style="position: static;">IAT for TMT Project</span></h5></div><div class="sv-logo sv-logo--right" ><img class="sv-logo__image roll-in-left" data-bind="css: css.logoImage, style: { objectFit: logoFit }" height="64px" src="../resources/IFT.png" style="object-fit: contain;" width="64px"></div><div class="sv-logo--right-tail"></div></div><div class="sv-progress sv-body__progress" style="margin: 20px 2% -20px 2%; height: 0.09em;"><div class="sv-progress__bar slide-in-right"  role="progressbar" style="width: 100%; background-color: #445566"></div></div>'  +
   '<div class="fade-in" style="margin-top: 10vh;">'  + 
-   '<div class="text_m">你已进入分类任务实验环节，请在<b>安静的环境下</b>完成本部分内容 。<br><br>为保证实验效果，请将屏幕调至适宜的亮度，并尽量减少无关干扰、集中注意。<br></p>在测验过程中，请<b style="color: #661122;">不要</b>点击后退/返回键或刷新页面，否则实验内容将会全部重新加载。<br><br><p class="text_s">点击下面的“继续”按钮开启全屏模式并进入测验</p><br></div>',
+   '<div class="text_m">你已进入分类任务实验环节，请在<b>安静的环境下</b>完成本部分内容 。<br>为保证实验效果，请将屏幕调至适宜的亮度，并尽量减少无关干扰、集中注意。<br></p>在测验过程中，请<b style="color: #661122;">不要</b>点击后退/返回键或刷新页面，否则实验内容将会全部重新加载。<br><br><p class="text_s">点击下面的“继续”按钮开启全屏模式并进入测验</p><br></div>',
   button_label: '继续'
 };
 
@@ -384,7 +384,7 @@ var trial_block_cong_prac_A_timeline = {
 };
 // timeline_variables 
 var trial_block_cong_prac_A_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_ini_attr_train_A_timeline_variables);
-console.log(trial_block_cong_prac_A_timeline_variables);
+// console.log(trial_block_cong_prac_A_timeline_variables);
 // block obj
 var trial_block_cong_prac_A = {
   timeline: [trial_block_cong_prac_A_timeline],
@@ -405,7 +405,7 @@ var trial_block_cong_prac_B_timeline = {
 };
 // timeline_variables 
 var trial_block_cong_prac_B_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_ini_attr_train_B_timeline_variables);
-console.log(trial_block_cong_prac_B_timeline_variables);
+// console.log(trial_block_cong_prac_B_timeline_variables);
 // block obj
 var trial_block_cong_prac_B = {
   timeline: [trial_block_cong_prac_B_timeline],
@@ -760,7 +760,7 @@ jsPsych.init({
 	// send user to info page based on the results
     setTimeout(function() {
       window.location.href = './information.html?uuid=' + userInfo.uuid() + '&cong_rt=' + Math.floor(mean_correct_responses_cong_test) + '&incong_rt=' + Math.floor(mean_correct_responses_incong_test)
-    }, 200);
+    }, 1000);
     var exp_end = '<div class="text_m"><br>';
     exp_end += '<p class="text_l fade-in">结果保存中，请稍候...</p><br>';
     document.body.innerHTML = exp_end;

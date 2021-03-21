@@ -135,12 +135,22 @@ let provinces = ["北京市", "天津市", "上海市", "重庆市", "河北省"
 
 function surveyValidateQuestion(s, options) {
   if (options.name == 'none_ms_imagine' || options.name == 'ms_imagine') {
-    if (options.value && options.value.indexOf("我") < 0) {
-      options.error = "请在描述中提及自己（例如，“我感到...”、“我觉得...”等）";
+    if (!options.value) {
+      options.error = "你还没有填写此问题";
+    }
+    else {
+      if (options.value.search(/["我感觉平静心安愿忧惧憾悲情冷落生死怕苦笑意幸福真善爱喜气难受顺利思自负世道欢快乐高重如忍默容恶执守怀悦惊泪烦知虚疲弱困境美妙孤单欣慰"]/i) < 0) {
+        options.error = "你好像没有在描述中提及自己的感受，请尽可能把你在想象场景中体会到的情绪描述出来";
+      }
+      if (options.value.length < 30) {
+        options.error = "你的描述好像有点太简短了，请尽可能详细地描述细节";
+      }
+      if (options.value.length > 1800) {
+        options.error = "你的描述好像有点太长了，请删去一部分再试";
+      }
     }
   }
 }
-
 
 // value to split the survey into halves
 
@@ -165,16 +175,15 @@ var json = {
   "completedHtmlOnCondition": [{}],
 
   "pages": [{
-      "name": "Demographics",
+      "name": "presurvey_instructions",
       "visible": true, //no toggle
       "isRequired": false,
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
-          "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退/返回键或刷新页面，否则问卷内容将会全部重新加载。<br>本页题目全部填写后，页面将自动进入下一页。<br><br>以下部分将询问关于你个人信息的问题，以便我们在研究中比较不同人群之间的差异。<br></p></div>"
+          "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br><br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退/返回键或刷新页面，否则问卷内容将会全部重新加载。<br>当每页题目全部填写完毕后，页面将自动进入下一页。<br><br>如果你已准备好，请点击右下方的<b style='color: #223366;'>下一页</b>按钮开始填写问卷。<br></p></div>"
         },
-
-        {
+		        {
           "type": "text",
           "name": "uuid",
           "visible": false,
@@ -196,6 +205,19 @@ var json = {
           "name": "Priming_type",
           "visible": false, // no toggle
           "defaultValue": primingType,
+        },
+          ],
+          "choicesFromQuestionMode": "selected"
+
+    },
+	{
+      "name": "Demographics",
+      "visible": true, //no toggle
+      "isRequired": false,
+      "elements": [{
+          "type": "html",
+          "name": "demograph_intro",
+          "html": "<p class='sv_instruction'>以下部分将询问你的个人相关信息，以便我们在研究中比较不同人群之间的差异。<br></p></div>"
         },
         {
           "isRequired": false,
@@ -788,14 +810,14 @@ var json = {
           "type": "text",
           "name": "income",
           "title": {
-            "zh-cn": "你在去年一年中个人总收入是多少？"
+            "zh-cn": "你在去年一年中个人总收入是多少（单位：元）？"
           },
           "inputType": "number",
           "autoComplete": "10000",
           "min": "0",
           "step": 10000,
           "textUpdateMode": "onBlur",
-          "placeHolder": "请直接填写数字 （单位：元）"
+          "placeHolder": "请直接填写数字 "
         },
         {
           "type": "html",
@@ -846,7 +868,7 @@ var json = {
           "name": "covid_intro",
           "html": {
             "en-us": "<br><p class='sv_instruction'>In this task you will be asked questions about your experiences with COVID-19. <br>COVID-19, the disease caused by the virus SARS-CoV-2, was declared a pandemic by the World Health Organization Director-General on 11 March 2020. In countries most severely impacted by the disease, case fatality rates are thought to be as high as 15%. Due to its contagiousness, COVID-19 poses both a physical threat, causing more than 2 million deaths worldwide, and also a psychological threat through the fear it provokes. </div>",
-            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问一些关于你在新冠疫情中个人经历的问题。<br>2019冠状病毒病（COVID-19）是一种由严重急性呼吸系统综合症冠状病毒2型引发的传染病。自2019年末起，此病在全球各国大规模爆发并急速扩散，成为人类历史上致死人数最多的流行病之一。截至2021年2月23日，全球已有192个国家和地区累计报告超过1.11亿名确诊病例，逾247.6万名患者死亡。与此同时，新冠疫情也对人们的心理健康造成了威胁。因此，我们希望了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
+            "zh-cn": "<br><p class='sv_instruction'>以下部分将询问你在新冠疫情中的个人经历。<br>2019冠状病毒病（COVID-19）是一种由严重急性呼吸系统综合症冠状病毒2型引发的传染病。自2019年末起，此病在全球各国大规模爆发并急速扩散，成为人类历史上致死人数最多的流行病之一。截至2021年2月底，全球已有192个国家和地区累计报告超过1.11亿名确诊病例，逾247.6万名患者死亡。与此同时，新冠疫情也对人们的心理健康造成了威胁。因此，我们希望了解你在疫情中受到影响的程度与方式。请你回想自己的有关经历与实际状况，并回答以下问题。</div>",
           }
 
         },
@@ -1180,7 +1202,7 @@ var json = {
           "type": "comment",
           "name": "ms_imagine",
           "visibleIf": "{priming_type} <2",
-          "title": "假如你正在经历非常严重的牙痛，请想象这一场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能多花一些时间，深入思考和体会、尽可能详细地描述细节。 ",
+          "title": "假如你正在经历非常严重的牙痛，请想象这一场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能深入思考和体会、尽可能详细地描述细节。 ",
           "isRequired": true, //no toggle
           "validators": [{
             "type": "text",
@@ -1195,7 +1217,7 @@ var json = {
           "type": "comment",
           "name": "none_ms_imagine",
           "visibleIf": "{priming_type} >1",
-          "title": "请想象你临终前的场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能多花一些时间，深入思考和体会、尽可能详细地描述细节。 ",
+          "title": "请想象你临终前的场景和你在当时的感受，并在下面描述出来。表达的方式不限，但希望你能深入思考和体会、尽可能详细地描述细节。 ",
           "isRequired": true,
           "validators": [{
             "type": "text",
@@ -1210,12 +1232,12 @@ var json = {
     },
     {
       "name": "PANAS",
-      "visible": false, //toggle on demand
+      "visible": true, //toggle on demand
       "elements": [{
           "type": "html",
           "name": "PANAS_intro",
           "html": {
-            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你近期的情绪状况。请阅读以下形容情绪的词语，根据你近1-2周的实际情况，逐一评价它们在你近期情绪中占有的比例。</p><p class='sv_description'>“1”分代表“几乎没有”，<br>“2”分代表“比较少”，<br>“3”分代表“中等程度”，<br>“4”分代表“比较多”，<br>“5”分代表“极其多”。</p>"
+            "zh-cn": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你当前的情绪状况有关。请阅读以下形容情绪的词语，逐一评价它们在你当前情绪中占有的比例。</p><p class='sv_description'>“1”分代表“几乎没有”，<br>“2”分代表“比较少”，<br>“3”分代表“中等程度”，<br>“4”分代表“比较多”，<br>“5”分代表“极其多”。</p>"
           }
         },
         {
@@ -1383,7 +1405,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "LES_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你的成长经历。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你的成长经历有关。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
           "type": "panel",
@@ -1472,7 +1494,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "SQ_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分是关于你的个性特点。请阅读以下说法，并逐一评价它们是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你的个性特点有关。请阅读以下说法，并逐一评价它们是否符合你的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
           "type": "panel",
@@ -1749,6 +1771,103 @@ var json = {
         },
       ]
     },
+	{
+	  "name": "WASSUP ",
+	  "visible": true, //toggle
+	  "elements": [{
+	      "type": "html",
+	      "name": "WASSUP_intro",
+	      "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你个人的人生价值有关。请阅读以下说法，并逐一评价你是否可能将它们设定为自己的<b>人生目标</b>。</p><p class='sv_description'>“1”分代表“绝对不可能，<br>“2”分代表“不太可能”，<br>“3”分代表“不能确定是否可能”，<br>“4”分代表“有可能”，<br>“5”分代表“肯定会”。</p>"
+        },
+	    {
+	      "type": "panel",
+	      "name": "WASSUP_container_panel",
+	      "questionsOrder": "random",
+	      "elements": [
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_RE01",
+	          "title": {
+	            "en-us": " Everyone I know will love me.",
+	            "zh-cn": "拥有十位以上亲密无间的朋友。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_RE02",
+	          "title": {
+	            "en-us": " I will have more than 10 close friends.",
+	            "zh-cn": "获得身边所有人的喜爱。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_F01",
+	          "title": {
+	            "en-us": "I will be famous",
+	            "zh-cn": "成为世界著名的人物。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_CR01",
+	          "title": {
+	            "en-us": "I will produce a great creative work.",
+	            "zh-cn": "开拓一项伟大的事业。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_CR02",
+	          "title": {
+	            "en-us": "I will make an important contribution in the field of art or science.",
+	            "zh-cn": "在科学或文学、艺术领域作出重大的贡献。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_RE03",
+	          "title": {
+	            "en-us": "Whenever I have a problem, my friends will drop what they are doing to support me.",
+	            "zh-cn": "结交许多愿意舍弃自己的利益来帮助我的朋友。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_CR03",
+	          "title": {
+	            "en-us": "My creative work will be acknowledged by experts in my field.",
+	            "zh-cn": "从事开创性的工作并且获得业内专家的一致认可。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_CR04",
+	          "title": {
+	            "en-us": "I will create work with enduring value that is original and useful.",
+	            "zh-cn": "完成一项具有重要价值而又富有创意的发明。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_F02",
+	          "title": {
+	            "en-us": "I will have a major role in a movie.",
+	            "zh-cn": "主演一部电影。",
+	          }
+            },
+	        {
+	          "type": "rating",
+	          "name": "WASSUP_RE04",
+	          "title": {
+	            "en-us": "I will have the closest family relationships.",
+	            "zh-cn": "拥有令所有人都羡慕的美满家庭。",
+	          }
+            },
+		  ]
+		}
+      ]
+	},
     {
       "name": "RWA",
       "visible": true, //toggle
@@ -2001,7 +2120,6 @@ var json = {
                 "zh-cn": "有时候，为了实现自己的目的，必须对其他一些人使用强制的手段。",
               }
             },
-            
           ]
         },
       ]
@@ -2133,7 +2251,7 @@ var json = {
   "sendResultOnPageNext": true,
   "showPageTitles": false,
   "showCompletedPage": true,
-  "navigateToUrl": experiment_page,
+  // "navigateToUrl": experiment_page,
   "showQuestionNumbers": "off",
   "showProgressBar": "top",
   "goNextPageAutomatic": true,
@@ -2180,6 +2298,25 @@ survey
   });
 
 
+  function saveDatatoServer(data) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/save?type=survey', false);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(data));
+    console.log('req status ' + xhr.status);
+    if (xhr.status == '200') {
+      setTimeout(function() {
+        window.location.href = experiment_page
+      }, 1000);
+    }
+    else if (xhr.status) {
+      function alertFunction() {
+        alert("很抱歉！由于网络通信故障，你的数据未能成功保存。请立即与研究者联系，报告这项错误，谢谢！");
+      }
+    }
+  }
+
+
 /* used to send data to google sheet but unusable here */
 // function sendDataToGoogleSheet(survey, options) {
 // options.showDataSaving();
@@ -2200,15 +2337,6 @@ survey
 // },
 // });
 // }
-
-function saveDatatoServer(data) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/save?type=survey', false);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(data));
-  console.log('req status ' + xhr.status);
-}
-
 
 
 $("#surveyElement")

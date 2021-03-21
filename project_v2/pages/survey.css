@@ -377,13 +377,13 @@ body {
 @media(min-width: 640px)
  {
   #sp_100 {
-	padding: 2vh 0 10vh 0;
+	padding: 2vh 0 8vh 0;
   }
 }
 @media(min-height: 800px)
  {
   #sp_100 {
-	padding: 5vh 0 15vh 0;
+	padding: 5vh 0 10vh 0;
   }
 }
 

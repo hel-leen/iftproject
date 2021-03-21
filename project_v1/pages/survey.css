@@ -140,7 +140,8 @@ body {
 /* bg */
 
 #sp_100,
-#sp_101 {
+#sp_101,
+#sp_102 {
   background-image: url(../resources/fudan.png);
   background-position: right;
   background-repeat: space;
@@ -148,72 +149,57 @@ body {
   background-attachment: fixed;
 }
 
-#sp_103,
-#sp_104 {
-  /* background-image: url(../resources/stimuli/covid-01.png); */
-  background-position-y: 200px;
-  background-position-x: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
-  background-color: white;
-}
 
-#sp_105 {
-  /* background-image: url(../resources/stimuli/covid-02.png); */
-  background-position-y: 240px;
-  background-position-x: center;
-  background-repeat: space;
-  background-size: contain;
-  background-attachment: fixed;
-  background-color: white;
-}
+
 
 /* ladder pics and stuff  */
 
 /* ladder panel!! */
-#sp_102 {
+#sp_103 {
   margin-right: 25vw;
 }
 
-#sq_118 {
+#sq_119 {
   padding-left: 5vw;
   padding-right: 0vw;
   font-size: 0.98em;
 }
 
-#sq_118_ariaTitle>span {
+#sq_119_ariaTitle>span {
   visibility: hidden;
 }
 
-#sq_118>div>fieldset {
+#sq_119>div>fieldset {
   border: 0px solid;
   position: absolute;
   left: 10%;
   margin: 15px 5px;
 }
 
-#sq_118>div.sv-question__content>fieldset>div>label {
+#sq_119>div.sv-question__content>fieldset>div>label {
   width: 100%;
 }
 
-#sq_118>div.sv-question__header.sv-question__header--location--top {
+#sq_119>div.sv-question__header.sv-question__header--location--top {
   height: 20px;
   margin-bottom: 0.04em;
 }
 
 /* pic (should edit element style in js ) */
 
-#sq_119>div>div:nth-child(2)>img {
+#sq_120 {
+	/* overflow-x: hidden; */
+}
+#sq_120>div>div:nth-child(2)>img {
   /* display: flex; */
   /* position: absolute; */
   /* right: 10%; */
   height: 430px;
   
 }
-#sp_101 > div > div:nth-child(1),
-#sp_101 > div > div:nth-child(3),
-#sp_101 > div > div:nth-child(5)
+#sp_102 > div > div:nth-child(1),
+#sp_102 > div > div:nth-child(3),
+#sp_102 > div > div:nth-child(5)
 {
 	padding-bottom: 0;
     margin-bottom: -1.15em;
@@ -227,11 +213,12 @@ body {
 
 /* sticky rating instruction */
 
-#sp_106>div>div:nth-child(1),
-#sp_109>div>div:nth-child(1),
-#sp_111>div>div:nth-child(1),
-#sp_116>div>div:nth-child(1),
-#sp_119>div>div:nth-child(1) {
+#sp_107>div>div:nth-child(1),
+#sp_110>div>div:nth-child(1),
+#sp_112>div>div:nth-child(1),
+#sp_117>div>div:nth-child(1),
+#sp_119>div>div:nth-child(1),
+#sp_122>div>div:nth-child(1) {
   z-index: 99;
   position: sticky;
   top: 0;
@@ -243,8 +230,8 @@ body {
 }
 
 /* margin between panels */
-#sp_111 > div > div:nth-child(4),
-#sp_111 > div > div:nth-child(3)
+#sp_112 > div > div:nth-child(4),
+#sp_112 > div > div:nth-child(3)
 {
 	margin-top: -3em;
 }
@@ -375,11 +362,32 @@ body {
   font-size: 0.8em;
 }
 
-@media(min-width: 420px) {
-  #sq_119 {
+/* add some blank between ladder img and the choices */
+@media(min-width: 400px) {
+  #sq_120 {
+    padding-left: 10vw;
+  }
+}
+@media(min-width: 450px) {
+  #sq_120 {
     padding-left: 15vw;
   }
 }
+
+/* add some padding on the fisrt page*/
+@media(min-width: 640px)
+ {
+  #sp_100 {
+	padding: 2vh 0 8vh 0;
+  }
+}
+@media(min-height: 800px)
+ {
+  #sp_100 {
+	padding: 5vh 0 10vh 0;
+  }
+}
+
 @media(max-width: 420px) {
 .modal-content {
   width: 85%;

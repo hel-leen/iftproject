@@ -1,0 +1,78 @@
+
+<html>
+<head>
+  <meta charset="UTF-8" content="width=device-width, height=device-height, initial-scale=1.0" name="viewport">
+
+  <title>Welcome | 欢迎</title>
+  
+  <!-- <div class="preload"> -->
+  <link as="style" href="./layout.css" rel="preload">
+  <link as="image" href="./resources/fudan.png" rel="preload">
+  <link as="script" href="./libs/jquery.min.js" rel="preload">
+  
+  <!-- <div class="prefetch"> -->
+  <link as="image" href="./resources/stimuli/ladder.png" rel="prefetch">
+  <link as="script" href="./libs/surveyjs/survey.jquery.min.js" rel="prefetch">
+  <link as="style" href="./libs/surveyjs/css/modern.css" rel="prefetch">
+  <link as="script" href="./pages/survey.js" rel="prefetch">
+  <link as="style" href="./pages/survey.css" rel="prefetch">
+  <link href="./pages/consent.html" rel="prefetch">
+  <link href="./pages/survey.html" rel="prefetch">
+  
+  <!-- <div class="script"> -->
+  <script src="./libs/jquery.min.js">  </script>
+  
+  <!-- <div class="style"> -->
+  <link href="./layout.css" rel="stylesheet">
+ 
+ <style>
+  .no_overflow
+  {
+    overflow: hidden;
+  }
+    .text_l {
+    color: rgba(0,0,0,0.75);
+  }
+  </style>
+</head>
+
+<body>
+  <div class="bg-image">
+    <p class="blank"><br></p>
+    <p class="blank"><br></p>
+    <p class="blank"><br></p>
+    <p class="blank"><br></p>
+    <div class='container'>
+      <div id="window_content">
+        <div class="title" style="display: inline-flex; align-items: center; margin: auto;">
+          <p class="fade-in" style="margin: 0 5px 0 50px">欢迎参加研究</p>
+          <div><img class="fade-in" height="50px" src="./resources/IFT.png" style="object-fit: contain;" width="50px">
+          </div>
+        </div>
+        <div>
+          <p class='text_l fade-in'>这是一项关于新冠疫情的<br>
+          <b>内隐认知与态度</b>
+          <br>调查及实验研究项目<br>
+          <br></p>
+        </div>
+        <button class="button fade-in" id="btn_start">了解详情</button>
+      </div>
+    </div>
+  </div>
+  <script>
+$(document).ready(function() {
+    $("body").fadeIn("slow");
+
+  });
+  
+    document.getElementById('window_content').style.margin = 0.1 * window.innerHeight + "px 0 0 0";
+    $("#btn_start").click(function() {
+       $('*').addClass('no_overflow');
+       $("body").fadeOut("slow");
+
+      setTimeout(function(){ 
+      window.location.href = './pages/consent.html' }, 500);
+  });
+  </script>
+</body>
+</html>

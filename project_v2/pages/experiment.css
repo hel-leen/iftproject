@@ -1,0 +1,258 @@
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fafafa;
+}
+
+/* containers */
+
+.display,
+.jspsych-display-element,
+.jspsych-content-wrapper,
+.jspsych-content {
+  text-align: center;
+  font-size: 20px;
+  width: 96%;
+  /* padding:0 2%; */
+  position: relative;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.jspsych-display-element {
+  width: 100%;
+}
+
+/* experiment progressbar */
+
+#jspsych-loading-progress-bar-container {
+  /* height: 10px; */
+  width: 100%;
+  /* background-color: #ddd; */
+  /* margin: auto; */
+}
+
+#jspsych-progressbar-container {
+  color: #555;
+  border-bottom: 0px solid #dedede;
+  background-color: #fff;
+  margin-bottom: 0em;
+  text-align: center;
+  padding: 0px 0px;
+  width: 100%;
+  line-height: 0em;
+}
+
+#jspsych-progressbar-outer {
+  width: 100%;
+  margin: auto;
+  height: 10px;
+}
+
+#jspsych-progressbar-container span {
+  /* font-size: 14px; */
+  padding: 0px;
+}
+
+#jspsych-progressbar-inner {
+  background-color: #778899;
+  height: 100%;
+}
+
+/* iat stuff */
+
+#iat_display {
+  border: 0px solid blue;
+  font-size: 25px;
+  line-height: 2.1;
+  width: 90%;
+}
+
+.jspsych-iat-stim {
+  border: 0px solid green;
+}
+
+#jspsych_iat_stim_image {
+  height: auto;
+  max-width: 90%;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.35);
+}
+
+#jspsych_iat_stim_word {
+  font-size: 60px;
+  font-weight: 400;
+}
+
+#disp_fixation {
+  font-size: 80px;
+  font-weight: 200;
+  /* transform: translateY(-0vh);  */
+}
+
+#pretrial_tips {
+  margin-top: -5vh;
+}
+
+#intrial_tips {
+  position: absolute;
+  top: 20%;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+#wrongImgContainer {}
+
+#wrongImgContainer>img {
+  /* margin: -3% 0; */
+}
+
+/* buttons */
+
+#jspsych-fullscreen-btn {
+  background-color: #556677;
+  border: none;
+  color: white;
+  width: 180px;
+  height: 48px;
+  font-size: 22px;
+  outline: none;
+  position: relative;
+  bottom: 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 100px;
+  margin: auto;
+  cursor: pointer;
+  -ms-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.button:hover {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24), 0 7px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:active {
+  background-color: #334455;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  background-color: #778899;
+  color: #556677;
+}
+
+.btn_iat,
+.jspsych-btn,
+jspsych-html-button-response-button {
+  outline: none;
+  position: fixed;
+  width: 210px;
+  height: 48px;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.btn_iat:active {
+  background-color: #223344;
+}
+
+.btn_iat:disabled {
+  background-color: #bbccdd;
+  color: #92ABBA;
+}
+
+#btn_iat_left,
+#jspsych-html-button-response-button-0 {
+  /* margin-left: 2%; */
+}
+
+#btn_iat_right,
+#jspsych-html-button-response-button-1 {
+  /* margin-right: 2%; */
+}
+
+@media(max-aspect-ratio: 1/1) {
+  #jspsych-fullscreen-btn {
+    bottom: 10%;
+    width: 135px;
+    height: 40px;
+    font-size: 17.5px;
+    font-weight: 400;
+  }
+  .btn_iat {
+    width: 40%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  #btn_iat_left,
+  #jspsych-html-button-response-button-0 {
+    /* margin-left: -2%; */
+  }
+  #btn_iat_right,
+  #jspsych-html-button-response-button-1 {
+    /* margin-right: -2%; */
+  }
+
+  #iat_display {
+    font-size: 20px;
+    line-height: 2.2;
+  }
+  #disp_fixation {
+    /* transform: translateY(-0px);  */
+  }
+}
+
+/* for small mobile device screen */
+
+@media(max-width: 460px) {
+  .blank {
+    margin: 1vh 0;
+  }
+  .button {
+    width: 130px;
+    height: 40px;
+    font-size: 22px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .btn_iat {
+    font-size: 21px;
+    font-weight: 400;
+  }
+
+  #iat_display {
+    font-size: 17px;
+    line-height: 2;
+  }
+}
+
+/* for smaller mobile device screen */
+
+@media(max-width: 400px) {}
+
+/* for even smaller mobile device screen */
+
+@media(max-width: 350px) {
+  #iat_display {
+    font-size: 15px;
+    /* line-height: 1.6; */
+  }
+}

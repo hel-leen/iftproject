@@ -1,0 +1,446 @@
+body {
+  /* background-color: rgba(250, 250, 250, 0.8); */
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eeeeee;
+  background: rgba(235, 235, 235, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #bbb;
+}
+
+#window_content {
+  /* width: 80%;  */
+}
+
+#preSurvey {
+  width: 100%;
+  margin: 20vh 0;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+}
+
+#surveyElement {
+  display: inline-block;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.sv_instruction {
+  font-size: 1.2em;
+  /* color: #223344; */
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  line-height: 2;
+}
+
+.sv_description {
+  font-size: 1.1em;
+  color: #223344;
+  padding-left: 1.15em;
+  padding-right: 1.15em;
+  line-height: 1.5;
+}
+
+#surveyElement > div > form > div.sv-container-modern > div.sv-body > div.sv-footer.sv-body__footer.sv-clearfix > input.sv-btn.sv-footer__prev-btn{
+     /* display: none;   */
+}
+
+/* progressbar */
+
+#surveyElement>div>form>div.sv-container-modern>div.sv-body>div.sv-progress.sv-body__progress {
+  margin: auto;
+}
+
+#surveyElement>div>form>div.sv-container-modern>div.sv-body>div.sv-progress.sv-body__progress>span {
+  visibility: hidden;
+}
+
+#surveyElement>div>form>div.sv-container-modern>div.sv-body>div.sv-progress.sv-body__progress>div {}
+
+/* timer */
+/* #surveyElement>div>form>div.sv-container-modern>div.sv-body>div:nth-child(3) { */
+  /* margin: 35px 0 0 0px; */
+  /* text-align: center; */
+/* } */
+
+/* survey title  */
+.sv-container-modern__title {
+  padding-left: 0.05em;
+  color: #1ab394;
+  padding-top: 2em;
+  padding-bottom: 0.9375em;
+}
+
+/* questions and rows */
+
+.survey_question_title {
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    padding: 0.5em;
+    margin: 0.1em 0;
+}
+
+.survey_row {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+.survey_row:last-child {
+  padding-top: 0.8em;
+  padding-bottom: 0em;
+}
+.survey_row:first-child {
+  padding-top: 0.8em;
+  padding-bottom: 0em;
+}
+/* .survey_row:not(:last-child) { */
+  /* padding-top: 0.6em; */
+  /* padding-bottom: 0.6em; */
+/* } */
+
+
+/* comment */
+
+.survey_comment {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0.06em solid #d4d4d4;
+  border-radius: 0;
+  box-sizing: border-box;
+  padding: 0.25em 0.87em;
+  font-family: inherit;
+  font-size: 1em;
+  min-height: 15em;
+  padding: 1em;
+  outline: none;
+  width: 100%;
+}
+
+/* bg */
+
+#sp_100 {
+  background-image: url(../resources/fudan.png);
+  background-position: right;
+  background-repeat: space;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+
+
+/* ladder pics and stuff  */
+
+/* ladder panel!! */
+#sp_110 {
+  margin-right: 25vw;
+}
+
+#sq_170 {
+  padding-left: 5vw;
+  padding-right: 0vw;
+  font-size: 0.98em;
+}
+
+#sq_170_ariaTitle>span {
+  visibility: hidden;
+}
+
+#sq_170>div>fieldset {
+  border: 0px solid;
+  position: absolute;
+  left: 10%;
+  margin: 15px 5px;
+}
+
+#sq_170>div.sv-question__content>fieldset>div>label {
+  width: 100%;
+}
+
+#sq_170>div.sv-question__header.sv-question__header--location--top {
+  height: 20px;
+  margin-bottom: 0.04em;
+}
+
+/* pic (should edit element style in js ) */
+
+#sq_171 {
+	/* overflow-x: hidden; */
+}
+#sq_171>div>div:nth-child(2)>img {
+  /* display: flex; */
+  /* position: absolute; */
+  /* right: 10%; */
+  height: 430px;
+  
+}
+#sp_109 > div > div:nth-child(1),
+#sp_109 > div > div:nth-child(3),
+#sp_109 > div > div:nth-child(5)
+{
+	padding-bottom: 0;
+    margin-bottom: -1.15em;
+}
+
+/* end of ses lader */
+
+#sq_175 {
+  margin-top: 1.2em;
+}
+
+/* sticky rating instruction */
+
+#sp_104>div>div:nth-child(1),
+#sp_105>div>div:nth-child(1),
+#sp_111>div>div:nth-child(1),
+#sp_113>div>div:nth-child(1),
+#sp_118>div>div:nth-child(1),
+#sp_120>div>div:nth-child(1)
+{
+  z-index: 99;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  padding-right: 2%;
+  padding-bottom: 0;
+}
+
+/* margin between aas and sq panels */
+#sp_113 > div > div:nth-child(4),
+#sp_113 > div > div:nth-child(3)
+{
+	margin-top: -3em;
+}
+
+/* covid checker */
+
+#sq_107,
+#sq_108 {
+  margin: 25px 0;
+}
+
+#surveyResult {
+  width: 80%;
+  margin: auto;
+  line-height: 2;
+}
+
+/* modal stuff */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 91;
+  width: 100%;
+  height: 100%;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 8px 8px 0 0;
+  text-align: left;
+  overflow: auto;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24), 0 7px 15px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+.modal-content {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  bottom: 10%;
+  max-height: 80%;
+  left: 0;
+  right: 0;
+  overflow: hidden auto;
+  position: fixed;
+  bottom: 10%;
+  border-radius: 8px;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0);
+}
+
+.modal_title {
+  background-color: #fff;
+  width: 100px;
+  text-align: center;
+  padding: 6px 10px;
+}
+
+/* toast stuff  */
+
+#snackbar {
+  visibility: hidden;
+  min-width: 198px;
+  margin-left: -99px;
+  background-color: #345;
+  background: rgba(50, 70, 99, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24), 0 7px 15px 0 rgba(0, 0, 0, 0.19);
+  padding: 16px;
+  position: fixed;
+  z-index: 99;
+  left: 50%;
+  bottom: 80px;
+  font-size: 15px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+/* The Close Button */
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.survey_matrix {
+  width: 100%;
+  /* background-color: rgba(159, 159, 159, 0.1); */
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.8em;
+}
+
+.btn_rubic {
+  background-color: #7D3763;
+  font-size: 0.8em;
+}
+
+.btn_grey {
+  background-color: #aaa;
+  font-size: 0.8em;
+}
+
+/* add some blank between ladder img and the choices */
+@media(min-width: 400px) {
+  #sq_171 {
+    padding-left: 10vw;
+  }
+}
+@media(min-width: 450px) {
+  #sq_171 {
+    padding-left: 15vw;
+  }
+}
+
+/* add some padding on the fisrt page*/
+@media(min-width: 640px) {
+  #sp_100 {
+	padding: 8vh 0;
+  }
+}
+@media(max-width: 420px) {
+.modal-content {
+  width: 85%;
+  }
+  
+.sv_instruction {
+    font-size: 1.1em;
+    line-height: 2;
+}
+
+.survey_question_title {
+    font-size: 1.1em;
+    line-height: 1.8;
+
+}
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    bottom: -900px;
+    opacity: 0
+  }
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+@keyframes slideIn {
+  from {
+    bottom: -900px;
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

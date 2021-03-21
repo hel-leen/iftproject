@@ -1,0 +1,97 @@
+
+
+old version
+
+#sp_100  demo
+#sp_101  ses
+#sp_102 ladder panel
+#sp_103  covid
+#sp_104  covid2
+#sp_105   priming
+#sp_106  panas instr
+#sp_107  panas 1
+#sp_108  panas 2
+#sp_109  les 
+#sp_110  SES_C
+#sp_111  sq instr
+#sp_112 aas1
+#sp_113 aas2
+#sp_114 sq1
+#sp_115 sq2
+#sp_116 rwa instr
+#sp_117 rwa 1
+#sp_118 rwa 2
+#sp_119 das instr
+#sp_120 das
+
+#sq_118 ladder choice
+#sq_119 ladder img
+
+
+new version
+
+#sp_100  instru
+#sp_101  demo
+#sp_102  ses
+#sp_103 ladder panel
+#sp_104  covid
+#sp_105  covid2
+#sp_106   priming
+#sp_107  panas instr
+#sp_108  panas 1
+#sp_109  panas 2
+#sp_110  les 
+#sp_111  SES_C
+#sp_112  sq instr
+#sp_113 aas1
+#sp_114 aas2
+#sp_115 sq1
+#sp_116 sq2
+#sp_117 rwa instr
+#sp_118 rwa 1
+#sp_119 rwa 2
+#sp_120 das instr
+#sp_121 das
+
+#sq_119 ladder choice
+#sq_120 ladder img
+
+#sq_132 covid checker
+#sq_131 covid checker
+
+
+
+newer version
+
+#sp_100  instru
+#sp_101  covid
+#sp_102  covid2
+#sp_103  priming
+#sp_104  das instr
+#sp_105  panas instr
+#sp_106  panas 1
+#sp_107  panas 2
+#sp_108  demo
+#sp_109  ses
+#sp_110 ladder panel
+#sp_111  les instr
+#sp_112  les+SES_C
+#sp_113  sq instr
+#sp_114 aas1
+#sp_115 aas2
+#sp_116 sq1
+#sp_117 sq2
+#sp_118 WASSUP_intro 
+#sp_119 WASSUP
+#sp_120 rwa instr
+#sp_121 rwa 1
+#sp_122 rwa 2
+
+
+
+#sq_107 covid checker
+#sq_108 covid checker
+#sq_170 ladder choice
+#sq_171 ladder img
+
+

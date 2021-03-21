@@ -140,13 +140,13 @@ function surveyValidateQuestion(s, options) {
     }
     else {
       if (options.value.search(/["我感觉平静心安愿忧惧憾悲情冷落生死怕苦笑意幸福真善爱喜气难受顺利思自负世道欢快乐高重如忍默容恶执守怀悦惊泪烦知虚疲弱困境美妙孤单欣慰"]/i) < 0) {
-        options.error = "你好像没有在描述中提及自己的感受，请尽可能详细地把你在想象场景中体会到的情绪描述出来";
+        options.error = "你好像没有在描述中提及自己的感受，请尽可能把你在想象场景中体会到的情绪描述出来";
       }
       if (options.value.length < 40) {
-        options.error = "你的描述好像有点太简短，请尽可能详细地描述细节";
+        options.error = "你的描述好像有点太简短了，请尽可能详细地描述细节";
       }
       if (options.value.length > 1800) {
-        options.error = "你的描述好像有些太长，请删去一部分再提交";
+        options.error = "你的描述好像有点太长了，请删去一部分再试";
       }
     }
   }
@@ -1902,7 +1902,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "WASSUP_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你个人的人生价值有关。请阅读以下说法，并逐一评价你是否可能会将它们设定为自己的<b>人生目标</b>。</p><p class='sv_description'>“1”分代表“绝对不可能，<br>“2”分代表“不太可能”，<br>“3”分代表“不能确定是否可能”，<br>“4”分代表“有可能”，<br>“5”分代表“肯定会”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你个人的人生价值有关。请阅读以下说法，并逐一评价你是否可能将它们设定为自己的<b>人生目标</b>。</p><p class='sv_description'>“1”分代表“绝对不可能，<br>“2”分代表“不太可能”，<br>“3”分代表“不能确定是否可能”，<br>“4”分代表“有可能”，<br>“5”分代表“肯定会”。</p>"
         },
         {
           "type": "panel",
@@ -1914,7 +1914,7 @@ var json = {
               "name": "WASSUP_RE01",
               "title": {
                 "en-us": " Everyone I know will love me.",
-                "zh-cn": "让身边的所有人都喜欢我。",
+                "zh-cn": "拥有十位以上亲密无间的朋友。",
               }
             },
 			{
@@ -1922,15 +1922,23 @@ var json = {
               "name": "WASSUP_RE02",
               "title": {
                 "en-us": " I will have more than 10 close friends.",
-                "zh-cn": "拥有十位以上亲密无间的朋友。",
+                "zh-cn": "获得身边所有人的喜爱。",
               }
             },
 			{
               "type": "rating",
+              "name": "WASSUP_F01",
+              "title": {
+                "en-us": "I will be famous",
+                "zh-cn": "成为世界著名的人物。",
+              }
+            },
+						{
+              "type": "rating",
               "name": "WASSUP_CR01",
               "title": {
                 "en-us": "I will produce a great creative work.",
-                "zh-cn": "完成一项重要的、具有开拓性和挑战性的任务。",
+                "zh-cn": "从事具有开拓性和挑战性的工作。",
               }
             },
 			{
@@ -1938,7 +1946,7 @@ var json = {
               "name": "WASSUP_CR02",
               "title": {
                 "en-us": "I will make an important contribution in the field of art or science.",
-                "zh-cn": "在科学或文艺领域作出重大的贡献。",
+                "zh-cn": "在科学或文学、艺术领域作出重大的贡献。",
               }
             },
 			{
@@ -1946,7 +1954,7 @@ var json = {
               "name": "WASSUP_RE03",
               "title": {
                 "en-us": "Whenever I have a problem, my friends will drop what they are doing to support me.",
-                "zh-cn": "在我有所需要时，我的亲人和朋友们愿意舍弃自己的利益来帮助我。",
+                "zh-cn": "结交许多愿意舍弃自己的利益来帮助我的朋友。",
               }
             },
 			{
@@ -1954,7 +1962,7 @@ var json = {
               "name": "WASSUP_CR03",
               "title": {
                 "en-us": "My creative work will be acknowledged by experts in my field.",
-                "zh-cn": "进行开创性的工作并且获得业内专家的一致认可。",
+                "zh-cn": "从事开创性的工作并且获得业内专家的一致认可。",
               }
             },
 			{
@@ -1962,7 +1970,15 @@ var json = {
               "name": "WASSUP_CR04",
               "title": {
                 "en-us": "I will create work with enduring value that is original and useful.",
-                "zh-cn": "创作出富有创意而又具有重要价值的作品。",
+                "zh-cn": "完成一项具有重要价值而又富有创意的发明。",
+              }
+            },
+			{
+              "type": "rating",
+              "name": "WASSUP_F02",
+              "title": {
+                "en-us": "I will have a major role in a movie.",
+                "zh-cn": "主演一部电影。",
               }
             },
 			{

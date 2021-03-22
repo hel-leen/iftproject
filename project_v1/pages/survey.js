@@ -33,35 +33,19 @@ Survey.settings.lazyRowsRendering = true;
 
 // page index  (ignored)
 function doOnCurrentPageChanged(survey) {
-  document
-    .getElementById('pageSelector')
-    .value = survey.currentPageNo;
-  document
-    .getElementById('surveyPrev')
-    .style
-    .display = !survey.isFirstPage ?
+  document.getElementById('pageSelector').value = survey.currentPageNo;
+  document.getElementById('surveyPrev').style.display = !survey.isFirstPage ?
     "inline" :
     "none";
-  document
-    .getElementById('surveyNext')
-    .style
-    .display = !survey.isLastPage ?
+  document.getElementById('surveyNext').style.display = !survey.isLastPage ?
     "inline" :
     "none";
-  document
-    .getElementById('surveyComplete')
-    .style
-    .display = survey.isLastPage ?
+  document.getElementById('surveyComplete').style.display = survey.isLastPage ?
     "inline" :
     "none";
-  document
-    .getElementById('surveyProgress')
-    .innerText = "Page " + (
-      survey.currentPageNo + 1) + " of " + survey.visiblePageCount + ".";
+  document.getElementById('surveyProgress').innerText = "Page " + (survey.currentPageNo + 1) + " of " + survey.visiblePageCount + ".";
   if (document.getElementById('surveyPageNo'))
-    document
-    .getElementById('surveyPageNo')
-    .value = survey.currentPageNo;
+    document.getElementById('surveyPageNo').value = survey.currentPageNo;
 }
 
 function setupPageSelector(survey) {
@@ -69,11 +53,11 @@ function setupPageSelector(survey) {
   for (var i = 0; i < survey.visiblePages.length; i++) {
     var option = document.createElement("option");
     option.value = i;
-    option.text = "Page " + (
-      i + 1);
+    option.text = "Page " + (i + 1);
     selector.add(option);
   }
 }
+
 
 
 
@@ -181,7 +165,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "demograph_intro",
-          "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br><br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退/返回键或刷新页面，否则问卷内容将会全部重新加载。<br>当每页题目全部填写完毕后，页面将自动进入下一页。<br><br>如果你已准备好，请点击右下方的<b style='color: #223366;'>下一页</b>按钮开始填写问卷。<br></p></div>"
+          "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br><br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退、返回键或刷新页面，否则问卷内容将会全部重新加载。<br>当每页题目全部填写完毕后，页面将自动进入下一页。<br><br>如果你已准备好，请点击下方的<b style='color: #223366;'>开始问卷</b>按钮开始填写问卷。<br></p></div>"
         },
 		        {
           "type": "text",
@@ -220,7 +204,7 @@ var json = {
           "html": "<p class='sv_instruction'>以下部分将询问你的个人相关信息，以便我们在研究中比较不同人群之间的差异。<br></p></div>"
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "radiogroup",
           "name": "gender",
           "title": {
@@ -253,7 +237,7 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "birthyear",
           "title": {
@@ -263,7 +247,7 @@ var json = {
           "choices": yob.reverse(),
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "region",
           "title": "请选择你居住的省份: ",
@@ -271,14 +255,13 @@ var json = {
 
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "radiogroup",
           "name": "city",
           "title": {
             "en-us": "City",
             "zh-cn": "你的主要居住地属于哪种区域？"
           },
-          "hideNumber": true,
           "choices": [{
               "value": "1",
               "text": {
@@ -300,7 +283,7 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "radiogroup",
           "name": "ethnic",
           "title": {
@@ -370,7 +353,7 @@ var json = {
           "hasOther": true
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "edu",
           "title": {
@@ -471,7 +454,7 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "employment",
           "title": {
@@ -545,7 +528,7 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "relationship",
           "title": {
@@ -599,14 +582,13 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "radiogroup",
           "name": "religiosity",
           "title": {
             "en-us": "Please indicate the degree of your religiosity.",
             "zh-cn": "你是否信仰宗教？"
           },
-          "hideNumber": true,
           "choices": [{
               "value": "1",
               "text": {
@@ -638,7 +620,7 @@ var json = {
           ]
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "religion",
           "visibleIf": "{religiosity} > 1",
@@ -713,7 +695,7 @@ var json = {
           "hasOther": true
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "nonreligion",
           "visibleIf": "{religiosity} == 1",
@@ -761,7 +743,7 @@ var json = {
           "type": "panel",
           "name": "ses_ladder_page_container_panel",
           "elements": [{
-              "isRequired": false,
+              "isRequired": true,//toggle
               "type": "radiogroup",
               "name": "ses_scale",
               "width": "15vw",
@@ -786,7 +768,7 @@ var json = {
           "html": "<p class='sv_instruction' style='color: black; font-size: 1.1em;'> 请从以下“1”到“10”的数字中选择一个来代表你在<b>十年前</b>所在的等级：</p>"
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "ses_scale_past",
           "titleLocation": "hidden",
@@ -799,7 +781,7 @@ var json = {
           "html": "<p class='sv_instruction' style='color: black; font-size: 1.1em;'> 请从以下“1”到“10”的数字中选择一个来代表你<b>14岁时</b>家庭所在的等级：</p>"
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "dropdown",
           "name": "ses_scale_child",
           "titleLocation": "hidden",
@@ -875,14 +857,14 @@ var json = {
         {
           "type": "boolean",
           "name": "covidinfect",
-          "isRequired": false,
+          "isRequired": true,//toggle
           "title": {
             "en-us": "Have you been diagnosed with COVID-19?",
             "zh-cn": "你是否曾被确诊为感染新冠病毒？"
           },
         },
         {
-          "isRequired": false,
+          "isRequired": true,//toggle
           "type": "boolean",
           "name": "covidinfect_family",
           "title": {
@@ -1405,7 +1387,7 @@ var json = {
       "elements": [{
           "type": "html",
           "name": "LES_intro",
-          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你的成长经历有关。请回忆你的14岁之前的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
+          "html": "<p class='sv_instruction' style='margin-top: 0.5em;'>以下部分与你的成长经历有关。请回忆你<b>14岁前</b>的经历，然后评价以下说法是否符合你的成长经历的实际情况。</p><p class='sv_description'>“1”分代表“完全不符合”，<br>“2”分代表“较不符合”，<br>“3”分代表“说不清”，<br>“4”分代表“比较符合”，<br>“5”分代表“完全符合”。</p>"
         },
         {
           "type": "panel",
@@ -2256,6 +2238,11 @@ var json = {
   "showProgressBar": "top",
   "goNextPageAutomatic": true,
   "clearInvisibleValues": "none",
+  "firstPageIsStarted": true,
+  "startSurveyTex": {
+    "en-us": "Start",
+    "zh-cn": "开始"
+  },
   "pagePrevText": {
     "en-us": "Prev",
     "zh-cn": "上一页"

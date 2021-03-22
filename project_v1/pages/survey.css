@@ -149,6 +149,10 @@ body {
   background-attachment: fixed;
 }
 
+#sp_100 {
+  border-block-start: 2.4px solid rgb(85, 102, 119);
+}
+
 
 
 

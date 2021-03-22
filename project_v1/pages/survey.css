@@ -352,6 +352,10 @@ body {
   font-size: 0.8em;
 }
 
+.sv-footer__start-btn:hover {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 7px 15px 0 rgba(0, 0, 0, 0.09);
+}
+
 .btn_rubic {
   background-color: #7D3763;
   font-size: 0.8em;
@@ -378,13 +382,13 @@ body {
 @media(min-width: 640px)
  {
   #sp_100 {
-	padding: 2vh 0 8vh 0;
+	padding: 2vh 0;
   }
 }
-@media(min-height: 800px)
+@media(min-height: 960px)
  {
   #sp_100 {
-	padding: 5vh 0 10vh 0;
+	padding: 3vh 0;
   }
 }
 

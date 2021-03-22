@@ -164,7 +164,7 @@ var json = {
       "isRequired": false,
       "elements": [{
           "type": "html",
-          "name": "demograph_intro",
+          "name": "intro",
           "html": "<p class='sv_instruction'>下面你需要填写一份问卷，请在<b>安静的环境下</b>完成本部分内容。<br><br>在填写过程中，请<b style='color: #661122;'>不要</b>点击后退、返回键或刷新页面，否则问卷内容将会全部重新加载。<br>当每页题目全部填写完毕后，页面将自动进入下一页。<br><br>如果你已准备好，请点击下方的<b style='color: #223366;'>开始问卷</b>按钮开始填写问卷。<br></p></div>"
         },
 		        {

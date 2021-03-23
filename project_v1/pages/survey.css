@@ -140,10 +140,10 @@ body {
 /* bg */
 
 #sp_100,
-#sp_101,
-#sp_102 {
+#sp_101
+{
   background-image: url(../resources/fudan.png);
-  background-position: right;
+  background-position: center;
   background-repeat: space;
   background-size: cover;
   background-attachment: fixed;
@@ -201,12 +201,19 @@ body {
   height: 430px;
   
 }
+
+/* reduce padding for stuff below ladder */
 #sp_102 > div > div:nth-child(1),
-#sp_102 > div > div:nth-child(3),
+#sp_102 > div > div:nth-child(3)
+{
+	padding-bottom: 0;
+    margin-bottom: -1.5em;
+}
+
 #sp_102 > div > div:nth-child(5)
 {
 	padding-bottom: 0;
-    margin-bottom: -1.15em;
+    margin-bottom: -2.65em;
 }
 
 /* end of ses lader */

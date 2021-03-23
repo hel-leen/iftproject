@@ -1188,7 +1188,7 @@ var json = {
           "isRequired": true, //no toggle
           "validators": [{
             "type": "text",
-            "minLength": 30,
+            // "minLength": 30,
             // "maxLength": 3000,
             "allowDigits": true
           }],
@@ -1203,7 +1203,7 @@ var json = {
           "isRequired": true,
           "validators": [{
             "type": "text",
-            "minLength": 30,
+            // "minLength": 30,
             // "maxLength": 3000,
             "allowDigits": true
           }],

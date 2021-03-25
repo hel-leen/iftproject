@@ -21,8 +21,8 @@ def save():
         return 'Type ' + req_type + 'not defined', 400
 
     path = os.path.join(JSON_DESTINATION, req_type, str(time.time()) + '_' + uuid + '.json')
-    with open(path, 'w') as f:
-        json.dump(request_dict, f)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(request_dict, f, ensure_ascii=False)
 
     return 'Happy 🐈 i am'
 

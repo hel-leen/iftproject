@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8" content="width=device-width, height=device-height, initial-scale=1.0" name="viewport">
+
+  <title>TPT Project</title>
+  
+  <!-- <div class="jspsych"> -->
+  <script src="../libs/jspsych/jspsych.js"></script>
+  <script src="../libs/jspsych/plugins/jspsych-survey-text.js"></script>
+  <script src="../libs/jspsych/plugins/jspsych-survey-multi-choice.js"></script>
+  <script src="../libs/jspsych/plugins/jspsych-iat-button.js"></script>
+  <script src="../libs/jspsych/plugins/jspsych-fullscreen.js"></script>
+  
+  <!-- <div class="otherstuff"> -->
+  <script src="../libs/jquery.min.js">  </script>
+  
+  <!-- <div class="style"> -->
+  <link href="../libs/jspsych/css/jspsych.css" rel="stylesheet">
+  <link href="../layout.css" rel="stylesheet">
+  <link href="../libs/surveyjs/css/modern.css" rel="stylesheet" type="text/css">
+  <link href="./survey.css" rel="stylesheet">
+  <link href="./experiment.css" rel="stylesheet">
+  
+  <!-- <div class="prefetch"> -->
+  <!-- <link href="./information.html" rel="prerender"> -->
+  
+   <style>
+.button, #jspsych-fullscreen-btn, #jspsych-btn jspsych-survey-text {
+  background-color: #5cd0b7;
+  border: none;
+  color: white;
+  width: 180px;
+  height: 48px;
+  font-size: 22px;
+  outline: none;
+  position: relative;
+  bottom: 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 100px;
+  margin: auto;
+  cursor: pointer;
+  -ms-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.jspsych-display-element input[type="text"] {
+    font-size: 20px;
+	padding: 4px;
+    margin-bottom: 55px;
+}
+
+.btn_iat,
+.jspsych-btn,
+jspsych-html-button-response-button {
+  background-color: #5cd0b7;
+  color: white;
+  outline: none;
+  position: fixed;
+  width: 210px;
+  height: 48px;
+  font-size: 22px;
+  font-weight: 400;
+  border-radius: 100px;
+}
+
+
+#jspsych-survey-text-next, #jspsych-survey-multi-choice-next, #jspsych-fullscreen-btn {
+  background-color: #5cd0b7;
+  color: white;
+  outline: none;
+  position: inherit;
+  width: 180px;
+  height: 48px;
+  font-size: 22px;
+  font-weight: 400;
+    margin-bottom: 20px;
+}
+form#jspsych-survey-multi-choice-form {
+  display: inline-block;
+  margin-left: 1em;
+
+}
+label.jspsych-survey-multi-choice-text input[type='radio'] {
+    margin-right: 1em;
+    margin-left: -25px;
+}
+.jspsych-survey-multi-choice-option {
+    margin-left: 20px;
+}
+.btn_iat:active {
+  background-color: #5cd0b7;
+}
+
+.btn_iat:disabled {
+  background-color: #92CABB;
+  color: #5ca097;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(242, 253, 250, 0.8);
+}
+
+#jspsych-progressbar-inner {
+  background-color: #5cd0b7;
+  height: 100%;
+}
+
+@media (hover: hover) {
+.jspsych-btn:hover {
+    background-color: #5cd9bB;
+    border-color:  rgba(0, 0, 0, 0);
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24), 0 7px 15px 0 rgba(0, 0, 0, 0.19);
+}
+}
+
+@media(max-aspect-ratio: 1/1) {
+  .button,
+  #jspsych-survey-text-next, #jspsych-survey-multi-choice-next, #jspsych-fullscreen-btn {
+    bottom: 10%;
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+.display, .jspsych-display-element, .jspsych-content-wrapper, .jspsych-content {
+    font-size: 17px;
+}
+}
+  </style>
+</head>
+
+<body>
+  <div id='experiment_content'></div>
+  <div id='pre_experiment'> </div>
+  <script>
+  
+  // loading effect
+  $("#pre_experiment").html("<p style='padding:20vh 0; '>实验加载中，请稍候....</p>");
+  $(document).ready(function(){
+    $("#experiment_content").fadeIn("slow");
+    $("#pre_experiment").fadeOut();
+  });
+  </script> 
+  <script>
+  // assign the stims that belonged to 4 groups respectively 
+const category_info = [
+  {
+    Group: "运动",
+    Word: [
+      "篮球",
+      "羽毛球",
+      "网球",
+      "足球 ",
+      "乒乓球",
+	  "体操",
+      "跑步机",
+      "跳绳 ",
+      "哑铃",
+      "游泳 ",
+    ],
+    Image: null
+  },
+  {
+    Group: "休闲",
+    Word: [
+      "电影院",
+      "电视机",
+      "手机",
+      "电脑 ",
+      "大床",
+      "耳机",
+      "扑克牌 ",
+      "沙发",
+      "枕头 ",
+	  "被子",
+    ],
+    Image: null
+  },
+  {
+    Group: "正面的",
+    Word: [
+      "畅快",
+      "自信",
+      "快乐",
+      "阳光",
+      "希望",
+      "激情",
+      "喜悦",
+      "成功",
+      "放松",
+      "魅力",
+    ],
+    Image: null
+  },
+  {
+    Group: "负面的",
+    Word: [
+      "绝望",
+      "悲观",
+      "沮丧",
+      "自卑",
+      "痛苦",
+      "无聊",
+      "枯燥",
+      "阴暗",
+      "讨厌",
+      "懒惰"
+    ],
+    Image: null
+  },
+  {
+    Group: "正面的",
+    Word: [
+      "激情",
+    ],
+    Image: null
+  },
+  {
+    Group: "负面的",
+    Word: [
+      "懒惰",
+    ],
+  }
+];
+
+
+// get user ID
+var userInfo = {
+  url: window.location.href,
+  uuid: "cxm",
+  timestamp: new Date().getTime(),
+}
+
+//randomize the placement of pos and neg labels 
+//randomize the cong and incong test order 
+var rdm = Math.floor((Math.random() * 2));
+var rdm2 = Math.floor((Math.random() * 2));
+
+//add the info 
+// jsPsych.data.get().addToAll
+jsPsych.data.addProperties({
+  uuid: "cxm",
+  timestamp: userInfo.timestamp,
+  label_position: rdm,
+  test_order: rdm2
+});
+
+
+// count the number of trials
+var n_practice = 3;
+var n_cong_incong = 0;
+n_cong_incong += category_info[2].Word.length;
+n_cong_incong += category_info[3].Word.length;
+
+var n_trials = 5 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length) + 6 * (category_info[4].Word.length + category_info[5].Word.length) + 2 * n_practice;
+console.log(' uuid: ' + userInfo.uuid, '\n number of trials: ' +n_trials);
+
+
+// assign the instructions 
+const instr = [
+  '<br>',
+  '<div class="text_m"  style="margin-top: 3vh;">接下来，你需要将屏幕中间出现的词语通过尽可能快地按相应的按钮进行分类。 <br>',
+  ' 请浏览以下需要分类的词语以及它们所属的类别（无需进行记忆）：<br> ',
+    '<p class="text_s">如果你已准备好，点击下面的“继续”按钮开启全屏模式，并正式开始测验</p><br>',
+  [' 注意屏幕下方的左右两枚按钮<br><br>',
+  ' <b style="color: #661122;">注意</b>分类按钮上的标签已变化。<br><br>',
+  ' <b style="color: #661122;">注意</b>分类按钮上标签的变化。<br><br>',
+  ' <b style="color: #661122;">注意</b>，下面我们将提高任务的难度。 <br><br>',
+  ' <b style="color: #661122;">注意</b>，下面任务难度将会提高。 <br><br>',
+  ],
+  ' <big style="line-height: 2;">如果词语属于<b>',
+  '</b>或者<b>',
+  '</b>，请按左边的按钮 <br></big>',
+  '</b>，请按右边的按钮  <br></big>',
+  ' <br>词语或图片将每次一个呈现在屏幕中间，<br>请在确保正确的情况下<b style="color: #22CC99;">尽可能快</b>地按键。 ',
+  '<br>快速反应时少量错误属正常情况，请无需担心。',
+  '<br><br>点击任意按钮开始测试<br><br>',
+  ' <br> 你已完成测验。感谢你的参与！'
+
+];
+
+
+
+// assigning the blocks 
+const instructions_block_default = {
+  type: 'iat-button',
+  stim_btn_association: "both",
+  label_conjunction: ' 或 ',
+  display_fixation: false,
+  display_pretrial_instructions: true,
+  response_ends_trial: true,
+  data: {
+    iat_type: 'instruction'
+  }
+};
+
+const trial_block_default_timeline = {
+  type: 'iat-button',
+  stim_image: jsPsych.timelineVariable('stim_image'),
+  stim_word: jsPsych.timelineVariable('stim_word'),
+  stim_btn_association: jsPsych.timelineVariable('stim_btn_association'),
+  label_conjunction: ' 或 ',
+  html_when_wrong: '../resources/stimuli/wrong.png',
+  intrial_instructions: '<p style="opacity: 0.6;">如果你按下错误的按钮，屏幕中会出现红色的<red style="color: red;">X</red>号</p>',
+  response_ends_trial: true,
+  display_feedback: true,
+  on_finish: function() {
+    var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+
+    jsPsych.setProgressBar(curr_progress_bar_value + (1 / n_trials));
+    console.log(jsPsych.data.getLastTimelineData()
+      .json(), jsPsych.data.get()
+      .select('rt')
+      .mean());
+
+  }
+};
+
+var preexp_instructions = {
+  // type: 'fullscreen',
+  type: 'survey-text',
+  on_finish: function() {
+    jsPsych.setProgressBar(0.01);
+  },
+    questions: [
+	{prompt: '<div class="fade-in" style="margin-top: 10vh;">'  + 
+   '<div class="text_m">您好，再次感谢您对科研做出的贡献：）<br>以下是本次研究的最后一轮，分为2个部分：<br>第1部分是IAT按键反应实验<br>第2部分包含3道文字选择题<br><br><b style="color: #991122;">！重要提示：</b>需要一个安静、不受打扰的环境！<br><br><p class="text_s">请填写您收到实验邀请的邮箱：</p></div>', 
+   placeholder: ' 点此输入',
+   columns: 13, required: true, name: 'email'},
+       ],
+  button_label: '继 续',
+};
+
+// display the groups in exp1 of items and get into fullscreen 
+var groups_display = {
+  type: 'fullscreen',
+  on_finish: function() {
+    jsPsych.setProgressBar(0.02);
+  },
+  fullscreen_mode: true,
+  message: function() {
+    var html = '<br>' +
+      instr[1] +
+      instr[2] + '<br></div>' +
+      ' <div> <table class="category_table">' +
+      ' <tr> <th><big> 类别</big></th>' +
+      ' <th><big>  词语</big></th> </tr>';
+    var category_merge = category_info.slice(0, 4);
+    category_merge[2].Word = category_info[2].Word;
+    category_merge[3].Word = category_info[3].Word;
+    category_merge.forEach(generateTable);
+
+    function generateTable(item) {
+      html += '<tr> <td><strong>';
+      html += item.Group;
+      html += '</strong></td>';
+      html += '<td>';
+      if (!item.Image) {
+        html += item.Word.join('、');
+        html += '</td></tr>';
+      } else if (!item.Word) {
+        html += '与”' + item.Group.toLowerCase() + '“有关的图片 ';
+        html += '</td></tr>';
+      }
+    }
+    html += '</table><br>';
+    html += instr[3];
+
+    return html
+  },
+  button_label: '开 始'
+};
+
+
+// initialling target_concept_train
+
+// labels
+var target_concept_labels = {
+  left_category_label: [category_info[0 + rdm].Group],
+  right_category_label: [category_info[1 - rdm].Group],
+};
+
+// instructions
+var instructions_block_target_concept_train = {
+  ...instructions_block_default,
+  ...target_concept_labels,
+  pretrial_instructions: instr[0] +
+    instr[4][0] +
+    instr[5] +
+    category_info[0 + rdm].Group + instr[7] +
+    instr[5] +
+    category_info[1 - rdm].Group + instr[8] +
+    instr[9] + instr[10] + instr[11]
+};
+
+// timeline
+var trial_block_target_concept_train_timeline = {
+  ...trial_block_default_timeline,
+  ...target_concept_labels,
+  data: {
+    iat_type: 'train'
+  }
+};
+// timeline_variables
+var trial_block_target_concept_train_timeline_variables = [];
+for (var i = 0; i < (category_info[0 + rdm].Word.length); i++) {
+  trial_block_target_concept_train_timeline_variables[i] = {
+    stim_btn_association: "left",
+    stim_word: category_info[0 + rdm].Word[i]
+  };
+}
+for (var i = category_info[0 + rdm].Word.length; i < (category_info[0 + rdm].Word.length + category_info[1 - rdm].Word.length); i++) {
+  trial_block_target_concept_train_timeline_variables[i] = {
+    stim_btn_association: "right",
+    stim_word: category_info[1 - rdm].Word[i - category_info[0 + rdm].Word.length]
+  };
+}
+// block obj
+var trial_block_target_concept_train = {
+  timeline: [trial_block_target_concept_train_timeline],
+  timeline_variables: trial_block_target_concept_train_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling ini_attr_train
+// labels
+var ini_attr_train_labels = {
+  left_category_label: [category_info[2 + rdm].Group],
+  right_category_label: [category_info[3 - rdm].Group],
+};
+
+var instructions_block_ini_attr_train = {
+  ...instructions_block_default,
+  ...ini_attr_train_labels,
+  pretrial_instructions: instr[0] +
+    instr[4][1] +
+    instr[5] +
+    category_info[2 + rdm].Group + instr[7] +
+    instr[5] +
+    category_info[3 - rdm].Group + instr[8] +
+    instr[9] + instr[10] + instr[11]
+};
+
+// initialling ini_attr_train_A 
+// timeline
+var trial_block_ini_attr_train_A_timeline = {
+  ...trial_block_default_timeline,
+  ...ini_attr_train_labels,
+  data: {
+    iat_type: 'ini_attr_train_A'
+  }
+};
+// timeline_variables
+var trial_block_ini_attr_train_A_timeline_variables = [];
+for (var i = 0; i < category_info[2 + rdm].Word.length; i++) {
+  trial_block_ini_attr_train_A_timeline_variables[i] = {
+    stim_btn_association: "left",
+    stim_word: category_info[2 + rdm].Word[i]
+  };
+}
+for (var i = category_info[2 + rdm].Word.length; i < (category_info[2 + rdm].Word.length + category_info[3 - rdm].Word.length); i++) {
+  trial_block_ini_attr_train_A_timeline_variables[i] = {
+    stim_btn_association: "right",
+    stim_word: category_info[3 - rdm].Word[i - category_info[2 + rdm].Word.length]
+  };
+}
+// block obj
+var trial_block_ini_attr_train_A = {
+  timeline: [trial_block_ini_attr_train_A_timeline],
+  timeline_variables: trial_block_ini_attr_train_A_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling ini_attr_train_B 
+// timeline
+var trial_block_ini_attr_train_B_timeline = {
+  ...trial_block_default_timeline,
+  ...ini_attr_train_labels,
+  data: {
+    iat_type: 'ini_attr_train_B'
+  }
+};
+// timeline_variables
+var trial_block_ini_attr_train_B_timeline_variables = [];
+for (var i = 0; i < category_info[4 + rdm].Word.length; i++) {
+  trial_block_ini_attr_train_B_timeline_variables[i] = {
+    stim_btn_association: "left",
+    stim_word: category_info[4 + rdm].Word[i]
+  };
+}
+for (var i = category_info[4 + rdm].Word.length; i < (category_info[4 + rdm].Word.length + category_info[5 - rdm].Word.length); i++) {
+  trial_block_ini_attr_train_B_timeline_variables[i] = {
+    stim_btn_association: "right",
+    stim_word: category_info[5 - rdm].Word[i - category_info[4 + rdm].Word.length]
+  };
+}
+// block obj
+var trial_block_ini_attr_train_B = {
+  timeline: [trial_block_ini_attr_train_B_timeline],
+  timeline_variables: trial_block_ini_attr_train_B_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling instructions_block_cong blabla
+// labels
+var cong_labels = {
+  left_category_label: [category_info[2 + rdm].Group, category_info[0 + rdm].Group],
+  right_category_label: [category_info[3 - rdm].Group, category_info[1 - rdm].Group]
+};
+
+var instructions_block_cong = {
+  ...instructions_block_default,
+  ...cong_labels,
+  pretrial_instructions: instr[0] +
+    instr[4][3] +
+    instr[5] +
+    category_info[2 + rdm].Group + instr[6] + category_info[0 + rdm].Group + instr[7] +
+    instr[5] +
+    category_info[3 - rdm].Group + instr[6] + category_info[1 - rdm].Group + instr[8] +
+    instr[9] + instr[11]
+};
+// initialling cong_practice_A 
+// timeline
+var trial_block_cong_prac_A_timeline = {
+  ...trial_block_default_timeline,
+  ...cong_labels,
+  data: {
+    iat_type: 'cong_practice_A'
+  }
+};
+// timeline_variables 
+var trial_block_cong_prac_A_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_ini_attr_train_A_timeline_variables);
+// console.log(trial_block_cong_prac_A_timeline_variables);
+// block obj
+var trial_block_cong_prac_A = {
+  timeline: [trial_block_cong_prac_A_timeline],
+  timeline_variables: trial_block_cong_prac_A_timeline_variables,
+  sample: {
+    type: 'without-replacement',
+    size: n_practice,
+  }
+};
+// initialling cong_practice_B 
+// timeline
+var trial_block_cong_prac_B_timeline = {
+  ...trial_block_default_timeline,
+  ...cong_labels,
+  data: {
+    iat_type: 'cong_practice_B'
+  }
+};
+// timeline_variables 
+var trial_block_cong_prac_B_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_ini_attr_train_B_timeline_variables);
+// console.log(trial_block_cong_prac_B_timeline_variables);
+// block obj
+var trial_block_cong_prac_B = {
+  timeline: [trial_block_cong_prac_B_timeline],
+  timeline_variables: trial_block_cong_prac_B_timeline_variables,
+  sample: {
+    type: 'without-replacement',
+    size: n_practice,
+  }
+};
+
+// initialling cong_test_A
+// timeline
+var trial_block_cong_test_A_timeline = {
+  ...trial_block_default_timeline,
+  ...cong_labels,
+  data: {
+    iat_type: 'cong_test_A'
+  }
+};
+// timeline_variables 
+var trial_block_cong_test_A_timeline_variables = trial_block_cong_prac_A_timeline_variables;
+// block obj
+var trial_block_cong_test_A = {
+  timeline: [trial_block_cong_test_A_timeline],
+  timeline_variables: trial_block_cong_test_A_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling cong_test_B
+// timeline
+var trial_block_cong_test_B_timeline = {
+  ...trial_block_default_timeline,
+  ...cong_labels,
+  data: {
+    iat_type: 'cong_test_B'
+  }
+};
+// timeline_variables 
+var trial_block_cong_test_B_timeline_variables = trial_block_cong_prac_B_timeline_variables;
+// block obj
+var trial_block_cong_test_B = {
+  timeline: [trial_block_cong_test_B_timeline],
+  timeline_variables: trial_block_cong_test_B_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+
+
+// initialling rev_attr_train
+// labels
+var rev_attr_train_labels = {
+  right_category_label: [category_info[2 + rdm].Group],
+  left_category_label: [category_info[3 - rdm].Group],
+}
+
+var instructions_block_rev_attr_train = {
+  ...instructions_block_default,
+  ...rev_attr_train_labels,
+  pretrial_instructions: instr[0] +
+    instr[4][2] +
+    instr[5] +
+    category_info[3 - rdm].Group + instr[7] +
+    instr[5] +
+    category_info[2 + rdm].Group + instr[8] +
+    instr[9] + instr[10] + instr[11]
+};
+
+// initialling rev_attr_train_A 
+// timeline
+var trial_block_rev_attr_train_A_timeline = {
+  ...trial_block_default_timeline,
+  ...rev_attr_train_labels,
+  data: {
+    iat_type: 'rev_attr_train_A'
+  }
+};
+// timeline_variables
+var trial_block_rev_attr_train_A_timeline_variables = [];
+for (var i = 0; i < category_info[2 + rdm].Word.length; i++) {
+  trial_block_rev_attr_train_A_timeline_variables[i] = {
+    stim_btn_association: "right",
+    stim_word: category_info[2 + rdm].Word[i]
+  };
+}
+for (var i = category_info[2 + rdm].Word.length; i < (category_info[2 + rdm].Word.length + category_info[3 - rdm].Word.length); i++) {
+  trial_block_rev_attr_train_A_timeline_variables[i] = {
+    stim_btn_association: "left",
+    stim_word: category_info[3 - rdm].Word[i - category_info[2 + rdm].Word.length]
+  };
+}
+
+// block obj
+var trial_block_rev_attr_train_A = {
+  timeline: [trial_block_rev_attr_train_A_timeline],
+  timeline_variables: trial_block_rev_attr_train_A_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// revtialling rev_attr_train_B 
+// timeline
+var trial_block_rev_attr_train_B_timeline = {
+  ...trial_block_default_timeline,
+  ...rev_attr_train_labels,
+  data: {
+    iat_type: 'rev_attr_train_B'
+  }
+};
+// timeline_variables
+var trial_block_rev_attr_train_B_timeline_variables = [];
+for (var i = 0; i < category_info[4 + rdm].Word.length; i++) {
+  trial_block_rev_attr_train_B_timeline_variables[i] = {
+    stim_btn_association: "right",
+    stim_word: category_info[4 + rdm].Word[i]
+  };
+}
+for (var i = category_info[4 + rdm].Word.length; i < (category_info[4 + rdm].Word.length + category_info[5 - rdm].Word.length); i++) {
+  trial_block_rev_attr_train_B_timeline_variables[i] = {
+    stim_btn_association: "left",
+    stim_word: category_info[5 - rdm].Word[i - category_info[4 + rdm].Word.length]
+  };
+}
+// block obj
+var trial_block_rev_attr_train_B = {
+  timeline: [trial_block_rev_attr_train_B_timeline],
+  timeline_variables: trial_block_rev_attr_train_B_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling instructions_block_incong blabla
+
+// labels
+var incong_labels = {
+  left_category_label: [category_info[3 - rdm].Group, category_info[0 + rdm].Group],
+  right_category_label: [category_info[2 + rdm].Group, category_info[1 - rdm].Group]
+};
+
+var instructions_block_incong = {
+  ...instructions_block_default,
+  ...incong_labels,
+  pretrial_instructions: instr[0] +
+    instr[4][4] +
+    instr[5] +
+    category_info[3 - rdm].Group + instr[6] + category_info[0 + rdm].Group + instr[7] +
+    instr[5] +
+    category_info[2 + rdm].Group + instr[6] + category_info[1 - rdm].Group + instr[8] +
+    instr[9] + instr[11]
+};
+
+// initialling incong_practice_A 
+// timeline
+var trial_block_incong_prac_A_timeline = {
+  ...trial_block_default_timeline,
+  ...incong_labels,
+  data: {
+    iat_type: 'incong_practice_A'
+  }
+};
+// timeline_variables 
+var trial_block_incong_prac_A_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_rev_attr_train_A_timeline_variables);
+// block obj
+var trial_block_incong_prac_A = {
+  timeline: [trial_block_incong_prac_A_timeline],
+  timeline_variables: trial_block_incong_prac_A_timeline_variables,
+  sample: {
+    type: 'without-replacement',
+    size: n_practice,
+  }
+};
+
+// initialling incong_practice_B 
+// timeline
+var trial_block_incong_prac_B_timeline = {
+  ...trial_block_default_timeline,
+  ...incong_labels,
+  data: {
+    iat_type: 'incong_practice_B'
+  }
+};
+// timeline_variables 
+var trial_block_incong_prac_B_timeline_variables = trial_block_target_concept_train_timeline_variables.concat(trial_block_rev_attr_train_B_timeline_variables);
+// block obj
+var trial_block_incong_prac_B = {
+  timeline: [trial_block_incong_prac_B_timeline],
+  timeline_variables: trial_block_incong_prac_B_timeline_variables,
+  sample: {
+    type: 'without-replacement',
+    size: n_practice,
+  }
+};
+
+// initialling incong_test_A
+// timeline
+var trial_block_incong_test_A_timeline = {
+  ...trial_block_default_timeline,
+  ...incong_labels,
+  data: {
+    iat_type: 'incong_test_A'
+  }
+};
+// timeline_variables 
+var trial_block_incong_test_A_timeline_variables = trial_block_incong_prac_A_timeline_variables;
+// block obj
+var trial_block_incong_test_A = {
+  timeline: [trial_block_incong_test_A_timeline],
+  timeline_variables: trial_block_incong_test_A_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+// initialling incong_test_B
+// timeline
+var trial_block_incong_test_B_timeline = {
+  ...trial_block_default_timeline,
+  ...incong_labels,
+  data: {
+    iat_type: 'incong_test_B'
+  }
+};
+// timeline_variables 
+var trial_block_incong_test_B_timeline_variables = trial_block_incong_prac_B_timeline_variables;
+// block obj
+var trial_block_incong_test_B = {
+  timeline: [trial_block_incong_test_B_timeline],
+  timeline_variables: trial_block_incong_test_B_timeline_variables,
+  randomize_order: true,
+  repetitions: 1
+};
+
+
+// nesting the blocks 
+var block_target_concept = {
+  timeline: [
+    instructions_block_target_concept_train,
+    trial_block_target_concept_train
+  ],
+  randomize_order: false,
+};
+
+var block_cong = {
+  timeline: [
+    instructions_block_ini_attr_train, 
+    trial_block_ini_attr_train_A,
+    // trial_block_ini_attr_train_B,
+    instructions_block_cong,
+    trial_block_cong_prac_A,
+    // trial_block_cong_prac_B,
+    trial_block_cong_test_A,
+    // trial_block_cong_test_B,
+  ],
+  randomize_order: false,
+};
+
+var block_incong = {
+  timeline: [
+    instructions_block_rev_attr_train,
+    trial_block_rev_attr_train_A,
+    // trial_block_rev_attr_train_B,
+    instructions_block_incong,
+    trial_block_incong_prac_A,
+    // trial_block_incong_prac_B,
+    trial_block_incong_test_A,
+    // trial_block_incong_test_B
+  ],
+  randomize_order: false,
+};
+
+var block_cong_incong = {
+  timeline: [
+  [block_incong, block_cong][rdm2],
+  [block_cong, block_incong][rdm2]
+  ],
+  randomize_order: true,
+};
+
+
+ var survey_1 = {
+    type: 'survey-multi-choice',
+    questions: [
+	{prompt: "<br><br><br><big>请回忆您最近一个月的锻炼情况：</big> <br><br><b>1、您进行体育锻炼的强度怎样？</b>", 
+	  name: 'frequency', 
+	  options: [
+	  "轻微运动（如散步、做广播操、打门球等）", 
+	  "小强度的不太紧张的运动（如消遣娱乐性的打排球、乒乓球、慢跑、打太极拳等）", 
+	  "中等强度的较激烈持久运动（如骑自行车、跑步、打乒乓球等）", 
+	  "呼吸急促，出汗很多的大强度的，但并不持久的运动（如打羽毛球、篮球、网球、足球等）", 
+	  "呼吸急促，出汗很多的大强度的持久的运动（如赛跑、成套健美操练习、游泳等）"
+	  ], 
+	  required:true
+	  }, 
+    ],
+	  button_label: '继 续',
+  };
+  
+   var survey_2 = {
+    type: 'survey-multi-choice',
+    questions: [
+	{prompt: "<br><br><b>2、您在进行上述强度体育活动时，一次多少分钟？</b>", 
+	  name: 'duration', 
+	  options: ["10 分钟以下 ", "11 至 20 分钟", "21 至 30 分钟 ", "31 至 59 分钟 ", "60 分钟以上"], 
+	  required:true
+	  }, 
+	{prompt: "<b>3、您最近一个月进行了几次上述体育活动？</b>", 
+	  name: 'times', 
+	  options: ["一个月1次以下 ", " 一个月 2 至 3 次", "每周 1 至 2 次", "每周 3 至 5 次", "大约每天 1 次"], 
+	  required:true
+	  }, 
+
+    ],
+	  button_label: '完 成',
+  };
+
+var timeline = [];
+timeline.push(preexp_instructions);
+timeline.push(groups_display);
+timeline.push(block_target_concept);
+timeline.push(block_cong_incong);
+timeline.push(survey_1);
+timeline.push(survey_2);
+
+
+
+
+function saveDataToServer(data){
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/save?type=experiment', false);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(data);
+  console.log('req status ' + xhr.status);
+}
+
+
+
+
+
+jsPsych.init({
+  timeline: timeline,
+  display_element: 'experiment_content',
+  show_progress_bar: true,
+  message_progress_bar: ' ',
+  auto_update_progress_bar: false,
+  on_finish: function() {
+	 saveDataToServer(jsPsych.data.get().json());
+    // jsPsych.data.get().localSave('json', userInfo.uuid() + '.txt');
+    var all_data = jsPsych.data.get();
+    console.log(all_data.csv());
+	// compute some simple results
+    // mean RT
+    var cong_test_mean = jsPsych.data.get()
+      .filter([
+        {
+          iat_type: 'cong_test_A'
+        }
+    ])
+      .filterCustom(function(x) {
+        return x.rt < 10000
+      });
+    var mean_correct_responses_cong_test = cong_test_mean.filter({
+        correct: true
+      })
+      .select('rt')
+      .mean();
+    var incong_test_mean = jsPsych.data.get()
+      .filter([
+        {
+          iat_type: 'incong_test_A'
+        }
+    ])
+      .filterCustom(function(x) {
+        return x.rt < 10000
+      });
+    var mean_correct_responses_incong_test = incong_test_mean.filter({
+        correct: true
+      })
+      .select('rt')
+      .mean();
+    // overall sd
+    var sd = cong_test_mean.join(incong_test_mean)
+      .filter({
+        correct: true
+      })
+      .select('rt')
+      .sd();
+    var d = (mean_correct_responses_incong_test - mean_correct_responses_cong_test) / sd;
+    // setTimeout(function() {
+      // window.open("about:blank", '_self').close();
+    // }, 1000);
+    var exp_end = '<div class="text_m"  style="text-align: left; max-width: 80%;"><br>';
+    exp_end += '<p class="text_l fade-in"><b>结语：</b></p><br>'
+	+'本次研究主要探索时间观和健康行为之间的关系<br>'
+	+'时间观是社会心理学家津巴多提出的概念<br>'
+	+'简单来说就是：<br>'
+	+'有的人向未来而活，有的人活在过去，有的人但求当下<br>'
+	+'时间观和一个人的幸福与成功高度相关<br>'
+	+'如果您对时间观感兴趣，可以搜索“津巴多+时间观/时间洞察力”做更多了解<br>'
+	+'或者阅读津巴多先生的著作《时间的悖论》<br>'
+	+'再次感谢您对研究的支持，祝思考有益、开卷有益！<br>'
+	+ '<p style="text-align: right;">——复旦大学社会心理学 曹雪敏<br>'
+	;
+    document.body.innerHTML = exp_end;
+
+  }
+});
+
+
+  </script>
+</body>
+</html>

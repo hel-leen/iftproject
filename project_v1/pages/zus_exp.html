@@ -48,8 +48,11 @@
   transition-duration: 0.1s;
 }
 
+.jspsych-survey-text{
+    width: 20%;
+}
 .jspsych-display-element input[type="text"] {
-    font-size: 20px;
+    font-size: small;
 	padding: 4px;
     margin-bottom: 55px;
 }
@@ -80,6 +83,7 @@ jspsych-html-button-response-button {
   font-weight: 400;
     margin-bottom: 20px;
 }
+
 form#jspsych-survey-multi-choice-form {
   display: inline-block;
   margin-left: 1em;
@@ -89,9 +93,11 @@ label.jspsych-survey-multi-choice-text input[type='radio'] {
     margin-right: 1em;
     margin-left: -25px;
 }
+
 .jspsych-survey-multi-choice-option {
     margin-left: 20px;
 }
+
 .btn_iat:active {
   background-color: #5cd0b7;
 }
@@ -130,6 +136,9 @@ tr:nth-child(even) {
 .display, .jspsych-display-element, .jspsych-content-wrapper, .jspsych-content {
     font-size: 17px;
 }
+.jspsych-survey-text {
+    width: 50%;
+	}
 }
   </style>
 </head>
@@ -232,9 +241,20 @@ const category_info = [
 // get user ID
 var userInfo = {
   url: window.location.href,
-  uuid: "cxm",
+  uuid: function() {
+	if (this.url.slice( this.url.indexOf( "html" ) + 5,   )< 3)
+	{
+		return "TPT_null_id";
+	} else {
+    return  "TPT_" + this.url.slice( this.url.indexOf( "html" ) + 5,   );
+	}
+  },
   timestamp: new Date().getTime(),
 }
+
+const email_list = [
+"1002740634@qq.com", "1006311299@qq.com", "10103770@qq.com", "1039589071@qq.com", "1044495173@qq.com", "1102978629@qq.com", "1120701292@qq.com", "115141731@qq.com", "1152312969@qq.com", "1157278086@qq.com", "1164081553@qq.com", "1184561331@qq.com", "1198563067@qq.com", "1211493296@qq.com", "1216981143@qq.com", "1217240279@qq.com", "1226749791@qq.com", "1260317823@qq.com", "1280504606@qq.com", "1304197896@qq.com", "1308416807@qq.com", "1312082533@qq.com", "1336525358@qq.com", "1339579357@qq.com", "1346556687@qq.com", "1347295518@qq.com", "1347743487@qq.com", "1353650536@qq.com", "1353762269@qq.com", "1354011534@qq.com", "1362847824@qq.com", "136478465@qq.com", "1378982763@qq.com", "1393702601@qq.com", "1399780572@qq.com", "1432781523@qq.com", "1438814802@qq.com", "1443727896@qq.com", "1456004531@qq.com", "1456480164@qq.com", "1456692160@qq.com", "1463495880@qq.com", "1491951584@qq.com", "1493208975@qq.com", "1519202373@qq.com", "1541405698@qq.com", "1569453119@qq.com", "1624356376@qq.com", "1628975597@qq.com", "1677116453@qq.com", "1687846238@qq.com", "1714918517@qq.com", "172231769@qq.com", "1747590466@qq.com", "1760021394@qq.com", "1771708241@qq.com", "1780407536@qq.com", "1793100236@qq.com", "1796812106@qq.com", "1805064305@qq.com", "1810765946@qq.com", "1846059469@QQ.con", "1850299383@qq.com", "18754809382@163.com", "1901844586@qq.com", "1905866050@qq.com", "1912309642@qq.com", "1913611726@qq.com", "1922517859@qq.com", "1932797816@qq.com", "1935157534@qq.com", "1946376233@qq.com", "1981708604@qq.com", "1987649351@qq.com", "2012458414@qq.com", "2020904354@chd.edu.cn", "2053520368@qq.com", "2066549965@qq.com", "2076652284@qq.com", "2125134496@qq.com", "2187531682@qq.com", "21982917@qq.com", "2219146965@qq.com", "2231791721@qq.com", "223430216@qq.com", "2277563619@qq.com", "2287202617@qq.com", "2291691849@qq.com", "2317967812@qq.com", "2319303011@qq.com", "2327797130@qq.com", "2336873073@qq.com", "2363550996@qq.com", "2365455110@qq.com", "2369282804@qq.com", "2374566713@qq.com", "2380449290@qq.com", "2389804140@qq.com", "2418939684@qq.com", "2433559261@qq.com", "2435694679@qq.com", "244691904@qq.com", "2454407914@qq.com", "2455481286@qq.com", "2476716085@qq.com", "2508956262@qq.com", "2530436774@qq.com", "2532098609@qq.com", "2536329903@qq.com", "2567872914@qq.com", "2569177244@qq.com", "25872776871@qq.com", "2649330882@qq.com", "267006862@qq.com", "2696076859@qq.com", "2713485187@qq.com", "2715542565@qq.com", "2722984135@qq.com", "2727706390@qq.com", "2747760001@qq.com", "2773520352@qq.com", "278565663@qq.com", "2787148918@qq.com", "2830619806@qq.com", "2848086280@qq.com", "2911191501@qq.com", "2937240356@qq.com", "2949200860@qq.com", "2978370282@qq.com", "2987157852@qq.com", "304104099@qq.com", "3052278638@qq.com", "3079318060@qq.com", "308018810@qq.com", "3096775205@qq.com", "3220214324@qq.com", "3224495829@qq.com", "3239605869@qq.com", "3244595484@qq.com", "3247655656@qq.com", "328753160@qq.com", "3351067451@qq.com", "3407268536@qq.com", "3477307647@qq.com", "3528683862@qq.com", "369857158@qq.com", "374107728@qq.com", "394108999@qq.com", "404243222@qq.com", "412532281@qq.com", "542013921@qq.com", "546240986@qq.com", "602733035@qq.com", "634763269@qq.com", "642887803@qq.com", "648875485@qq.com", "704648307@qq.com", "717948932@qq.com", "718659491@qq.com", "7222172@qq.com", "743360046@qq.com", "756859197@qq.com", "77117831@qq.com", "791692775@qq.com", "792360680@qq.com", "792833155@qq.com", "794601575@qq.com", "837369619@qq.com", "85138066@qq.com", "875636894@qq.com", "877131367@qq.com", "904539232@qq.com", "926141557@qq.com", "935683626@qq.com", "939071086@qq.com", "953480189@qq.com", "964715355@qq.com", "973281116@qq.com", "974099608@qq.com", "all4pku@qq.com", "anne_yu222@163.com", "bbhdeppz@163.com", "Bwdyywater@163.com", "ericafung@foxmail.com", "fire_a@163.com", "ganfujunkun@163.com", "he-jy20@mails.tsinghua.edu.cn", "hellocxm@qq.com", "iwasye@163.com", "jtsghrz666@gmail.com", "leeannrose@163.com", "liubotao0417@qq.com", "ljh_1352@163.com", "lp374657110@163.com", "lxl202120212021@163.com", "m17766081707@163.com", "meteor19950930@163.com", "miasho25@outlook.com", "namezbl@qq.com", "onlyliang@gmail.com", "qq@1971336376.com", "sanyangkaitai@live.com", "singlewinghx@ggmail.com", "wanchuan9999@hotmail.com", "wenyeel@outlook.com", "whalemua@gmail.com", "womeike77200@126.com", "wqi16@fudan.edu.cn", "xjmmm15@outlook.com", "x-xy-1@163.com", "yangliuyangliu0316@163.com", "zbt530@126.com", "zhwfzhwf@163.com", "qin477220@163.com", "huanqii@126.com", "fcx37810@163.com", "cicosol@163.com", "923269466@qq.com", "921804398@qq.com", "913161578@qq.com", "860911851@qq.com", "825515117@qq.com", "814289875@qq.com", "764153023@qq.com", "734861329@qq.com", "728386672@qq.com", "597586002@qq.com", "563201970@qq.com", "529250087@qq.com", "502386137@qq.com", "490612700@qq.com", "470635615@qq.com", "429735209@qq.com", "3521232143@qq.com", "3401067375@QQ.com", "3382179737@qq.com", "3140629711@qq.com", "3061466209@qq.com", "3011600486@qq.com", "2987157852@qq.com", "2987157852@qq.com", "2987157852@qq.com", "2987157852@qq.com", "2987157852@qq.com", "2987157852@qq.com", "2918994915@qq.com", "2912505351@qq.com", "2867990951@qq.com", "2827585490@qq.com", "2794669355@qq.com", "2739725740@qq.com", "2660516422@qq.com", "2638452855@qq.com", "2623754692@qq.com", "2623288737@qq.com", "2562937236@qq.com", "2545134871@qq.com", "2534700945@qq.com", "2511938327@qq.com", "2511938327@qq.com", "2483909524@qq.com", "2477260747@qq.com", "244006448@qq.com", "2429179795@qq.com", "2406585191@qq.com", "2386174783@QQ.com", "2362800825@qq.com", "2294970830@qq.com", "2279098364@qq.com", "2250781915@qq.com", "2237651140@qq.com", "223200936@qq.com", "2214904452@qq.com", "2195622906@qq.com", "2131288437@qq.com", "2120689729@qq.com", "211537439@qq.com", "2090861704@qq.com", "2080616269@qq.com", "2055872063@qq.com", "2045637215@qq.com", "1992981876@qq.com", "195985710@qq.com", "1943675089@qq.com", "1935220330@qq.com", "1925242658@qq.com", "1922176162@qq.com", "1873508208@qq.com", "1823997829@qq.com", "1806255942@qq.com", "1797267009@qq.com", "1779653493@qq.com", "1765635502@qq.com", "1765237469@qq.com", "1760021394@qq.com", "1735481311@qq.com", "1735481311@qq.com", "1732199004@qq.com", "1723651087@qq.com", "1712803650@qq.com", "1643717528@qq.com", "1624857126@qq.com", "1592768789@qq.com", "1587866558@qq.com", "1575517790@qq.com", "1533700178@qq.com", "1518370258@qq.com", "1467125851@qq.com", "1453911539@qq.com", "1443707469@qq.com", "1440568986@qq.com", "1405331950@qq.com", "1365666541@qq.com", "1359294832@qq.com", "1359294832@qq.com", "1343573528@qq.com", "1342822897@qq.com", "1329166315@qq.com", "1292194507@qq.com", "1264997236@qq.com", "1226749791@qq.com", "1215929733@qq.com", "11740627@qq.com", "11740627@qq.com", "11740627@qq.com", "1164087470@qq.com", "1141442657@qq.com", "1097268824@qq.com", "1093978600@qq.com", "1084643988@qq.com", "1026567649@qq.com", "1009381883@qq.com"
+];
 
 //randomize the placement of pos and neg labels 
 //randomize the cong and incong test order 
@@ -244,21 +264,27 @@ var rdm2 = Math.floor((Math.random() * 2));
 //add the info 
 // jsPsych.data.get().addToAll
 jsPsych.data.addProperties({
-  uuid: "cxm",
-  timestamp: userInfo.timestamp,
+  uuid: userInfo.uuid(),
   label_position: rdm,
   test_order: rdm2
 });
 
 
+var idn = userInfo.uuid().slice( userInfo.uuid().indexOf( "TPT_" ) + 4,   );
+var default_email= null;
+ for (var i = 0; i < 448-117; i++) {
+  default_email =  email_list[idn-117];
+ }
+ 
 // count the number of trials
-var n_practice = 3;
+var n_practice = 5;
 var n_cong_incong = 0;
 n_cong_incong += category_info[2].Word.length;
 n_cong_incong += category_info[3].Word.length;
 
-var n_trials = 5 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length) + 6 * (category_info[4].Word.length + category_info[5].Word.length) + 2 * n_practice;
-console.log(' uuid: ' + userInfo.uuid, '\n number of trials: ' +n_trials);
+var n_trials = 5 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length)  + 2 * n_practice;
+console.log(' uuid: ' + userInfo.uuid(), '\n number of trials: ' +n_trials, '\n default_email: ' + default_email);
+
 
 
 // assign the instructions 
@@ -266,7 +292,7 @@ const instr = [
   '<br>',
   '<div class="text_m"  style="margin-top: 3vh;">接下来，你需要将屏幕中间出现的词语通过尽可能快地按相应的按钮进行分类。 <br>',
   ' 请浏览以下需要分类的词语以及它们所属的类别（无需进行记忆）：<br> ',
-    '<p class="text_s">如果你已准备好，点击下面的“继续”按钮开启全屏模式，并正式开始测验</p><br>',
+    '<p class="text_s">如果你已准备好，点击下面的“<b style="color: #22CC99;">开始</b>”按钮开启全屏模式，并正式开始测验</p><br>',
   [' 注意屏幕下方的左右两枚按钮<br><br>',
   ' <b style="color: #661122;">注意</b>分类按钮上的标签已变化。<br><br>',
   ' <b style="color: #661122;">注意</b>分类按钮上标签的变化。<br><br>',
@@ -313,13 +339,12 @@ const trial_block_default_timeline = {
     var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
 
     jsPsych.setProgressBar(curr_progress_bar_value + (1 / n_trials));
-    console.log(jsPsych.data.getLastTimelineData()
-      .json(), jsPsych.data.get()
-      .select('rt')
-      .mean());
 
   }
 };
+
+
+
 
 var preexp_instructions = {
   // type: 'fullscreen',
@@ -329,12 +354,17 @@ var preexp_instructions = {
   },
     questions: [
 	{prompt: '<div class="fade-in" style="margin-top: 10vh;">'  + 
-   '<div class="text_m">您好，再次感谢您对科研做出的贡献：）<br>以下是本次研究的最后一轮，分为2个部分：<br>第1部分是IAT按键反应实验<br>第2部分包含3道文字选择题<br><br><b style="color: #991122;">！重要提示：</b>需要一个安静、不受打扰的环境！<br><br><p class="text_s">请填写您收到实验邀请的邮箱：</p></div>', 
+   '<div class="text_m">您好，再次感谢您对科研做出的贡献：）<br>以下是本次研究的最后一轮，分为2个部分：<br>第1部分是IAT按键反应实验<br>第2部分包含3道文字选择题<br><br><b style="color: #991122;">！重要提示：</b>需要一个安静、不受打扰的环境！<br><br><p class="text_s">请填写您收到实验邀请的邮箱：<br><small style="font-size: 0.8em;">（如果下面已显示了正确的邮箱，请直接点击继续）</small></p></div>', 
    placeholder: ' 点此输入',
-   columns: 13, required: true, name: 'email'},
+   columns: 13, required: true, name: 'email', 
+   defaultvalue: default_email
+   },
        ],
   button_label: '继 续',
+  autocomplete: false,
 };
+
+
 
 // display the groups in exp1 of items and get into fullscreen 
 var groups_display = {
@@ -879,10 +909,9 @@ var timeline = [];
 timeline.push(preexp_instructions);
 timeline.push(groups_display);
 timeline.push(block_target_concept);
-timeline.push(block_cong_incong);
+ timeline.push(block_cong_incong);
 timeline.push(survey_1);
 timeline.push(survey_2);
-
 
 
 
@@ -904,49 +933,14 @@ jsPsych.init({
   show_progress_bar: true,
   message_progress_bar: ' ',
   auto_update_progress_bar: false,
+
   on_finish: function() {
 	 saveDataToServer(jsPsych.data.get().json());
-    // jsPsych.data.get().localSave('json', userInfo.uuid() + '.txt');
+    <!-- jsPsych.data.get().localSave('json', userInfo.uuid() + '.txt'); -->
     var all_data = jsPsych.data.get();
     console.log(all_data.csv());
-	// compute some simple results
     // mean RT
-    var cong_test_mean = jsPsych.data.get()
-      .filter([
-        {
-          iat_type: 'cong_test_A'
-        }
-    ])
-      .filterCustom(function(x) {
-        return x.rt < 10000
-      });
-    var mean_correct_responses_cong_test = cong_test_mean.filter({
-        correct: true
-      })
-      .select('rt')
-      .mean();
-    var incong_test_mean = jsPsych.data.get()
-      .filter([
-        {
-          iat_type: 'incong_test_A'
-        }
-    ])
-      .filterCustom(function(x) {
-        return x.rt < 10000
-      });
-    var mean_correct_responses_incong_test = incong_test_mean.filter({
-        correct: true
-      })
-      .select('rt')
-      .mean();
-    // overall sd
-    var sd = cong_test_mean.join(incong_test_mean)
-      .filter({
-        correct: true
-      })
-      .select('rt')
-      .sd();
-    var d = (mean_correct_responses_incong_test - mean_correct_responses_cong_test) / sd;
+   
     // setTimeout(function() {
       // window.open("about:blank", '_self').close();
     // }, 1000);

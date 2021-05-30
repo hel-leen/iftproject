@@ -150,7 +150,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         // add radio button container
         html += '<div id="'+option_id_name+'" class="jspsych-survey-multi-choice-option">';
         html += '<label class="jspsych-survey-multi-choice-text" for="'+input_id+'">' ;
-        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+j+'" '+required_attr+'>';
+        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+(1+j)+'" '+required_attr+'>';
         html +=  question.options[j] + '</label></input>';
         html += '</div>';
       }

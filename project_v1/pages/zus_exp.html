@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
   <title>TPT Project</title>
   
@@ -309,7 +309,7 @@ var n_cong_incong = 0;
 n_cong_incong += category_info[2].Word.length;
 n_cong_incong += category_info[3].Word.length;
 
-var n_trials = 5 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length) + 2 * n_practice;
+var n_trials = 3 * (category_info[0].Word.length + category_info[1].Word.length) + 4 * (category_info[2].Word.length + category_info[3].Word.length) + 2 * n_practice + 3;
 console.log(' uuid: ' + userInfo.uuid(), '\n number of trials: ' + n_trials, '\n default_email: ' + default_email);
 
 
@@ -378,6 +378,14 @@ var preexp_instructions = {
   type: 'survey-text',
   on_finish: function() {
     jsPsych.setProgressBar(0.01);
+	var scale = 'scale(1)';
+	document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+	document.body.style.msTransform =   scale;       // IE 9
+	document.body.style.transform = scale;     // General
+    $('meta[name=viewport]').remove();
+    $('head').append('<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=0">');
+    $('meta[name=viewport]').remove();
+    $('head').append('<meta name="viewport" content="width=device-width, initial-scale=yes">' );
   },
   questions: [{
     prompt: '<div class="fade-in" style="margin-top: 10vh;">' +
@@ -899,6 +907,9 @@ var block_cong_incong = {
 
 var survey_1 = {
   type: 'survey-multi-choice',
+  on_finish: function() {
+    jsPsych.setProgressBar(1 + jsPsych.getProgressBarCompleted());
+  },
   questions: [{
     prompt: "<br><br><br><big>请回忆您最近一个月的锻炼情况：</big> <br><br><b>1、您进行体育锻炼的强度怎样？</b>",
     name: 'frequency',
